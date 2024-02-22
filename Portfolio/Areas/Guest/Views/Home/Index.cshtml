@@ -1,0 +1,161 @@
+﻿@model HomeVM
+
+@{
+    ViewData["Title"] = "Nick";
+}
+
+
+<div class="bio-grid text-light container fade-in">
+    <div class="bio-pic">
+        <img src="img/bio/joshua_tree-header.jpg"
+             class="img-fluid img-top"
+             alt="nick at joshua tree national park" />
+        <p class="image-description">
+            Hiking at
+            <a class="link" href="https://www.nps.gov/jotr/index.htm">
+                Joshua Tree National Park
+            </a>
+        </p>
+    </div>
+    @if (Model.Biography.Text.Length > 10)
+    {
+        <div class="intro"></div>
+    }
+    else
+    {
+        <div class="intro">
+            <h1 id="bio-header" class="intro-header">
+                Hello!
+            </h1>
+            <p>
+                Hello, and welcome to my portfolio page. My name is Nick and I am a
+                customer-focused developer with 12 years of implementation, regulatory
+                compliance, and product management experience in the healthcare
+                informatics space. After years of working closely with
+                engineering teams developing and enhancing Electronic Health Record
+                systems at GE, AZZLY, and most recently athenahealth, I decided to
+                finally start on my journey to full-time software development. A
+                little more about me:
+            </p>
+            <ul>
+                <li>Collaborative problem solver.</li>
+                <li>
+                    Interested in developing end-to-end solutions that create real
+                    customer value.
+                </li>
+                <li>
+                    Over a decade of experience in the healthcare informatics space and
+                    excited to take these "lessons-learned" into other industries.
+                </li>
+                <li>
+                    Projects will be posted below and under the username
+                    <a href="https://github.com/nitnub" class="link">
+                        nitnub
+                    </a>
+                    on GitHub.
+                </li>
+            </ul>
+            <p>
+                To get in touch about new projects or professional opportunities,
+                please feel free to contact me via
+                <a href="https://linkedin.com/in/nick-bryant-6b1a9579"
+                   class="link">
+                    LinkedIn
+                </a>
+                !
+            </p>
+        </div>
+    }
+
+</div>
+
+<div class="chevron-left light back"></div>
+<div class="chevron-right light back"></div>
+
+<div class="projects fade-in ">
+    <div class="nav-grid project-header">
+        <h1 id="project-header" class="project-header ">
+            Projects
+        </h1>
+    </div>
+    <div class="project-grid container">
+        @foreach (var project in Model.Projects)
+        {
+            <div class="card project-card">
+                <a href="@project.DemoUrl">
+                    <img src="img/projects/@project.Image" class="card-img-top" alt="@project.ImageAltText" />
+                </a>
+                <div class="card-body">
+                    <a class="title-link" href="@project.DemoUrl">
+                        <h5 class="card-title text-dark">@project.Title</h5>
+                    </a>
+                    <p class="card-text">@project.Description</p>
+                    <div class="card-btns">
+                        @if (!string.IsNullOrWhiteSpace(project.DemoUrl))
+                        {
+                            <a href="@project.DemoUrl" class="btn card-btn btn-outline-dark">
+                                Live Demo
+                            </a>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(project.GitUrl))
+                        {
+                            <a href="@project.GitUrl" class="btn card-btn btn-outline-dark">
+                                Visit Github Repo
+                            </a>
+                        }
+                    </div>
+
+                    @if (project.Videos != null && project.Videos.Count > 0)
+                    {
+                        <h5 class="card-title video-header">Videos</h5>
+                        <div class="video-btns">
+                            @foreach (var video in project.Videos)
+                            {
+                                <a href="@video.URL"
+                                   class="btn card-btn btn-outline-dark" data-toggle="tooltip" data-placement="top" title="@video.ToolTip">
+                                    @video.Title
+                                </a>
+                            }
+                        </div>
+                    }
+                    @{
+                        Console.WriteLine("project:");
+                        Console.WriteLine(project);
+                    }
+                    @if (project.ProjectLogos != null)
+                    {
+                        Console.WriteLine("project not nulk");
+                        Console.WriteLine(project.ProjectLogos);
+
+                        <div class="icon-container">
+                            @* @foreach (var logo in project.ProjectLogos) *@
+                            @foreach (var logo in new string[] { "CSharp", "DotNet", "GraphQL", "NextJS", "PostGres", "Prisma", "React", "Redis", "SQLServer", "TypeScript", "JavaScript" }) 
+                            {
+                                <div data-toggle="tooltip" data-placement="top" title="Tooltip on top" class="project-icon">
+                                    @* @Html.Raw(logo.Logo.HTML); *@
+                                <partial name="~/Views/Icons/_Icon@(logo).cshtml" />
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="chevron-left dark front"></div>
+<div class="chevron-right dark front"></div>
+
+
+
+@section Scripts {
+    @{
+        <script>
+
+            var bio = @Json.Serialize(Model.Biography);
+
+        </script>
+        <script src="~/js/home.js"></script>
+    }
+}

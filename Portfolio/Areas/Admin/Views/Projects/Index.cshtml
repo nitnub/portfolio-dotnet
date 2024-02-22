@@ -1,0 +1,82 @@
+﻿@model List<Project>
+
+@if (TempData["Success"] != null)
+{
+    <!-- Update Modal (Project) -->
+    <div id="update_modal" class="modal fade" tabindex="-1" aria-hidden="true" show="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Update</h5>
+                </div>
+                <div class="modal-body d-flex justify-content-center">
+                    <div class="text-success">@TempData["Success"]</div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Delete Confirmation Modal (Project) -->
+<div class="modal delete-modal fade" role="dialog" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Delete</h5>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>
+
+
+<div class="d-flex justify-content-center w-100">
+    <div class="card col-10 border-0 my-4">
+        <div class="card-header ml-0 py-3">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 class="text-dark py-2">Projects</h2>
+                </div>
+            </div>
+        </div>
+        <div class="card-body p-4">
+            <div class="row pb-3">
+                <div class="col-6">
+                </div>
+                <div class="col-6 text-end">
+                    <a asp-area="Admin" asp-controller="Projects" asp-action="Upsert" class="btn btn-warning">
+                        <i class="bi bi-plus-circle"></i> Create New Project
+                    </a>
+                </div>
+            </div>
+            <table id="projTable" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Order</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Git Url</th>
+                        <th>Demo Url</th>
+                        <th>Image</th>
+                        <th>Image - Alt Text</th>
+                        <th>Videos</th>
+                        <th>Port</th>
+                        <th>Active</th>
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="py-lg-5"></div>
+<div class="chevron-left light back"></div>
+<div class="chevron-right light back"></div>
+<div class="chevron-left dark front"></div>
+<div class="chevron-right dark front"></div>
+
+@section Scripts {
+    <script src="~/js/projects.js"></script>
+}

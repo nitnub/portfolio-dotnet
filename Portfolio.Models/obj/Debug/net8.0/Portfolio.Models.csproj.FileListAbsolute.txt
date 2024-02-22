@@ -1,0 +1,13 @@
+C:\Users\Nick\Classes\udemy\c-sharp\.NET Core MVC\Portfolio\Portfolio.Models\bin\Debug\net8.0\Portfolio.Models.deps.json
+C:\Users\Nick\Classes\udemy\c-sharp\.NET Core MVC\Portfolio\Portfolio.Models\bin\Debug\net8.0\Portfolio.Models.dll
+C:\Users\Nick\Classes\udemy\c-sharp\.NET Core MVC\Portfolio\Portfolio.Models\bin\Debug\net8.0\Portfolio.Models.pdb
+C:\Users\Nick\Classes\udemy\c-sharp\.NET Core MVC\Portfolio\Portfolio.Models\obj\Debug\net8.0\Portfolio.Models.csproj.AssemblyReference.cache
+C:\Users\Nick\Classes\udemy\c-sharp\.NET Core MVC\Portfolio\Portfolio.Models\obj\Debug\net8.0\Portfolio.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nick\Classes\udemy\c-sharp\.NET Core MVC\Portfolio\Portfolio.Models\obj\Debug\net8.0\Portfolio.Models.AssemblyInfoInputs.cache
+C:\Users\Nick\Classes\udemy\c-sharp\.NET Core MVC\Portfolio\Portfolio.Models\obj\Debug\net8.0\Portfolio.Models.AssemblyInfo.cs
+C:\Users\Nick\Classes\udemy\c-sharp\.NET Core MVC\Portfolio\Portfolio.Models\obj\Debug\net8.0\Portfolio.Models.csproj.CoreCompileInputs.cache
+C:\Users\Nick\Classes\udemy\c-sharp\.NET Core MVC\Portfolio\Portfolio.Models\obj\Debug\net8.0\Portfolio.Models.sourcelink.json
+C:\Users\Nick\Classes\udemy\c-sharp\.NET Core MVC\Portfolio\Portfolio.Models\obj\Debug\net8.0\Portfolio.Models.dll
+C:\Users\Nick\Classes\udemy\c-sharp\.NET Core MVC\Portfolio\Portfolio.Models\obj\Debug\net8.0\refint\Portfolio.Models.dll
+C:\Users\Nick\Classes\udemy\c-sharp\.NET Core MVC\Portfolio\Portfolio.Models\obj\Debug\net8.0\Portfolio.Models.pdb
+C:\Users\Nick\Classes\udemy\c-sharp\.NET Core MVC\Portfolio\Portfolio.Models\obj\Debug\net8.0\ref\Portfolio.Models.dll

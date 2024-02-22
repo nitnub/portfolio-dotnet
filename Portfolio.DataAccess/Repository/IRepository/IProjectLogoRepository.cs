@@ -1,0 +1,15 @@
+﻿using Portfolio.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Portfolio.DataAccess.Repository.IRepository
+{
+    public interface IProjectLogoRepository : IRepository<ProjectLogo>
+    {
+        void Update(ProjectLogo obj);
+    }
+}

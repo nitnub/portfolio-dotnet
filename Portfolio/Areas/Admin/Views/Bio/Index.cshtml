@@ -1,0 +1,96 @@
+﻿@model Biography
+
+@{
+    string imageUrl = "Required";
+}
+
+<div class="row w-100">
+    <div class="bio-container bio-grid text-light container mt-5">
+        <div class="bio-pic"></div>
+        <div id="bio-preview"></div>
+    </div>
+    <div class="row d-flex justify-content-center">
+
+        <div class="card shadow border-0 my-2 col-10">
+            <div class="card-header ml-0 py-3">
+                <div class="row">
+                    <div class="text-center">
+                        <h2 class="text-dark py-2">Update Bio</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body p-4">
+
+                <form method="post" class="row" enctype="multipart/form-data">
+                    <input asp-for="@Model.Id" hidden />
+                    @if (Model.Image != null && Model.Image.Length > 0)
+                    {
+                        imageUrl = Model.Image;
+                    }
+                    <input asp-for="@Model.Image" value="@imageUrl" hidden />
+
+                    <div class="row">
+                        <div>
+                            <div class="form-floating py-2 col-12">
+                                <textarea id="bio-text" asp-for="@Model.Text" onkeyup="updatePreview()" class="form-control border-0 shadow" style="height: 240px;"></textarea>
+                                <label asp-for="@Model.Text" class="ms-2 text-dark"></label>
+                                <span asp-validation-for="@Model.Text" class="text-danger"></span>
+                            </div>
+                            <div class="form-floating py-2 col-12">
+                                <input id="image-alt-text" asp-for="@Model.ImageAltText" onkeyup="updatePreview()" class="form-control border-0 shadow" />
+                                <label asp-for="@Model.ImageAltText" class="ms-2 text-dark"></label>
+                                <span asp-validation-for="@Model.ImageAltText" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-floating py-2 col-12">
+                                <textarea id="image-footer" asp-for="@Model.ImageFooter" onkeyup="updatePreview()" class="form-control border-0 shadow"></textarea>
+                                <label asp-for="@Model.ImageFooter" class="ms-2 text-dark"></label>
+                                <span asp-validation-for="@Model.ImageFooter" class="text-danger"></span>
+                            </div>
+
+                            @if (Model.Image != null)
+                            {
+                                <div class="col-4">
+                                    <img src="~/img/bio/@Model.Image" width="100%"
+                                         style="border-radius:5px; border:1px solid #bbb9b9" />
+                                </div>
+                            }
+                            <div class="form-floating py-2 col-12">
+                                <input type="file" name="files" class="form-control border-0 shadow" multiple />
+                                <label asp-for="@Model.Image" class="ms-2"></label>
+                            </div>
+                            (438 x 480)
+
+                            <div class="row pt-2">
+                                <div class="col-6">
+                                    <button asp-area="Admin" asp-controller="Bio" asp-action="Upsert" type="submit" class="btn btn-warning form-control">
+                                        Update
+                                    </button>
+                                </div>
+                                <div class="col-6">
+                                    <a asp-area="Guest" asp-controller="Home" asp-action="Index" class="btn btn-outline-light text-dark form-control">
+                                        Back to Home
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="py-lg-5"></div>
+<div class="chevron-left light back"></div>
+<div class="chevron-right light back"></div>
+<div class="chevron-left dark front"></div>
+<div class="chevron-right dark front"></div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        var bio = @Json.Serialize(Model);
+    </script>
+    <script src="~/js/bio.js"></script>
+}

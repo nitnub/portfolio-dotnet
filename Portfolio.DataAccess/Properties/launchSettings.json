@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "Portfolio.DataAccess": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "IU_ADMIN_ID": "e3443b1c-6758-40e3-9907-db90f904bb6d",
+        "IU_ADMIN_CONCURRENCY_STAMP": "74acdb16-b400-4e0e-b9b0-d870ba379639",
+        "IU_ADMIN_USERNAME": "testUser@env.com",
+        "IU_ADMIN_EMAIL": "testUser@env.com",
+        "IU_ADMIN_PASSWORD": "Pass1234!"
+      }
+    }
+  }
+}
