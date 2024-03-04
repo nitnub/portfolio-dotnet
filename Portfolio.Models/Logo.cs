@@ -17,11 +17,5 @@ namespace Portfolio.Models
         public string Name { get; set; }
         [Required]
         public string HTML { get; set; }
-        //[Required]
-        //public string AltText { get; set; }
-        //[Required]
-        //public string Text { get; set; }
-
-
     }
 }

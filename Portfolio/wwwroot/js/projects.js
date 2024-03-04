@@ -7,7 +7,7 @@ $(document).ready(function () {
 
 function loadDataTable() {
     dataTable = $('#projTable').DataTable({
-        "ajax": { url: '/admin/project/getall' },
+        "ajax": { url: '/admin/projects/getall' },
         "columns": [
             { data: 'order', width: "5%" },
             { data: 'title', width: "10%" },
@@ -16,7 +16,7 @@ function loadDataTable() {
             { data: 'demoUrl', width: "10%" },
             { data: 'image', width: "10%" },
             { data: 'imageAltText', width: "10%" },
-            { data: 'videoCount', width: "5%" },
+            { data: 'videos.length', width: "5%" },
             { data: 'port', width: "5%" },
             { data: 'active', render: visibleIcon , width: "5%" },
             {

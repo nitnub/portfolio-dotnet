@@ -8,13 +8,17 @@ namespace Portfolio.Models
     {
         [Key] 
         public int Id { get; set; }
+
         [Required]
         public string Title { get; set; }
+
         [Required]
         public string Description { get; set; }
+
         [Required]
         [DisplayName("Tool Tip")]
         public string ToolTip { get; set; }
+
         [Required]
         public string URL { get; set; }
         public int Order { get; set; }

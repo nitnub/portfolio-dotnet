@@ -281,6 +281,10 @@
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
+      "Id": "C:\\Users\\Nick\\Classes\\udemy\\c-sharp\\.NET Core MVC\\Portfolio\\Portfolio\\wwwroot\\js\\usage.js",
+      "PackagePath": "staticwebassets\\js\\usage.js"
+    },
+    {
       "Id": "C:\\Users\\Nick\\Classes\\udemy\\c-sharp\\.NET Core MVC\\Portfolio\\Portfolio\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },

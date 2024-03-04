@@ -14,8 +14,10 @@ namespace Portfolio.Models
     {
         [Key]
         public int Id { get; set; }
+
         [Required]
         public string Image { get; set; }
+
         [Required]
         [DisplayName("Image Alt Text")]
         public string ImageAltText { get; set; }
@@ -23,18 +25,17 @@ namespace Portfolio.Models
         public string Title { get; set; }
         [Required]
         public string Description { get; set; }
+
         [DisplayName("Git URL")]
         [ValidateNever]
         public string? GitUrl { get; set; }
         public string? Port { get; set; }
         public int Order { get; set; }
         public bool Active { get; set; }
+
         [DisplayName("Demo URL")]
         [ValidateNever]
         public string? DemoUrl { get; set; }
-
-        //[NotMapped]
-        //public int VideoCount { get; set; }
         public List<Video> Videos { get; set; }
 
         [ValidateNever]

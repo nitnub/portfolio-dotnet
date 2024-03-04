@@ -4,7 +4,6 @@
     ViewData["Title"] = "Nick";
 }
 
-
 <div class="bio-grid text-light container fade-in">
     <div class="bio-pic">
         <img src="img/bio/joshua_tree-header.jpg"
@@ -12,7 +11,7 @@
              alt="nick at joshua tree national park" />
         <p class="image-description">
             Hiking at
-            <a class="link" href="https://www.nps.gov/jotr/index.htm">
+            <a class="link" href="https://www.nps.gov/jotr/index.htm" onclick="Navigate('https://www.nps.gov/jotr/index.htm')">
                 Joshua Tree National Park
             </a>
         </p>
@@ -49,7 +48,7 @@
                 </li>
                 <li>
                     Projects will be posted below and under the username
-                    <a href="https://github.com/nitnub" class="link">
+                    <a href="https://github.com/nitnub" onclick="Navigate('https://github.com/nitnub')" class="link">
                         nitnub
                     </a>
                     on GitHub.
@@ -59,6 +58,7 @@
                 To get in touch about new projects or professional opportunities,
                 please feel free to contact me via
                 <a href="https://linkedin.com/in/nick-bryant-6b1a9579"
+                   onclick="Navigate('https://linkedin.com/in/nick-bryant-6b1a9579')"
                    class="link">
                     LinkedIn
                 </a>
@@ -72,34 +72,34 @@
 <div class="chevron-left light back"></div>
 <div class="chevron-right light back"></div>
 
-<div class="projects fade-in ">
+<div class="projects">
     <div class="nav-grid project-header">
-        <h1 id="project-header" class="project-header ">
+        <h1 id="project-header" class="project-header fade-in">
             Projects
         </h1>
     </div>
     <div class="project-grid container">
         @foreach (var project in Model.Projects)
         {
-            <div class="card project-card">
-                <a href="@project.DemoUrl">
+            <div class="card project-card fade-in">
+                <a href="@project.DemoUrl" onclick="Navigate('@(project.DemoUrl)')">
                     <img src="img/projects/@project.Image" class="card-img-top" alt="@project.ImageAltText" />
                 </a>
                 <div class="card-body">
-                    <a class="title-link" href="@project.DemoUrl">
+                    <a class="title-link" href="@project.DemoUrl" onclick="Navigate('@(project.DemoUrl)')">
                         <h5 class="card-title text-dark">@project.Title</h5>
                     </a>
                     <p class="card-text">@project.Description</p>
                     <div class="card-btns">
                         @if (!string.IsNullOrWhiteSpace(project.DemoUrl))
                         {
-                            <a href="@project.DemoUrl" class="btn card-btn btn-outline-dark">
+                            <a href="@project.DemoUrl" onclick="Navigate('@(project.DemoUrl)')" class="btn card-btn btn-outline-dark">
                                 Live Demo
                             </a>
                         }
                         @if (!string.IsNullOrWhiteSpace(project.GitUrl))
                         {
-                            <a href="@project.GitUrl" class="btn card-btn btn-outline-dark">
+                            <a href="@project.GitUrl" onclick="Navigate('@(project.GitUrl)')" class="btn card-btn btn-outline-dark">
                                 Visit Github Repo
                             </a>
                         }
@@ -111,31 +111,29 @@
                         <div class="video-btns">
                             @foreach (var video in project.Videos)
                             {
-                                <a href="@video.URL"
+                                <a href="@video.URL" onclick="Navigate('@(video.URL)')"
                                    class="btn card-btn btn-outline-dark" data-toggle="tooltip" data-placement="top" title="@video.ToolTip">
                                     @video.Title
                                 </a>
                             }
                         </div>
                     }
-                    @{
-                        Console.WriteLine("project:");
-                        Console.WriteLine(project);
-                    }
+
                     @if (project.ProjectLogos != null)
                     {
-                        Console.WriteLine("project not nulk");
-                        Console.WriteLine(project.ProjectLogos);
-
                         <div class="icon-container">
-                            @* @foreach (var logo in project.ProjectLogos) *@
-                            @foreach (var logo in new string[] { "CSharp", "DotNet", "GraphQL", "NextJS", "PostGres", "Prisma", "React", "Redis", "SQLServer", "TypeScript", "JavaScript" }) 
+                            @foreach (var logo in project.ProjectLogos)
                             {
-                                <div data-toggle="tooltip" data-placement="top" title="Tooltip on top" class="project-icon">
-                                    @* @Html.Raw(logo.Logo.HTML); *@
-                                <partial name="~/Views/Icons/_Icon@(logo).cshtml" />
+                                <div data-toggle="tooltip" data-placement="top" title="@logo.Logo.Name" class="project-icon mx-2">
+                                    @Html.Raw(logo.Logo.HTML)
                                 </div>
                             }
+                            @*  @foreach (var logo in new string[] { "CSharp", "DotNet", "GraphQL", "NextJS", "PostGres", "Prisma", "React", "Redis", "SQLServer", "TypeScript", "JavaScript" })
+                    {
+                    <div data-toggle="tooltip" data-placement="top" title="logo.Logo.Name" class="project-icon mx-2">
+                    <partial name="~/Views/Icons/_Icon@(logo).cshtml" />
+                    </div>
+                    } *@
                         </div>
                     }
                 </div>
@@ -152,9 +150,7 @@
 @section Scripts {
     @{
         <script>
-
             var bio = @Json.Serialize(Model.Biography);
-
         </script>
         <script src="~/js/home.js"></script>
     }

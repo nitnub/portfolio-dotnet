@@ -4,40 +4,57 @@ using Portfolio.DataAccess.Repository.IRepository;
 using Portfolio.Models;
 using Portfolio.Models.ViewModels;
 using System.Diagnostics;
+using System.Text;
 
 namespace PortfolioWeb.Areas.Guest.Controllers
 {
     [Area("Guest")]
-    public class HomeController : Controller
+    public class HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork) : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<HomeController> _logger = logger;
+        private readonly IUnitOfWork _unitOfWork = unitOfWork;
+        private readonly HomeVM homeVM = new();
 
-        private readonly IUnitOfWork _unitOfWork;
-        private HomeVM homeVM;
-
-        public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork)
+        public IActionResult Index(string projectTest, string idTest)
         {
-            _logger = logger;
-            _unitOfWork = unitOfWork;
-        }
+            HttpContext.Session.Set("VisitorType", Encoding.UTF8.GetBytes("Guest"));
 
-        public IActionResult Index()
-        {
             var activeBiography = _unitOfWork.Biography.GetAll().FirstOrDefault();
-            var activeProjects = _unitOfWork.Project.GetAll(p => p.Active && !string.IsNullOrEmpty(p.Image), includeProperties: "Videos,ProjectLogos,ProjectLogos.Logo").OrderBy(p => p.Order).ToList();
+            var activeProjects = _unitOfWork.Project.GetAll(p => p.Active && !string.IsNullOrEmpty(p.Image), includeProperties: "Videos,ProjectLogos,ProjectLogos.Logo")
+                                                    .OrderBy(p => p.Order)
+                                                    .ToList();     
 
-            homeVM = new HomeVM()
+            foreach(var project in activeProjects) 
             {
-                Biography = activeBiography,
-                Projects = activeProjects,
-            };
-          
+                if (project.ProjectLogos == null) continue;
+                project.ProjectLogos.Sort((l1, l2) => l1.Priority - l2.Priority);
+            }
+
+            homeVM.Biography = activeBiography;
+            homeVM.Projects = activeProjects;
+
             return View(homeVM);
         }
 
-        public IActionResult Privacy()
+        [HttpPost]
+        public IActionResult GuestAction([FromBody] GuestAction guestAction)
         {
-            return View();
+
+            Console.WriteLine("******************************* Deployment Test 1 *******************************");
+            Console.WriteLine("Name:" + User.Identity.Name);
+            Console.WriteLine("Auth Type:" + User.Identity.AuthenticationType);
+            Console.WriteLine("IS Auth:" + User.Identity.IsAuthenticated);
+
+            if (guestAction != null && !User.Identity.IsAuthenticated) 
+            {
+                guestAction.DateTime = DateTime.Now;
+                guestAction.UserId = HttpContext.Session.Id[24..];
+
+                _unitOfWork.GuestAction.Add(guestAction);
+                _unitOfWork.Save();
+            }
+   
+            return RedirectToAction("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -42,6 +42,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvamVjdHNcVXBzZXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Nick/Classes/udemy/c-sharp/.NET Core MVC/Portfolio/Portfolio/Areas/Admin/Views/Usage/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNhZ2VcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Nick/Classes/udemy/c-sharp/.NET Core MVC/Portfolio/Portfolio/Areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -228,6 +232,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Nick/Classes/udemy/c-sharp/.NET Core MVC/Portfolio/Portfolio/Views/Icons/_IconCSharp.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWNvbnNcX0ljb25DU2hhcnAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nick/Classes/udemy/c-sharp/.NET Core MVC/Portfolio/Portfolio/Views/Icons/_IconDocker.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWNvbnNcX0ljb25Eb2NrZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Nick/Classes/udemy/c-sharp/.NET Core MVC/Portfolio/Portfolio/Views/Icons/_IconDotNet.cshtml]

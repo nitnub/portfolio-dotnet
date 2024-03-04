@@ -56,7 +56,7 @@ body {
 /* BODY */
 * {
     box-sizing: border-box;
-    color: var(--bg-white);  update font color 
+    /*color: var(--bg-white);  update font color*/ 
     margin: 0;
     padding: 0;
 }

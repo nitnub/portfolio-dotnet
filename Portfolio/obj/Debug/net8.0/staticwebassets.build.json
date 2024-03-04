@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "LhcHDYrmT+ccmwlYmIXJAsaHoomIBL9H3YF56cg2b8c=",
+  "Hash": "zZZ7UcHENheNukNe0pNwJWgX1cOLbD9s+jjUvA7SXzY=",
   "Source": "PortfolioWeb",
   "BasePath": "_content/PortfolioWeb",
   "Mode": "Default",
@@ -2542,6 +2542,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "C:\\Users\\Nick\\Classes\\udemy\\c-sharp\\.NET Core MVC\\Portfolio\\Portfolio\\wwwroot\\js\\usage.js",
+      "SourceId": "PortfolioWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nick\\Classes\\udemy\\c-sharp\\.NET Core MVC\\Portfolio\\Portfolio\\wwwroot\\",
+      "BasePath": "_content/PortfolioWeb",
+      "RelativePath": "js/usage.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\usage.js"
     },
     {
       "Identity": "C:\\Users\\Nick\\Classes\\udemy\\c-sharp\\.NET Core MVC\\Portfolio\\Portfolio\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

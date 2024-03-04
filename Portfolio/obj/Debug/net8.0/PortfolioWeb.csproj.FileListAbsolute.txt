@@ -304,3 +304,4 @@ C:\Users\Nick\Classes\udemy\c-sharp\.NET Core MVC\Portfolio\Portfolio\bin\Debug\
 C:\Users\Nick\Classes\udemy\c-sharp\.NET Core MVC\Portfolio\Portfolio\bin\Debug\net8.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\Nick\Classes\udemy\c-sharp\.NET Core MVC\Portfolio\Portfolio\bin\Debug\net8.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\Nick\Classes\udemy\c-sharp\.NET Core MVC\Portfolio\Portfolio\bin\Debug\net8.0\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\Nick\Classes\udemy\c-sharp\.NET Core MVC\Portfolio\Portfolio\bin\Debug\net8.0\appsettings.Production.json

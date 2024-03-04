@@ -17,12 +17,10 @@ namespace Portfolio.Models
         [Required]
         [ForeignKey(nameof(ProjectId))]
         public int ProjectId { get; set; }
-        //[ValidateNever]
-        //public Project Project { get; set; }
 
         [Required]
         public int LogoId { get; set; }
-        //[ForeignKey(nameof(LogoId))]
+
         [ForeignKey("LogoId")]
         [ValidateNever]
         public Logo Logo { get; set; }

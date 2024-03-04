@@ -64,8 +64,6 @@ namespace PortfolioWeb.Areas.Admin.Controllers
 
                     updatedBio.Image = file.FileName;
 
-                    //string finalPath = Path.Combine(wwwRootPath, @"img\bio\");
-
                     using var fileStream = new FileStream(Path.Combine(imagePath, file.FileName), FileMode.Create);
                     file.CopyTo(fileStream);
                 }
@@ -75,7 +73,6 @@ namespace PortfolioWeb.Areas.Admin.Controllers
             }
 
             return RedirectToAction("Index");
-            return View(updatedBio);
         }
     }
 }

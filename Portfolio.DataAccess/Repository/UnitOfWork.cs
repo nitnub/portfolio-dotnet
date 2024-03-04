@@ -16,6 +16,7 @@ namespace Portfolio.DataAccess.Repository
         public IBiographyRepository Biography { get; set; }
         public ILogoRepository Logo { get; set; }
         public IProjectLogoRepository ProjectLogo { get; set; }
+        public IGuestActionRepository GuestAction { get; set; }
         
         public UnitOfWork(ApplicationDbContext db)
         {
@@ -25,6 +26,7 @@ namespace Portfolio.DataAccess.Repository
             Biography = new BiographyRepository(_db);
             Logo = new LogoRepository(_db);
             ProjectLogo = new ProjectLogoRepository(_db);
+            GuestAction = new GuestActionRepository(_db);
         }
         public void Save()
         {

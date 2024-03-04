@@ -44,12 +44,6 @@ namespace PortfolioWeb.Areas.Admin.Controllers
         {
             List<Project> projectList = _unitOfWork.Project.GetAll(includeProperties: "Videos").OrderBy(p => p.Order).ToList();
 
-            foreach (var project in projectList)
-            {
-                //project.VideoCount = project.Videos.Count;
-                project.Videos = null;
-            }
-
             return Json(new { data = projectList });
         }
 

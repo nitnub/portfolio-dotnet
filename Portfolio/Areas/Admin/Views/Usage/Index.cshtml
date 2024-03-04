@@ -1,0 +1,43 @@
+﻿@model UsageVM
+
+<div class="d-flex justify-content-center w-100 text-dark">
+    <div class="card col-10 border-0 my-4">
+        <div class="card-header ml-0 py-3">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 class="text-dark py-2">Usages</h2>
+                </div>
+            </div>
+        </div>
+        <div class="card-body p-4">
+
+            <table id="usageTable" class="table table-bordered table-striped text-dark ">
+                <thead>
+                    <tr>
+                        <th>Guest</th>
+                        <th>Project</th>
+                        <th>Type</th>
+                        <th>Label</th>
+                        <th>Date Time</th>
+                        <th>Date</th> 
+                        <th>Time</th>
+                        @* <th>Videos</th> *@
+                        @* <th>Port</th> *@
+                        @* <th>Active</th> *@
+                        @* <th></th> *@
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="py-lg-5"></div>
+<div class="chevron-left light back"></div>
+<div class="chevron-right light back"></div>
+<div class="chevron-left dark front"></div>
+<div class="chevron-right dark front"></div>
+
+@section Scripts {
+    <script src="~/js/usage.js"></script>
+}

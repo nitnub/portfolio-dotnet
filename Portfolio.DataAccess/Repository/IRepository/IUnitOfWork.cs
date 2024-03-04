@@ -13,7 +13,7 @@ namespace Portfolio.DataAccess.Repository.IRepository
         IBiographyRepository Biography { get; }
         ILogoRepository Logo { get; }
         IProjectLogoRepository ProjectLogo { get; }
-
+        IGuestActionRepository GuestAction { get; }
         void Save();
     }
 }
