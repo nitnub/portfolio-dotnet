@@ -26,26 +26,26 @@ namespace Portfolio.DataAccess.Data
             base.OnModelCreating(modelBuilder);
 
 
-            Console.WriteLine("******************************* Deployment Test 0 *******************************");
-            Console.WriteLine("Test User:");
-            Console.WriteLine($"\t- Admin ID: {Env.IU_ADMIN_ID}");
-            Console.WriteLine($"\t- Admin Username: {Env.IU_ADMIN_USERNAME}");
-            Console.WriteLine($"\t- Admin Email: {Env.IU_ADMIN_EMAIL}");
-            Console.WriteLine($"\t- Admin Password: {Env.IU_ADMIN_PASSWORD}");
-            Console.WriteLine($"\t- Admin Concurrency: {Env.IU_ADMIN_CONCURRENCY_STAMP}");
+            //Console.WriteLine("******************************* Deployment Test 0 *******************************");
+            //Console.WriteLine("Test User:");
+            //Console.WriteLine($"\t- Admin ID: {Env.IU_ADMIN_ID}");
+            //Console.WriteLine($"\t- Admin Username: {Env.IU_ADMIN_USERNAME}");
+            //Console.WriteLine($"\t- Admin Email: {Env.IU_ADMIN_EMAIL}");
+            //Console.WriteLine($"\t- Admin Password: {Env.IU_ADMIN_PASSWORD}");
+            //Console.WriteLine($"\t- Admin Concurrency: {Env.IU_ADMIN_CONCURRENCY_STAMP}");
 
-            modelBuilder.Entity<IdentityUser>().HasData(
-                new IdentityUser
-                {
-                    Id = Env.IU_ADMIN_ID.ToString(),
-                    UserName = Env.IU_ADMIN_USERNAME,
-                    NormalizedUserName = Env.IU_ADMIN_USERNAME.ToUpper(),
-                    Email = Env.IU_ADMIN_EMAIL,
-                    NormalizedEmail = Env.IU_ADMIN_EMAIL.ToUpper(),
-                    PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, Env.IU_ADMIN_EMAIL),
-                    SecurityStamp = string.Empty,
-                    ConcurrencyStamp = Env.IU_ADMIN_CONCURRENCY_STAMP,
-                });
+            //modelBuilder.Entity<IdentityUser>().HasData(
+            //    new IdentityUser
+            //    {
+            //        Id = Env.IU_ADMIN_ID.ToString(),
+            //        UserName = Env.IU_ADMIN_USERNAME,
+            //        NormalizedUserName = Env.IU_ADMIN_USERNAME.ToUpper(),
+            //        Email = Env.IU_ADMIN_EMAIL,
+            //        NormalizedEmail = Env.IU_ADMIN_EMAIL.ToUpper(),
+            //        PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, Env.IU_ADMIN_EMAIL),
+            //        SecurityStamp = string.Empty,
+            //        ConcurrencyStamp = Env.IU_ADMIN_CONCURRENCY_STAMP,
+            //    });
 
             var projRestaurant = new Project
             {

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Portfolio.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d2210caf524d8949224a7a17ce591545cc6a6895")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4013c07833e777f7252c55c3cade6873f6e7cf1d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Portfolio.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Portfolio.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
