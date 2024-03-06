@@ -30,10 +30,6 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQmlvXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nick/Classes/udemy/c-sharp/.NET Core MVC/Portfolio/Portfolio/Areas/Admin/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Nick/Classes/udemy/c-sharp/.NET Core MVC/Portfolio/Portfolio/Areas/Admin/Views/Projects/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUHJvamVjdHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -228,54 +224,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Nick/Classes/udemy/c-sharp/.NET Core MVC/Portfolio/Portfolio/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Nick/Classes/udemy/c-sharp/.NET Core MVC/Portfolio/Portfolio/Views/Icons/_IconCSharp.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWNvbnNcX0ljb25DU2hhcnAuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Nick/Classes/udemy/c-sharp/.NET Core MVC/Portfolio/Portfolio/Views/Icons/_IconDocker.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWNvbnNcX0ljb25Eb2NrZXIuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Nick/Classes/udemy/c-sharp/.NET Core MVC/Portfolio/Portfolio/Views/Icons/_IconDotNet.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWNvbnNcX0ljb25Eb3ROZXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Nick/Classes/udemy/c-sharp/.NET Core MVC/Portfolio/Portfolio/Views/Icons/_IconGraphQL.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWNvbnNcX0ljb25HcmFwaFFMLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Nick/Classes/udemy/c-sharp/.NET Core MVC/Portfolio/Portfolio/Views/Icons/_IconJavaScript.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWNvbnNcX0ljb25KYXZhU2NyaXB0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Nick/Classes/udemy/c-sharp/.NET Core MVC/Portfolio/Portfolio/Views/Icons/_IconNextJS.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWNvbnNcX0ljb25OZXh0SlMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Nick/Classes/udemy/c-sharp/.NET Core MVC/Portfolio/Portfolio/Views/Icons/_IconPostgres.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWNvbnNcX0ljb25Qb3N0Z3Jlcy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Nick/Classes/udemy/c-sharp/.NET Core MVC/Portfolio/Portfolio/Views/Icons/_IconPrisma.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWNvbnNcX0ljb25QcmlzbWEuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Nick/Classes/udemy/c-sharp/.NET Core MVC/Portfolio/Portfolio/Views/Icons/_IconReact.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWNvbnNcX0ljb25SZWFjdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Nick/Classes/udemy/c-sharp/.NET Core MVC/Portfolio/Portfolio/Views/Icons/_IconRedis.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWNvbnNcX0ljb25SZWRpcy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Nick/Classes/udemy/c-sharp/.NET Core MVC/Portfolio/Portfolio/Views/Icons/_IconSQLServer.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWNvbnNcX0ljb25TUUxTZXJ2ZXIuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Nick/Classes/udemy/c-sharp/.NET Core MVC/Portfolio/Portfolio/Views/Icons/_IconTypeScript.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWNvbnNcX0ljb25UeXBlU2NyaXB0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Nick/Classes/udemy/c-sharp/.NET Core MVC/Portfolio/Portfolio/Views/Shared/Error.cshtml]

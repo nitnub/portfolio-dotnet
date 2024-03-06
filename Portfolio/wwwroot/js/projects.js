@@ -37,35 +37,44 @@ function loadDataTable() {
 
 
 
-function visibleIcon (data) {
-    if (data) {
-        return `
-            <div class="grid-icon text-primary"> 
-                <i class="bi bi-eye-fill"></i>
-            </div>`
-    }
-    else {
-        return `
-            <div class="grid-icon">
-                <i class="bi bi-eye-slash"></i>
-            </div>`
-    }
+function visibleIcon(active) {
+
+    var color = active ? 'text-primary' : '';
+    var icon = active ? 'bi-eye-fill' : 'bi-eye-slash';
+    
+    return `
+        <div class="grid-icon ${color}">
+            <i class="bi ${icon}"></i>
+        </div>`
 }
+
+//function verifyDelete(obj) {
+//    data = decode(obj);
+//    $('.delete-modal').modal('toggle');
+//    $('.modal-body').html(`Permanently delete <b>${data.title}</b>?`);
+//    $('.modal-footer').html(`
+//        <a onClick=verifyDelete('${encode(data)}') class="btn btn-secondary mx-2">Cancel</a>
+//        <a href="/admin/project/delete?id=${data.id}" class="btn btn-danger mx-2">Delete</a>`);
+//}
+
+//function closeDeleteModal() {
+
+//}
 
 
 
 function verifyDelete(obj) {
     data = decode(obj);
-
-    $('.delete-modal').modal('toggle');
+    $('.delete-modal').modal('show');
     $('.modal-body').html(`Permanently delete <b>${data.title}</b>?`);
     $('.modal-footer').html(`
-        <a onClick=verifyDelete('${encode(data)}') class="btn btn-secondary mx-2">Cancel</a>
+        <a onClick=closeDeleteModal('${encode(data)}') class="btn btn-secondary mx-2">Cancel</a>
         <a href="/admin/project/delete?id=${data.id}" class="btn btn-danger mx-2">Delete</a>`);
 }
 
 function closeDeleteModal() {
-
+    console.log("check!");
+    $('.delete-modal').modal('hide');
 }
 
 function encode(obj) {

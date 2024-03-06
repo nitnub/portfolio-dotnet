@@ -10,18 +10,12 @@ using System.Threading.Tasks;
 
 namespace Portfolio.DataAccess.Repository
 {
-    internal class BiographyRepository : Repository<Biography>, IBiographyRepository
+    internal class BiographyRepository(ApplicationDbContext db) : Repository<Biography>(db), IBiographyRepository
     {
-
-        private ApplicationDbContext _db;
-        public BiographyRepository(ApplicationDbContext db) : base(db)
-        {
-            _db = db;
-        }
+        private readonly ApplicationDbContext _db = db;
 
         public void Update(Biography biography)
         {
-            //project.VideoCount = 0;
             _db.Biographies.Update(biography);
             _db.SaveChanges();
         }

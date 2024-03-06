@@ -2,7 +2,6 @@
 
 $(document).ready(function () {
     loadDataTable();
-  /*  $('#update_modal').modal('show');*/
 })
 
 function loadDataTable() {
@@ -19,44 +18,3 @@ function loadDataTable() {
         ]
     });
 }
-
-/*block if loggedd in as admin*/
-
-//function visibleIcon (data) {
-//    if (data) {
-//        return `
-//            <div class="grid-icon text-primary">
-//                <i class="bi bi-eye-fill"></i>
-//            </div>`
-//    }
-//    else {
-//        return `
-//            <div class="grid-icon">
-//                <i class="bi bi-eye-slash"></i>
-//            </div>`
-//    }
-//}
-
-
-
-//function verifyDelete(obj) {
-//    data = decode(obj);
-
-//    $('.delete-modal').modal('toggle');
-//    $('.modal-body').html(`Permanently delete <b>${data.title}</b>?`);
-//    $('.modal-footer').html(`
-//        <a onClick=verifyDelete('${encode(data)}') class="btn btn-secondary mx-2">Cancel</a>
-//        <a href="/admin/project/delete?id=${data.id}" class="btn btn-danger mx-2">Delete</a>`);
-//}
-
-//function closeDeleteModal() {
-
-//}
-
-//function encode(obj) {
-//    return encodeURIComponent(JSON.stringify(obj));
-//}
-
-//function decode(obj) {
-//    return JSON.parse(decodeURIComponent(obj));
-//}

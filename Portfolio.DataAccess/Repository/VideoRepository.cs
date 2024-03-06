@@ -10,18 +10,12 @@ using System.Threading.Tasks;
 
 namespace Portfolio.DataAccess.Repository
 {
-    internal class VideoRepository : Repository<Video>, IVideoRepository
+    internal class VideoRepository(ApplicationDbContext db) : Repository<Video>(db), IVideoRepository
     {
-
-        private ApplicationDbContext _db;
-        public VideoRepository(ApplicationDbContext db) : base(db)
-        {
-            _db = db;
-        }
+        private readonly ApplicationDbContext _db = db;
 
         public void Update(Video video)
         {
-            //project.VideoCount = 0;
             _db.Videos.Update(video);
             _db.SaveChanges();
         }

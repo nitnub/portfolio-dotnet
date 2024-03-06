@@ -10,14 +10,9 @@ using System.Threading.Tasks;
 
 namespace Portfolio.DataAccess.Repository
 {
-    internal class GuestActionRepository : Repository<GuestAction>, IGuestActionRepository
+    internal class GuestActionRepository(ApplicationDbContext db) : Repository<GuestAction>(db), IGuestActionRepository
     {
-
-        private ApplicationDbContext _db;
-        public GuestActionRepository(ApplicationDbContext db) : base(db)
-        {
-            _db = db;
-        }
+        private readonly ApplicationDbContext _db = db;
 
         public void Update(GuestAction guestAction)
         {

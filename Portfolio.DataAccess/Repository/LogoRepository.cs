@@ -10,14 +10,9 @@ using System.Threading.Tasks;
 
 namespace Portfolio.DataAccess.Repository
 {
-    public class LogoRepository : Repository<Logo>, ILogoRepository
+    public class LogoRepository(ApplicationDbContext db) : Repository<Logo>(db), ILogoRepository
     {
-
-        private ApplicationDbContext _db;
-        public LogoRepository(ApplicationDbContext db) : base(db)
-        {
-            _db = db;
-        }
+        private readonly ApplicationDbContext _db = db;
 
         public void Update(Logo logo)
         {

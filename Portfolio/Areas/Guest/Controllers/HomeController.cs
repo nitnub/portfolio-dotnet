@@ -37,15 +37,16 @@ namespace PortfolioWeb.Areas.Guest.Controllers
         }
 
         [HttpPost]
-        public IActionResult GuestAction([FromBody] GuestAction guestAction)
+        public IActionResult? GuestAction([FromBody] GuestAction guestAction [FromHeader] )
         {
+            if (guestAction ==  null || guestAction.Url == null) 
+            {
+                return RedirectToAction("Index");
+            };
 
-            Console.WriteLine("******************************* Deployment Test 1 *******************************");
-            Console.WriteLine("Name:" + User.Identity.Name);
-            Console.WriteLine("Auth Type:" + User.Identity.AuthenticationType);
-            Console.WriteLine("IS Auth:" + User.Identity.IsAuthenticated);
-
-            if (guestAction != null && !User.Identity.IsAuthenticated) 
+            //if (guestAction != null && guestAction.Url != null && !User.Identity.IsAuthenticated)
+            //if (!User.Identity.IsAuthenticated)
+            if (guestAction?.Url != null && !User.Identity.IsAuthenticated)
             {
                 guestAction.DateTime = DateTime.Now;
                 guestAction.UserId = HttpContext.Session.Id[24..];

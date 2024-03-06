@@ -7,12 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Guest\Data\" />
-    <Folder Include="Areas\Guest\Models\" />
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
 	  
     <PackageReference Include="bootstrap" Version="5.3.2" />
 	  

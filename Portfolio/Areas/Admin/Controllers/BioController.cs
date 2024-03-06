@@ -19,58 +19,56 @@ namespace PortfolioWeb.Areas.Admin.Controllers
     {
         private readonly IUnitOfWork _unitOfWork = unitOfWork;
         private readonly IWebHostEnvironment _webHostEnvironment = webHostEnvironment;
-        public Biography bio { get; set; }
+        public Biography Bio { get; set; }
 
         public IActionResult Index()
         {
-            bio = _unitOfWork.Biography.GetAll().FirstOrDefault();
-            return View(bio);
+            Bio = _unitOfWork.Biography.GetAll().FirstOrDefault();
+            return View(Bio);
         }
 
 
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            List<Project> projectList = _unitOfWork.Project.GetAll(includeProperties: "Videos").OrderBy(p => p.Order).ToList();
+        //[HttpGet]
+        //public IActionResult GetAll()
+        //{
+        //    List<Project> projectList = _unitOfWork.Project.GetAll(includeProperties: "Videos").OrderBy(p => p.Order).ToList();
 
-            foreach (var project in projectList)
-            {
-                //project.VideoCount = project.Videos.Count;
-                project.Videos = null;
-            }
+        //    //foreach (var project in projectList)
+        //    //{
+        //    //    //project.VideoCount = project.Videos.Count;
+        //    //    project.Videos = null;
+        //    //}
 
-            return Json(new { data = projectList });
-        }
+        //    return Json(new { data = projectList });
+        //}
 
 
         [HttpPost]
         public IActionResult Upsert(Biography updatedBio, List<IFormFile> files)
         {
-            
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return RedirectToAction("Index");
+
+            if (files != null && files.Count > 0)
             {
-                if (files != null && files.Count > 0)
+                var file = files[0];
+                var oldBio = _unitOfWork.Biography.Get(b => b.Id == updatedBio.Id);
+
+                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, @"img\bio\");
+                var oldImagePath = Path.Combine(imagePath + oldBio.Image);
+
+                if (System.IO.File.Exists(oldImagePath))
                 {
-                    var file = files[0];
-                    string imagePath = Path.Combine(_webHostEnvironment.WebRootPath, @"img\bio\");
-
-                    var oldBio = _unitOfWork.Biography.Get(b => b.Id == updatedBio.Id);
-                    var oldImagePath = Path.Combine(imagePath + oldBio.Image);
-                    
-                    if (System.IO.File.Exists(oldImagePath))
-                    {
-                        System.IO.File.Delete(oldImagePath);
-                    }
-
-                    updatedBio.Image = file.FileName;
-
-                    using var fileStream = new FileStream(Path.Combine(imagePath, file.FileName), FileMode.Create);
-                    file.CopyTo(fileStream);
+                    System.IO.File.Delete(oldImagePath);
                 }
 
-                _unitOfWork.Biography.Update(updatedBio);
-                _unitOfWork.Save();
+                updatedBio.Image = file.FileName;
+
+                using var fileStream = new FileStream(Path.Combine(imagePath, file.FileName), FileMode.Create);
+                file.CopyTo(fileStream);
             }
+
+            _unitOfWork.Biography.Update(updatedBio);
+            _unitOfWork.Save();
 
             return RedirectToAction("Index");
         }

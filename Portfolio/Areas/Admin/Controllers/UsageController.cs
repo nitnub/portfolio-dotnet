@@ -13,7 +13,7 @@ namespace PortfolioWeb.Areas.Admin.Controllers
     {
 
         private readonly IUnitOfWork _unitOfWork = unitOfWork;
-        //List<GuestAction> guestActions;
+
         UsageVM UsageVM { get; set; }
 
         public IActionResult Index()
@@ -69,7 +69,6 @@ namespace PortfolioWeb.Areas.Admin.Controllers
                     Date = guestAction.DateTime.Date.ToLocalTime().ToString("d"),
                     Time = guestAction.DateTime.ToLocalTime().ToLongTimeString()
                 };
-                Console.WriteLine(guestAction.DateTime);
 
                 if (guestAction.Url.Equals("https://github.com/nitnub"))
                 {

@@ -3,7 +3,8 @@ var bioPreview = document.getElementById('bio-preview')
 var imgPreview = document.getElementsByClassName('bio-pic')[0]; 
 var imgAltText = document.getElementById('image-alt-text'); 
 var imgFooter = document.getElementById('image-footer'); 
-    
+
+
 bioText.addEventListener("change", updatePreview);
 $(document).ready(function () {
     updatePreview();

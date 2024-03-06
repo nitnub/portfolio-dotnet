@@ -26,7 +26,7 @@ namespace Portfolio.DataAccess.Data
             base.OnModelCreating(modelBuilder);
 
 
-            //Console.WriteLine("******************************* Deployment Test 0 *******************************");
+            //Console.WriteLine("******************************* Adding Test User *******************************");
             //Console.WriteLine("Test User:");
             //Console.WriteLine($"\t- Admin ID: {Env.IU_ADMIN_ID}");
             //Console.WriteLine($"\t- Admin Username: {Env.IU_ADMIN_USERNAME}");
