@@ -8,13 +8,8 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Portfolio.DataAccess.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
+    public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<IdentityUser>(options)
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-        {
-
-        }
-
         public DbSet<Project> Projects { get; set; }
         public DbSet<Video> Videos { get; set; }
         public DbSet<Biography> Biographies { get; set; }
@@ -34,18 +29,18 @@ namespace Portfolio.DataAccess.Data
             //Console.WriteLine($"\t- Admin Password: {Env.IU_ADMIN_PASSWORD}");
             //Console.WriteLine($"\t- Admin Concurrency: {Env.IU_ADMIN_CONCURRENCY_STAMP}");
 
-            //modelBuilder.Entity<IdentityUser>().HasData(
-            //    new IdentityUser
-            //    {
-            //        Id = Env.IU_ADMIN_ID.ToString(),
-            //        UserName = Env.IU_ADMIN_USERNAME,
-            //        NormalizedUserName = Env.IU_ADMIN_USERNAME.ToUpper(),
-            //        Email = Env.IU_ADMIN_EMAIL,
-            //        NormalizedEmail = Env.IU_ADMIN_EMAIL.ToUpper(),
-            //        PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, Env.IU_ADMIN_EMAIL),
-            //        SecurityStamp = string.Empty,
-            //        ConcurrencyStamp = Env.IU_ADMIN_CONCURRENCY_STAMP,
-            //    });
+            modelBuilder.Entity<IdentityUser>().HasData(
+                new IdentityUser
+                {
+                    Id = Env.IU_ADMIN_ID.ToString(),
+                    UserName = Env.IU_ADMIN_USERNAME,
+                    NormalizedUserName = Env.IU_ADMIN_USERNAME.ToUpper(),
+                    Email = Env.IU_ADMIN_EMAIL,
+                    NormalizedEmail = Env.IU_ADMIN_EMAIL.ToUpper(),
+                    PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, Env.IU_ADMIN_PASSWORD),
+                    SecurityStamp = string.Empty,
+                    ConcurrencyStamp = Env.IU_ADMIN_CONCURRENCY_STAMP,
+                });
 
             var projRestaurant = new Project
             {
