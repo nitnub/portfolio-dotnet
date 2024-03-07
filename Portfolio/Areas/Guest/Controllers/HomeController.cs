@@ -3,6 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using Portfolio.DataAccess.Repository.IRepository;
 using Portfolio.Models;
 using Portfolio.Models.ViewModels;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Text;
 
@@ -37,15 +38,11 @@ namespace PortfolioWeb.Areas.Guest.Controllers
         }
 
         [HttpPost]
-        public IActionResult? GuestAction([FromBody] GuestAction guestAction [FromHeader] )
+        public IActionResult? GuestAction([FromBody] GuestAction guestAction, [FromHeader] object fhTest)
         {
-            if (guestAction ==  null || guestAction.Url == null) 
-            {
-                return RedirectToAction("Index");
-            };
 
-            //if (guestAction != null && guestAction.Url != null && !User.Identity.IsAuthenticated)
-            //if (!User.Identity.IsAuthenticated)
+            Console.WriteLine("******************* From Header Test *****************");
+            Console.WriteLine(TypeDescriptor.GetProperties( fhTest));
             if (guestAction?.Url != null && !User.Identity.IsAuthenticated)
             {
                 guestAction.DateTime = DateTime.Now;
