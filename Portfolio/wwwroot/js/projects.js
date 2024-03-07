@@ -69,7 +69,7 @@ function verifyDelete(obj) {
     $('.modal-body').html(`Permanently delete <b>${data.title}</b>?`);
     $('.modal-footer').html(`
         <a onClick=closeDeleteModal('${encode(data)}') class="btn btn-secondary mx-2">Cancel</a>
-        <a href="/admin/project/delete?id=${data.id}" class="btn btn-danger mx-2">Delete</a>`);
+        <a href="/admin/projects/delete?id=${data.id}" class="btn btn-danger mx-2">Delete</a>`);
 }
 
 function closeDeleteModal() {

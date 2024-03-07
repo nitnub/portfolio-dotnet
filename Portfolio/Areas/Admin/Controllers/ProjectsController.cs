@@ -13,10 +13,9 @@ namespace PortfolioWeb.Areas.Admin.Controllers
         private readonly IUnitOfWork _unitOfWork = unitOfWork;
         private readonly IWebHostEnvironment _webHostEnvironment = webHostEnvironment;
 
-        public Project project { get; set; }
+        public Project Project { get; set; }
         public IActionResult Index()
         {
-
             List<Project> projects = _unitOfWork.Project.GetAll(includeProperties: "Videos").OrderBy(p => p.Order).ToList();
 
             return View(projects);
@@ -24,19 +23,19 @@ namespace PortfolioWeb.Areas.Admin.Controllers
 
         public IActionResult Upsert(int? id)
         {
-            project = new Project();
+            Project = new Project();
 
             if (id != null && id != 0)
             {
-                project = _unitOfWork.Project.Get(p => p.Id == id, includeProperties: "Videos");
+                Project = _unitOfWork.Project.Get(p => p.Id == id, includeProperties: "Videos");
             }
 
-            if (project.Videos == null)
+            if (Project.Videos == null)
             {
-                project.Videos = [];
+                Project.Videos = [];
             }
 
-            return View(project);
+            return View(Project);
         }
 
         [HttpGet]
@@ -58,21 +57,25 @@ namespace PortfolioWeb.Areas.Admin.Controllers
                 if (files != null && files.Count != 0)
                 {
                     IFormFile file = files[0];
+                    string oldFileName = updatedProject.Image;
+                    updatedProject.Image = Guid.NewGuid().ToString() + "-" + file.FileName;
 
-                    string fileName = Guid.NewGuid().ToString() + "-" + file.FileName;
-                    updatedProject.Image = fileName;
-                    string wwwRootPath = _webHostEnvironment.WebRootPath;
+                    string imageDirectory = Path.Combine(_webHostEnvironment.WebRootPath, @"img\projects\");
+                    string newImageFile = Path.Combine(imageDirectory, updatedProject.Image);
+                    string oldImageFile = Path.Combine(imageDirectory, oldFileName);
 
-                    string imagePath = @"img\projects\";
-                    string finalPath = Path.Combine(wwwRootPath, imagePath);
-
-                    if (!Directory.Exists(finalPath))
+                    if (!Directory.Exists(imageDirectory))
                     {
-                        Directory.CreateDirectory(finalPath);
+                        Directory.CreateDirectory(imageDirectory);
+                    }
+                    
+                    if (System.IO.File.Exists(oldImageFile))
+                    {
+                        System.IO.File.Delete (oldImageFile);
                     }
 
-                    using var fileStream = new FileStream(Path.Combine(finalPath, fileName), FileMode.Create);
-                    files[0].CopyTo(fileStream);
+                    using var fileStream = new FileStream(newImageFile, FileMode.Create);
+                    file.CopyTo(fileStream);
                 }
 
                 foreach (var video in videos)
@@ -106,7 +109,7 @@ namespace PortfolioWeb.Areas.Admin.Controllers
                 return View(updatedProject);
             }
         }
-
+        
         public IActionResult Delete(int? id)
         {
             if (id == null || id == 0)
@@ -121,8 +124,19 @@ namespace PortfolioWeb.Areas.Admin.Controllers
                 return NotFound();
             }
 
+            string imageDirectory = Path.Combine(_webHostEnvironment.WebRootPath, @"img\projects\");
+            string imageFile = Path.Combine(imageDirectory, projectToRemove.Image);
+
+
+            if (Directory.Exists(imageDirectory) && System.IO.File.Exists(imageFile))
+            {
+                System.IO.File.Delete(imageFile);
+            }
+
             _unitOfWork.Project.Remove(projectToRemove);
             _unitOfWork.Save();
+
+            TempData["success"] = "Project deleted successfully";
 
             return RedirectToAction("Index");
         }
