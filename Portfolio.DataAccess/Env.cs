@@ -14,5 +14,8 @@ namespace Portfolio.DataAccess
         public static string IU_ADMIN_USERNAME = Environment.GetEnvironmentVariable("IU_ADMIN_USERNAME");
         public static string IU_ADMIN_PASSWORD = Environment.GetEnvironmentVariable("IU_ADMIN_PASSWORD");
         public static string IU_ADMIN_CONCURRENCY_STAMP = Environment.GetEnvironmentVariable("IU_ADMIN_CONCURRENCY_STAMP");
+
+        // DB Connect
+        public static string PORTFOLIO_DB_CONNECTION_STRING = Environment.GetEnvironmentVariable("PORTFOLIO_DB_CONNECTION_STRING");
     }
 }

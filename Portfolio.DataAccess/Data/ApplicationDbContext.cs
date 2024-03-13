@@ -18,23 +18,21 @@ namespace Portfolio.DataAccess.Data
         public DbSet<GuestAction> GuestActions { get; set; }
         
 
-
+        // Address Azure SQL Server connection issues
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            var portfolioConnectionString = Environment.GetEnvironmentVariable("PORTFOLIO_DB_CONNECTION_STRING");
-            if (portfolioConnectionString != null)
+        {   
+            if (Env.PORTFOLIO_DB_CONNECTION_STRING != null)
             {
                 optionsBuilder
                     .UseSqlServer(
-                        portfolioConnectionString,
+                        Env.PORTFOLIO_DB_CONNECTION_STRING,
                         options => options.EnableRetryOnFailure());
-
             }
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
 
 
             if (Env.IU_ADMIN_USERNAME != null)
@@ -60,6 +58,7 @@ namespace Portfolio.DataAccess.Data
                         ConcurrencyStamp = Env.IU_ADMIN_CONCURRENCY_STAMP,
                     });
             }
+
             var projPortfolio = new Project
             {
                 Id = 100,
@@ -354,7 +353,18 @@ namespace Portfolio.DataAccess.Data
                     </svg>".Trim()
             };
 
-            modelBuilder.Entity<Logo>().HasData(logoCS, logoDotNet, logoGraphQl, logoJS, logoNextJs, logoPostgres, logoPrisma, logoReact, logoRedis, logoMssql, logoTS);
+            modelBuilder.Entity<Logo>().HasData(
+                logoCS, 
+                logoDotNet, 
+                logoGraphQl, 
+                logoJS, 
+                logoNextJs, 
+                logoPostgres, 
+                logoPrisma, 
+                logoReact, 
+                logoRedis, 
+                logoMssql, 
+                logoTS);
 
             modelBuilder.Entity<ProjectLogo>().HasData(
                 new ProjectLogo
