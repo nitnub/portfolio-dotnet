@@ -16,6 +16,21 @@ namespace Portfolio.DataAccess.Data
         public DbSet<Logo> Logos { get; set; }
         public DbSet<ProjectLogo> ProjectLogos { get; set; }
         public DbSet<GuestAction> GuestActions { get; set; }
+        
+
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            var portfolioConnectionString = Environment.GetEnvironmentVariable("PORTFOLIO_DB_CONNECTION_STRING");
+            if (portfolioConnectionString != null)
+            {
+                optionsBuilder
+                    .UseSqlServer(
+                        portfolioConnectionString,
+                        options => options.EnableRetryOnFailure());
+
+            }
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
