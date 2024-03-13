@@ -45,9 +45,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{area=Guest}/{controller=Home}/{action=Index}/{id?}");
 
-
-
-
-
+app.UseStatusCodePagesWithReExecute("/");
 
 app.Run();

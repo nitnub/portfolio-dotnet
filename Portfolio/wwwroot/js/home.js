@@ -1,12 +1,13 @@
 ﻿
 $(document).ready(function () {
-    if (bio == undefined || bio.text.length < 10) return;
+
+    if (typeof bio === 'undefined' || bio.text.length < 10) return;
 
     var picDiv = document.getElementsByClassName('bio-pic')[0];
     var introDiv = document.getElementsByClassName('intro')[0];
 
     picDiv.innerHTML = `
-        <img src="img/bio/${bio.image}"
+        <img src="/img/bio/${bio.image}"
             class="img-fluid img-top"
             alt="${bio.imageAltText}" />
         <p class="image-description" >
@@ -17,9 +18,7 @@ $(document).ready(function () {
 })
 
 
-
 function Navigate(url) {
-    console.log(`navigate => ${url}`)
     $.ajax({
         type: 'POST',
         url: `/guest/home/GuestAction`,

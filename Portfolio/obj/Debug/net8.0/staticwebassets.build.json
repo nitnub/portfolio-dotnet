@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8cZu9nJSB9pa+mPM0oBZDAq4FNQ9ec9xvzhcm9aaR08=",
+  "Hash": "ULA+BF/+YTerMRy3NoETIMSho0eCKCyaEkZ9qwSw+Mc=",
   "Source": "PortfolioWeb",
   "BasePath": "_content/PortfolioWeb",
   "Mode": "Default",
@@ -2202,6 +2202,25 @@
       "OriginalItemSpec": "wwwroot\\img\\bio\\joshua_tree-header.jpg"
     },
     {
+      "Identity": "C:\\Users\\Nick\\Classes\\udemy\\c-sharp\\.NET Core MVC\\Portfolio\\Portfolio\\wwwroot\\img\\projects\\53c7d7e4-61ce-4fa9-aba5-b15edfdc9ab5-portfolio-project.jpg",
+      "SourceId": "PortfolioWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nick\\Classes\\udemy\\c-sharp\\.NET Core MVC\\Portfolio\\Portfolio\\wwwroot\\",
+      "BasePath": "_content/PortfolioWeb",
+      "RelativePath": "img/projects/53c7d7e4-61ce-4fa9-aba5-b15edfdc9ab5-portfolio-project.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\projects\\53c7d7e4-61ce-4fa9-aba5-b15edfdc9ab5-portfolio-project.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Nick\\Classes\\udemy\\c-sharp\\.NET Core MVC\\Portfolio\\Portfolio\\wwwroot\\img\\projects\\auth-server.jpg",
       "SourceId": "PortfolioWeb",
       "SourceType": "Discovered",
@@ -2257,6 +2276,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\projects\\food-app.png"
+    },
+    {
+      "Identity": "C:\\Users\\Nick\\Classes\\udemy\\c-sharp\\.NET Core MVC\\Portfolio\\Portfolio\\wwwroot\\img\\projects\\portfolio-project.jpg",
+      "SourceId": "PortfolioWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nick\\Classes\\udemy\\c-sharp\\.NET Core MVC\\Portfolio\\Portfolio\\wwwroot\\",
+      "BasePath": "_content/PortfolioWeb",
+      "RelativePath": "img/projects/portfolio-project.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\projects\\portfolio-project.jpg"
     },
     {
       "Identity": "C:\\Users\\Nick\\Classes\\udemy\\c-sharp\\.NET Core MVC\\Portfolio\\Portfolio\\wwwroot\\img\\projects\\restaurant-app.jpg",

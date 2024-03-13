@@ -24,18 +24,15 @@ function loadDataTable() {
                 render: function (data) {
                     return `
                         <div class="w-75 btn-group" role="group">
-                            <a href="/admin/projects/upsert?id=${data.id}" class="btn btn-success mx-2">Edit</a>
-                            <a onClick=verifyDelete('${encode(data)}') class="btn btn-danger mx-2">Delete</a>
+                            <a href="/admin/projects/upsert?id=${data.id}" class="btn btn-success ">Edit</a>
+                            <a onClick=verifyDelete('${encode(data)}') class="btn btn-danger ">Delete</a>
                         </div>`
                 },
                 width: "10%"
             }
-
         ]
     });
 }
-
-
 
 function visibleIcon(active) {
 
@@ -48,21 +45,6 @@ function visibleIcon(active) {
         </div>`
 }
 
-//function verifyDelete(obj) {
-//    data = decode(obj);
-//    $('.delete-modal').modal('toggle');
-//    $('.modal-body').html(`Permanently delete <b>${data.title}</b>?`);
-//    $('.modal-footer').html(`
-//        <a onClick=verifyDelete('${encode(data)}') class="btn btn-secondary mx-2">Cancel</a>
-//        <a href="/admin/project/delete?id=${data.id}" class="btn btn-danger mx-2">Delete</a>`);
-//}
-
-//function closeDeleteModal() {
-
-//}
-
-
-
 function verifyDelete(obj) {
     data = decode(obj);
     $('.delete-modal').modal('show');
@@ -73,7 +55,6 @@ function verifyDelete(obj) {
 }
 
 function closeDeleteModal() {
-    console.log("check!");
     $('.delete-modal').modal('hide');
 }
 

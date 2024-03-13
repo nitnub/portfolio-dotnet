@@ -1,5 +1,5 @@
 ﻿
-var newId = Object.keys(videos).length;
+var newId = videos != null ? Object.keys(videos).length : 0;
 
 function addVideo(projectId) {
     var videoGroup = document.getElementById('videoGroup')
@@ -65,7 +65,8 @@ function removeVideo(id) {
                 $('.delete-video-modal').modal('hide');
                 newId--;
             }
-        }})
+        }
+    })
 }
 
 function removeNewVideo(id) {
@@ -85,4 +86,3 @@ function removeVideoConfirmation(id) {
 function cancelRemoveVideo() {
     $('.delete-video-modal').modal('hide');
 }
-

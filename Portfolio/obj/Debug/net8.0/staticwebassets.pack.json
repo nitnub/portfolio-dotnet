@@ -209,6 +209,10 @@
       "PackagePath": "staticwebassets\\img\\bio\\joshua_tree-header.jpg"
     },
     {
+      "Id": "C:\\Users\\Nick\\Classes\\udemy\\c-sharp\\.NET Core MVC\\Portfolio\\Portfolio\\wwwroot\\img\\projects\\53c7d7e4-61ce-4fa9-aba5-b15edfdc9ab5-portfolio-project.jpg",
+      "PackagePath": "staticwebassets\\img\\projects\\53c7d7e4-61ce-4fa9-aba5-b15edfdc9ab5-portfolio-project.jpg"
+    },
+    {
       "Id": "C:\\Users\\Nick\\Classes\\udemy\\c-sharp\\.NET Core MVC\\Portfolio\\Portfolio\\wwwroot\\img\\projects\\auth-server.jpg",
       "PackagePath": "staticwebassets\\img\\projects\\auth-server.jpg"
     },
@@ -219,6 +223,10 @@
     {
       "Id": "C:\\Users\\Nick\\Classes\\udemy\\c-sharp\\.NET Core MVC\\Portfolio\\Portfolio\\wwwroot\\img\\projects\\food-app.png",
       "PackagePath": "staticwebassets\\img\\projects\\food-app.png"
+    },
+    {
+      "Id": "C:\\Users\\Nick\\Classes\\udemy\\c-sharp\\.NET Core MVC\\Portfolio\\Portfolio\\wwwroot\\img\\projects\\portfolio-project.jpg",
+      "PackagePath": "staticwebassets\\img\\projects\\portfolio-project.jpg"
     },
     {
       "Id": "C:\\Users\\Nick\\Classes\\udemy\\c-sharp\\.NET Core MVC\\Portfolio\\Portfolio\\wwwroot\\img\\projects\\restaurant-app.jpg",

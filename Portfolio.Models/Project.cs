@@ -21,22 +21,24 @@ namespace Portfolio.Models
         [Required]
         [DisplayName("Image Alt Text")]
         public string ImageAltText { get; set; }
+        
         [Required]
         public string Title { get; set; }
+        
         [Required]
         public string Description { get; set; }
 
-        [DisplayName("Git URL")]
         [ValidateNever]
+        [DisplayName("Git URL")]
         public string? GitUrl { get; set; }
         public string? Port { get; set; }
         public int Order { get; set; }
         public bool Active { get; set; }
 
-        [DisplayName("Demo URL")]
         [ValidateNever]
+        [DisplayName("Demo URL")]
         public string? DemoUrl { get; set; }
-        public List<Video> Videos { get; set; }
+        public List<Video>? Videos { get; set; }
 
         [ValidateNever]
         public List<ProjectLogo> ProjectLogos{ get; set; }

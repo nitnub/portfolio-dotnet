@@ -15,14 +15,11 @@ namespace Portfolio.Models.ViewModels
     public class Usage
     {
         public string Guest { get; set; }
-
-        public DateTime DateTime {  get; set; }
+        public DateTime DateTime {  get; set; } // keep for printout!
         public string Date {  get; set; }
         public string Time {  get; set; }
-
         public GuestAction GuestAction { get; set; }
         public string Project { get; set; }
-        //public string Description { get; set; }
         public string Type { get; set; }
         public string Label { get; set; }
     }

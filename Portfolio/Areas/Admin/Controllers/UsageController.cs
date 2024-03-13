@@ -26,7 +26,7 @@ namespace PortfolioWeb.Areas.Admin.Controllers
         {
 
             var GENERAL_NAV = "Nav Link";
-            var PORTFOLIO_PAGE = "Portfolio Page";
+            var PORTFOLIO_PAGE = "nickbryant.dev";
 
             var usages = new List<Usage>();
             var projIdDict = new Dictionary<int, string>();
@@ -41,7 +41,7 @@ namespace PortfolioWeb.Areas.Admin.Controllers
             {
                 if (project.GitUrl != null)
                 {
-                    urlDict.TryAdd(project.GitUrl, ("GitHub Page", "GithHub", project.Title));
+                    urlDict.TryAdd(project.GitUrl, ("GitHub Repo", "GithHub", project.Title));
                 }
                 if (project.DemoUrl != null)
                 {

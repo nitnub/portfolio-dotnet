@@ -9,6 +9,5 @@ namespace Portfolio.Models.ViewModels
     public class ProjectVM
     {
         public List<Project> Project { get; set; }
-        //public List<Video> Videos { get; set; }
     }
 }

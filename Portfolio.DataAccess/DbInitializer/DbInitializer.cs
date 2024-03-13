@@ -30,6 +30,7 @@ namespace Portfolio.DataAccess.DbInitializer
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 throw;
             }
         }

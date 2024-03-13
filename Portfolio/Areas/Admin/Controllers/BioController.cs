@@ -27,22 +27,6 @@ namespace PortfolioWeb.Areas.Admin.Controllers
             return View(Bio);
         }
 
-
-        //[HttpGet]
-        //public IActionResult GetAll()
-        //{
-        //    List<Project> projectList = _unitOfWork.Project.GetAll(includeProperties: "Videos").OrderBy(p => p.Order).ToList();
-
-        //    //foreach (var project in projectList)
-        //    //{
-        //    //    //project.VideoCount = project.Videos.Count;
-        //    //    project.Videos = null;
-        //    //}
-
-        //    return Json(new { data = projectList });
-        //}
-
-
         [HttpPost]
         public IActionResult Upsert(Biography updatedBio, List<IFormFile> files)
         {

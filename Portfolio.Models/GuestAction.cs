@@ -11,7 +11,6 @@ namespace Portfolio.Models
 {
     public class GuestAction
     {
-
         [Key]
         public int Id { get; set; }
 

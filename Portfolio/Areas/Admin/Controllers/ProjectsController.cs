@@ -50,34 +50,42 @@ namespace PortfolioWeb.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Upsert(Project updatedProject, List<IFormFile> files)
         {
-            List<Video> videos = updatedProject.Videos;
 
-            if (ModelState.IsValid)
+
+            if (!ModelState.IsValid)
             {
-                if (files != null && files.Count != 0)
+                return View(updatedProject);
+            }
+            if (files != null && files.Count != 0)
+            {
+                IFormFile file = files[0];
+                string oldFileName = updatedProject.Image;
+                updatedProject.Image = Guid.NewGuid().ToString() + "-" + file.FileName;
+
+                string imageDirectory = Path.Combine(_webHostEnvironment.WebRootPath, @"img\projects\");
+                string newImagePath = Path.Combine(imageDirectory, updatedProject.Image);
+                string oldImagePath = Path.Combine(imageDirectory, oldFileName);
+
+                if (!Directory.Exists(imageDirectory))
                 {
-                    IFormFile file = files[0];
-                    string oldFileName = updatedProject.Image;
-                    updatedProject.Image = Guid.NewGuid().ToString() + "-" + file.FileName;
-
-                    string imageDirectory = Path.Combine(_webHostEnvironment.WebRootPath, @"img\projects\");
-                    string newImageFile = Path.Combine(imageDirectory, updatedProject.Image);
-                    string oldImageFile = Path.Combine(imageDirectory, oldFileName);
-
-                    if (!Directory.Exists(imageDirectory))
-                    {
-                        Directory.CreateDirectory(imageDirectory);
-                    }
+                    Directory.CreateDirectory(imageDirectory);
+                }
                     
-                    if (System.IO.File.Exists(oldImageFile))
-                    {
-                        System.IO.File.Delete (oldImageFile);
-                    }
-
-                    using var fileStream = new FileStream(newImageFile, FileMode.Create);
-                    file.CopyTo(fileStream);
+                if (System.IO.File.Exists(oldImagePath))
+                {
+                    System.IO.File.Delete (oldImagePath);
                 }
 
+                using var fileStream = new FileStream(newImagePath, FileMode.Create);
+                file.CopyTo(fileStream);
+            }
+
+
+            List<Video> videos = updatedProject.Videos;
+
+
+            if (videos != null)
+            {
                 foreach (var video in videos)
                 {
                     if (video.Id == 0)
@@ -89,25 +97,23 @@ namespace PortfolioWeb.Areas.Admin.Controllers
                         _unitOfWork.Video.Update(video);
                     }
                 }
+            }
+            
 
-                if (updatedProject.Id == 0)
-                {
-                    _unitOfWork.Project.Add(updatedProject);
-                    TempData["success"] = "Project created successfully";
-                }
-                else
-                {
-                    _unitOfWork.Project.Update(updatedProject);
-                    TempData["success"] = "Project updated successfully";
-                }
-                _unitOfWork.Save();
-
-                return RedirectToAction("Index");
+            if (updatedProject.Id == 0)
+            {
+                _unitOfWork.Project.Add(updatedProject);
+                TempData["success"] = "Project created successfully";
             }
             else
             {
-                return View(updatedProject);
+                _unitOfWork.Project.Update(updatedProject);
+                TempData["success"] = "Project updated successfully";
             }
+            _unitOfWork.Save();
+
+            return RedirectToAction("Index");
+       
         }
         
         public IActionResult Delete(int? id)
@@ -125,12 +131,12 @@ namespace PortfolioWeb.Areas.Admin.Controllers
             }
 
             string imageDirectory = Path.Combine(_webHostEnvironment.WebRootPath, @"img\projects\");
-            string imageFile = Path.Combine(imageDirectory, projectToRemove.Image);
+            string imagePath = Path.Combine(imageDirectory, projectToRemove.Image);
 
 
-            if (Directory.Exists(imageDirectory) && System.IO.File.Exists(imageFile))
+            if (Directory.Exists(imageDirectory) && System.IO.File.Exists(imagePath))
             {
-                System.IO.File.Delete(imageFile);
+                System.IO.File.Delete(imagePath);
             }
 
             _unitOfWork.Project.Remove(projectToRemove);
@@ -152,13 +158,11 @@ namespace PortfolioWeb.Areas.Admin.Controllers
             var videoToRemove = _unitOfWork.Video.Get(v => v.Id == id);
             if (videoToRemove == null)
             {
-                return Json(new { success = false, message = $"Unable to delete video with id {id}" });
+                return Json(new { success = true, message = $"Unable to delete video with id {id}" });
             }
 
             _unitOfWork.Video.Remove(videoToRemove);
             _unitOfWork.Save();
-
-            //int projectId = videoToRemove.ProjectId;
 
             return Json(new { success = true, message = "Video successfully deleted" });
         }

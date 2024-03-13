@@ -38,11 +38,8 @@ namespace PortfolioWeb.Areas.Guest.Controllers
         }
 
         [HttpPost]
-        public IActionResult? GuestAction([FromBody] GuestAction guestAction, [FromHeader] object fhTest)
+        public IActionResult? GuestAction([FromBody] GuestAction guestAction)
         {
-
-            Console.WriteLine("******************* From Header Test *****************");
-            Console.WriteLine(TypeDescriptor.GetProperties( fhTest));
             if (guestAction?.Url != null && !User.Identity.IsAuthenticated)
             {
                 guestAction.DateTime = DateTime.Now;

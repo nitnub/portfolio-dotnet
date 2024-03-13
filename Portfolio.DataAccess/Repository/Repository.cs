@@ -18,7 +18,7 @@ namespace Portfolio.DataAccess.Repository
         public Repository(ApplicationDbContext db)
         {
             _db = db;
-            this.dbSet = _db.Set<T>();
+            dbSet = _db.Set<T>();
             _db.Projects.Include(p => p.Videos);
         }
         public void Add(T entity)
@@ -28,17 +28,10 @@ namespace Portfolio.DataAccess.Repository
 
         public T Get(Expression<Func<T, bool>> filter, string? includeProperties = null, bool tracked = false)
         {
-            IQueryable<T> query;
-            if (tracked)
-            {
-                query = dbSet;
-            }
-            else
-            {
-                query = dbSet.AsNoTracking();
-            }
+            IQueryable<T> query = tracked ? dbSet : dbSet.AsNoTracking();
 
             query = query.Where(filter);
+
             if (!string.IsNullOrEmpty(includeProperties))
             {
                 foreach (var prop in includeProperties.Split(",", StringSplitOptions.RemoveEmptyEntries))
