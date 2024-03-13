@@ -421,7 +421,7 @@ namespace Portfolio.DataAccess.Migrations
                             Id = 100,
                             Active = true,
                             DemoUrl = "https://nickbryant.dev",
-                            Description = "The page you are viewing right now! This ASP.NET Core MVC project consists of the current \"Guest\" view as well as an \"Admin\" workflow for dynamically updating content.",
+                            Description = "The page you are viewing right now! This ASP.NET Core MVC project consists of this \"Guest\" view as well as an \"Admin\" area for dynamically updating content.",
                             GitUrl = "https://github.com/nitnub/portfolio-dotnet",
                             Image = "portfolio-project.jpg",
                             ImageAltText = "Portfolio Project Page",
