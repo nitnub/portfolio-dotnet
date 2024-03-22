@@ -30,4 +30,8 @@
     <ProjectReference Include="..\Portfolio.Models\Portfolio.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Data\" />
+  </ItemGroup>
+
 </Project>
