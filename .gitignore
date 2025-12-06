@@ -3,3 +3,11 @@
 
 **/appsettings.Development.json
 **/appsettings.json
+
+
+.idea/
+.vs/
+
+Portfolio.sln.DotSettings.user
+global.json
+setup.json
