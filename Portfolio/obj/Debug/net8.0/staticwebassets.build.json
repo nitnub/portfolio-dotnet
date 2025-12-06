@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NXWmlpZ2qbMquaB5x3EmYiGX4TrCiGu7o6ZI6NgPVuQ=",
+  "Hash": "ebRq14f/pjcskTlsJMLhepfdmnagr7vAAJvzQe7EIv0=",
   "Source": "PortfolioWeb",
   "BasePath": "_content/PortfolioWeb",
   "Mode": "Default",
@@ -2221,6 +2221,25 @@
       "OriginalItemSpec": "wwwroot/img/projects/53c7d7e4-61ce-4fa9-aba5-b15edfdc9ab5-portfolio-project.jpg"
     },
     {
+      "Identity": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/img/projects/auth-server_lg.jpg",
+      "SourceId": "PortfolioWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/",
+      "BasePath": "_content/PortfolioWeb",
+      "RelativePath": "img/projects/auth-server_lg.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/img/projects/auth-server_lg.jpg"
+    },
+    {
       "Identity": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/img/projects/auth-server.jpg",
       "SourceId": "PortfolioWeb",
       "SourceType": "Discovered",
@@ -2238,6 +2257,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/img/projects/auth-server.jpg"
+    },
+    {
+      "Identity": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/img/projects/bad-bank_lg.png",
+      "SourceId": "PortfolioWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/",
+      "BasePath": "_content/PortfolioWeb",
+      "RelativePath": "img/projects/bad-bank_lg.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/img/projects/bad-bank_lg.png"
     },
     {
       "Identity": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/img/projects/bad-bank.png",
@@ -2259,6 +2297,25 @@
       "OriginalItemSpec": "wwwroot/img/projects/bad-bank.png"
     },
     {
+      "Identity": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/img/projects/food-app_lg.png",
+      "SourceId": "PortfolioWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/",
+      "BasePath": "_content/PortfolioWeb",
+      "RelativePath": "img/projects/food-app_lg.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/img/projects/food-app_lg.png"
+    },
+    {
       "Identity": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/img/projects/food-app.png",
       "SourceId": "PortfolioWeb",
       "SourceType": "Discovered",
@@ -2276,6 +2333,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/img/projects/food-app.png"
+    },
+    {
+      "Identity": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/img/projects/portfolio-project_lg.jpg",
+      "SourceId": "PortfolioWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/",
+      "BasePath": "_content/PortfolioWeb",
+      "RelativePath": "img/projects/portfolio-project_lg.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/img/projects/portfolio-project_lg.jpg"
     },
     {
       "Identity": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/img/projects/portfolio-project.jpg",
@@ -2297,6 +2373,25 @@
       "OriginalItemSpec": "wwwroot/img/projects/portfolio-project.jpg"
     },
     {
+      "Identity": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/img/projects/restaurant-app_lg.jpg",
+      "SourceId": "PortfolioWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/",
+      "BasePath": "_content/PortfolioWeb",
+      "RelativePath": "img/projects/restaurant-app_lg.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/img/projects/restaurant-app_lg.jpg"
+    },
+    {
       "Identity": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/img/projects/restaurant-app.jpg",
       "SourceId": "PortfolioWeb",
       "SourceType": "Discovered",
@@ -2314,6 +2409,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/img/projects/restaurant-app.jpg"
+    },
+    {
+      "Identity": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/img/projects/werdle_lg.png",
+      "SourceId": "PortfolioWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/",
+      "BasePath": "_content/PortfolioWeb",
+      "RelativePath": "img/projects/werdle_lg.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/img/projects/werdle_lg.png"
     },
     {
       "Identity": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/img/projects/werdle.png",

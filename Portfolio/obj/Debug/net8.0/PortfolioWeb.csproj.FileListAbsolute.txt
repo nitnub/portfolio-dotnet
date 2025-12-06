@@ -597,11 +597,6 @@ C:/Users/Nick/Classes/udemy/c-sharp/.NET Core MVC/Portfolio/Portfolio/bin/Debug/
 /home/nick/git/portfolio/portfolio-dotnet/Portfolio/obj/Debug/net8.0/PortfolioWeb.sourcelink.json
 /home/nick/git/portfolio/portfolio-dotnet/Portfolio/obj/Debug/net8.0/staticwebassets.build.json
 /home/nick/git/portfolio/portfolio-dotnet/Portfolio/obj/Debug/net8.0/staticwebassets.development.json
-/home/nick/git/portfolio/portfolio-dotnet/Portfolio/obj/Debug/net8.0/staticwebassets/msbuild.PortfolioWeb.Microsoft.AspNetCore.StaticWebAssets.props
-/home/nick/git/portfolio/portfolio-dotnet/Portfolio/obj/Debug/net8.0/staticwebassets/msbuild.build.PortfolioWeb.props
-/home/nick/git/portfolio/portfolio-dotnet/Portfolio/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.PortfolioWeb.props
-/home/nick/git/portfolio/portfolio-dotnet/Portfolio/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.PortfolioWeb.props
-/home/nick/git/portfolio/portfolio-dotnet/Portfolio/obj/Debug/net8.0/staticwebassets.pack.json
 /home/nick/git/portfolio/portfolio-dotnet/Portfolio/obj/Debug/net8.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
 /home/nick/git/portfolio/portfolio-dotnet/Portfolio/obj/Debug/net8.0/scopedcss/bundle/PortfolioWeb.styles.css
 /home/nick/git/portfolio/portfolio-dotnet/Portfolio/obj/Debug/net8.0/scopedcss/projectbundle/PortfolioWeb.bundle.scp.css
@@ -611,3 +606,8 @@ C:/Users/Nick/Classes/udemy/c-sharp/.NET Core MVC/Portfolio/Portfolio/bin/Debug/
 /home/nick/git/portfolio/portfolio-dotnet/Portfolio/obj/Debug/net8.0/PortfolioWeb.pdb
 /home/nick/git/portfolio/portfolio-dotnet/Portfolio/obj/Debug/net8.0/PortfolioWeb.genruntimeconfig.cache
 /home/nick/git/portfolio/portfolio-dotnet/Portfolio/obj/Debug/net8.0/ref/PortfolioWeb.dll
+/home/nick/git/portfolio/portfolio-dotnet/Portfolio/obj/Debug/net8.0/staticwebassets/msbuild.PortfolioWeb.Microsoft.AspNetCore.StaticWebAssets.props
+/home/nick/git/portfolio/portfolio-dotnet/Portfolio/obj/Debug/net8.0/staticwebassets/msbuild.build.PortfolioWeb.props
+/home/nick/git/portfolio/portfolio-dotnet/Portfolio/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.PortfolioWeb.props
+/home/nick/git/portfolio/portfolio-dotnet/Portfolio/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.PortfolioWeb.props
+/home/nick/git/portfolio/portfolio-dotnet/Portfolio/obj/Debug/net8.0/staticwebassets.pack.json

@@ -217,24 +217,48 @@
       "PackagePath": "staticwebassets/img/projects/auth-server.jpg"
     },
     {
+      "Id": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/img/projects/auth-server_lg.jpg",
+      "PackagePath": "staticwebassets/img/projects/auth-server_lg.jpg"
+    },
+    {
       "Id": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/img/projects/bad-bank.png",
       "PackagePath": "staticwebassets/img/projects/bad-bank.png"
+    },
+    {
+      "Id": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/img/projects/bad-bank_lg.png",
+      "PackagePath": "staticwebassets/img/projects/bad-bank_lg.png"
     },
     {
       "Id": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/img/projects/food-app.png",
       "PackagePath": "staticwebassets/img/projects/food-app.png"
     },
     {
+      "Id": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/img/projects/food-app_lg.png",
+      "PackagePath": "staticwebassets/img/projects/food-app_lg.png"
+    },
+    {
       "Id": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/img/projects/portfolio-project.jpg",
       "PackagePath": "staticwebassets/img/projects/portfolio-project.jpg"
+    },
+    {
+      "Id": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/img/projects/portfolio-project_lg.jpg",
+      "PackagePath": "staticwebassets/img/projects/portfolio-project_lg.jpg"
     },
     {
       "Id": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/img/projects/restaurant-app.jpg",
       "PackagePath": "staticwebassets/img/projects/restaurant-app.jpg"
     },
     {
+      "Id": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/img/projects/restaurant-app_lg.jpg",
+      "PackagePath": "staticwebassets/img/projects/restaurant-app_lg.jpg"
+    },
+    {
       "Id": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/img/projects/werdle.png",
       "PackagePath": "staticwebassets/img/projects/werdle.png"
+    },
+    {
+      "Id": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/img/projects/werdle_lg.png",
+      "PackagePath": "staticwebassets/img/projects/werdle_lg.png"
     },
     {
       "Id": "/home/nick/git/portfolio/portfolio-dotnet/Portfolio/wwwroot/js/bio.js",

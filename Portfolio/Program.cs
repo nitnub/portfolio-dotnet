@@ -16,7 +16,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Remove email confirmation
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders().AddDefaultUI();
 
-//builder.Services.AddScoped<IDbInitializer, DbInitializer>();
+// For build db
+// builder.Services.AddDbContext<ApplicationDbContext>();
+//builder.Services.AddDbContext<ApplicationDbContext>(options =>);
+builder.Services.AddScoped<IDbInitializer, DbInitializer>();
 
 // Needed for Identity
 builder.Services.AddRazorPages();
@@ -41,7 +44,8 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.UseSession();
 
-//SeedDatabase();
+// For build db
+SeedDatabase();
 
 // Needed for Identity
 app.MapRazorPages();
@@ -54,11 +58,12 @@ app.UseStatusCodePagesWithReExecute("/");
 
 app.Run();
 
-//void SeedDatabase()
-//{
-//    using (var scope = app.Services.CreateScope())
-//    {
-//        var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
-//        dbInitializer.Initialize();
-//    }
-//}
+// For build db
+void SeedDatabase()
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+        dbInitializer.Initialize();
+    }
+}
