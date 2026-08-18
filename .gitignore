@@ -89,6 +89,12 @@ Portfolio.DataAccess/obj/
 Portfolio.Models/obj/
 Portfolio/obj/
 
+
+Portfolio.DataAccess/bin/
+Portfolio.Models/bin/
+Portfolio/bin/
+
+
 **/appsettings.Production.json
 **/launchSettings.json
 
