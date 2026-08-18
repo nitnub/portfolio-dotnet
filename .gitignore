@@ -89,11 +89,9 @@ Portfolio.DataAccess/obj/
 Portfolio.Models/obj/
 Portfolio/obj/
 
-
 Portfolio.DataAccess/bin/
 Portfolio.Models/bin/
 Portfolio/bin/
-
 
 **/appsettings.Production.json
 **/launchSettings.json
@@ -108,3 +106,8 @@ Portfolio/bin/
 Portfolio.sln.DotSettings.user
 global.json
 setup.json
+
+# Local Environment Setup
+setup_env/
+setup_env.sh
+
