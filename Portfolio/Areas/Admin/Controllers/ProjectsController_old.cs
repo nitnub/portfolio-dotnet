@@ -3,42 +3,41 @@ using Microsoft.AspNetCore.Mvc;
 using Portfolio.DataAccess.Repository;
 using Portfolio.DataAccess.Repository.IRepository;
 using Portfolio.Models;
-using Portfolio.Models.ViewModels;
 
 namespace PortfolioWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize]
-    public class ProjectsController(IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment) : Controller
+    public class ProjectsController_old(IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment) : Controller
     {
         private readonly IUnitOfWork _unitOfWork = unitOfWork;
         private readonly IWebHostEnvironment _webHostEnvironment = webHostEnvironment;
 
         public Project Project { get; set; }
-        public ProjectUpsertVM  UpsertVM { get; set; }
         public IActionResult Index()
         {
             List<Project> projects = _unitOfWork.Project.GetAll(includeProperties: "Videos").OrderBy(p => p.Order).ToList();
+
             return View(projects);
         }
 
         public IActionResult Upsert(int? id)
         {
-            // Project = new Project();
-            UpsertVM.Project = new Project();
+            Project = new Project();
+
             if (id != null && id != 0)
             {
-                UpsertVM.Project = _unitOfWork.Project.Get(p => p.Id == id, includeProperties: "Videos");
-                UpsertVM.Logos = _unitOfWork.Logo.GetAll().ToList();
-                UpsertVM.ProjectLogos = _unitOfWork.ProjectLogo.GetAll().ToList(); // .Where(l => l.ProjectId == id).ToList();
+                Project = _unitOfWork.Project.Get(p => p.Id == id, includeProperties: "Videos");
+                Project.ProjectLogos = _unitOfWork.ProjectLogo.GetAll().ToList(); // .Where(l => l.ProjectId == id).ToList();
+                Console.WriteLine(Project.ProjectLogos.Count);
             }
 
-            if (UpsertVM.Project.Videos == null)
+            if (Project.Videos == null)
             {
-                UpsertVM.Project.Videos = [];
+                Project.Videos = [];
             }
-            
-            return View(UpsertVM);
+
+            return View(Project);
         }
 
         [HttpGet]

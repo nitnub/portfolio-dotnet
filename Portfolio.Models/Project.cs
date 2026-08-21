@@ -41,6 +41,6 @@ namespace Portfolio.Models
         public List<Video>? Videos { get; set; }
 
         [ValidateNever]
-        public List<ProjectLogo> ProjectLogos{ get; set; }
+        public List<ProjectLogo>? ProjectLogos{ get; set; }
     }
 }

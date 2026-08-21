@@ -32,7 +32,7 @@ function loadDataTable() {
             {
                 // data: { id: 'id', title: 'title', videos: "videos" },
                 // data: { id: 'id' },
-                render: () => '',
+                render: () => '', // render an empty column
                 width: "75%"
             },
             
