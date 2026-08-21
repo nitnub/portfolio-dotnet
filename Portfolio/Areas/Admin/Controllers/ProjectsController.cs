@@ -42,7 +42,6 @@ namespace PortfolioWeb.Areas.Admin.Controllers
         public IActionResult GetAll()
         {
             List<Project> projectList = _unitOfWork.Project.GetAll(includeProperties: "Videos").OrderBy(p => p.Order).ToList();
-
             return Json(new { data = projectList });
         }
 
@@ -50,8 +49,6 @@ namespace PortfolioWeb.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Upsert(Project updatedProject, List<IFormFile> files)
         {
-
-
             if (!ModelState.IsValid)
             {
                 return View(updatedProject);
