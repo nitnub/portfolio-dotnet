@@ -67,7 +67,7 @@ function visibleIcon(active) {
 function verifyLogoDelete(obj) {
     data = decode(obj);
     $('.delete-modal').modal('show');
-    $('.modal-body').html(`Permanently delete <b>${data.title}</b>?`);
+    $('.modal-body').html(`Permanently delete <b>${data.name}</b>?`);
     $('.modal-footer').html(`
         <a onClick=closeDeleteModal('${encode(data)}') class="btn btn-secondary mx-2">Cancel</a>
         <a href="/admin/logos/delete?id=${data.id}" class="btn btn-danger mx-2">Delete</a>`);

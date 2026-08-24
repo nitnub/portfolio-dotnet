@@ -8,8 +8,9 @@ namespace Portfolio.Models.ViewModels
 {
     public class ProjectUpsertVM
     {
-        public required Project Project { get; set; }
-        public required List<ProjectLogo> ProjectLogos { get; set; }
-        public required List<Logo>? Logos { get; set; }
+        public int? Id { get; set; }
+        public Project Project { get; set; }
+        public List<ProjectLogo> ProjectLogos { get; set; }
+        public List<Logo>? Logos { get; set; }
     }
 }

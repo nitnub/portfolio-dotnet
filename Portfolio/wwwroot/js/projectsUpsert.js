@@ -62,7 +62,7 @@ function removeVideo(id) {
         success: function (data) {
             if (data.success) {
                 $('.remove-video-' + id).remove();
-                $('.delete-video-modal').modal('hide');
+                $('.delete-attribute-modal').modal('hide');
                 newId--;
             }
         }
@@ -76,7 +76,7 @@ function removeNewVideo(id) {
 
 function removeVideoConfirmation(id) {
     const video = videos.find(v => v.id === id);
-    $('.delete-video-modal').modal('show');
+    $('.delete-attribute-modal').modal('show');
     $('.modal-body').html(`Permanently delete video "<b>${video.title}</b>"?`);
     $('.modal-footer').html(`
         <a onClick=cancelRemoveVideo() class="btn btn-secondary mx-2">Cancel</a>
@@ -84,5 +84,5 @@ function removeVideoConfirmation(id) {
 }
 
 function cancelRemoveVideo() {
-    $('.delete-video-modal').modal('hide');
+    $('.delete-attribute-modal').modal('hide');
 }

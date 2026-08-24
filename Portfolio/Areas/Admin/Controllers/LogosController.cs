@@ -44,6 +44,13 @@ namespace PortfolioWeb.Areas.Admin.Controllers
             List<Logo> logoList = _unitOfWork.Logo.GetAll().OrderBy(l => l.Name).ToList();
             return Json(new { data = logoList });
         }
+        
+        [HttpGet]
+        public IActionResult Get(int id)
+        {
+            Logo logo = _unitOfWork.Logo.Get(l => l.Id == id);
+            return Json(new { success = true, logo });
+        }
 
 
         [HttpPost]
@@ -88,24 +95,24 @@ namespace PortfolioWeb.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        // [HttpDelete]
-        // public IActionResult DeleteVideo(int? id)
-        // {
-        //     if (id == null)
-        //     {
-        //         return NotFound();
-        //     }
-        //
-        //     var videoToRemove = _unitOfWork.Video.Get(v => v.Id == id);
-        //     if (videoToRemove == null)
-        //     {
-        //         return Json(new { success = true, message = $"Unable to delete video with id {id}" });
-        //     }
-        //
-        //     _unitOfWork.Video.Remove(videoToRemove);
-        //     _unitOfWork.Save();
-        //
-        //     return Json(new { success = true, message = "Video successfully deleted" });
-        // }
+        [HttpDelete]
+        public IActionResult DeleteLogo(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+        
+            var logoToRemove = _unitOfWork.Logo.Get(l => l.Id == id);
+            if (logoToRemove == null)
+            {
+                return Json(new { success = true, message = $"Unable to delete logo with id {id}" });
+            }
+        
+            _unitOfWork.Logo.Remove(logoToRemove);
+            _unitOfWork.Save();
+        
+            return Json(new { success = true, message = "Logo successfully deleted" });
+        }
     }
 }

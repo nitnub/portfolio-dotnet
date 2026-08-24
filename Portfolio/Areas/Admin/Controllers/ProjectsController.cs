@@ -15,7 +15,8 @@ namespace PortfolioWeb.Areas.Admin.Controllers
         private readonly IWebHostEnvironment _webHostEnvironment = webHostEnvironment;
 
         public Project Project { get; set; }
-        public ProjectUpsertVM  UpsertVM { get; set; }
+        // public ProjectUpsertVM  UpsertVM { get; set; }
+        private readonly ProjectUpsertVM UpsertVM = new();
         public IActionResult Index()
         {
             List<Project> projects = _unitOfWork.Project.GetAll(includeProperties: "Videos").OrderBy(p => p.Order).ToList();
@@ -25,12 +26,16 @@ namespace PortfolioWeb.Areas.Admin.Controllers
         public IActionResult Upsert(int? id)
         {
             // Project = new Project();
+           
+            // ProjectUpsertVM UpsertVM = new ProjectUpsertVM(Logo = new Logo());
             UpsertVM.Project = new Project();
+            
             if (id != null && id != 0)
             {
+                UpsertVM.Id = id;
                 UpsertVM.Project = _unitOfWork.Project.Get(p => p.Id == id, includeProperties: "Videos");
                 UpsertVM.Logos = _unitOfWork.Logo.GetAll().ToList();
-                UpsertVM.ProjectLogos = _unitOfWork.ProjectLogo.GetAll().ToList(); // .Where(l => l.ProjectId == id).ToList();
+                UpsertVM.ProjectLogos = _unitOfWork.ProjectLogo.GetAll(l => l.ProjectId == id).ToList(); // .Where(l => l.ProjectId == id).ToList();
             }
 
             if (UpsertVM.Project.Videos == null)
