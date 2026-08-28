@@ -36,7 +36,7 @@ namespace PortfolioWeb.Areas.Admin.Controllers
             {
                 Project.Videos = [];
             }
-
+            
             return View(Project);
         }
 

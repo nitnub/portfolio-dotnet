@@ -14,11 +14,16 @@ namespace PortfolioWeb.Areas.Admin.Controllers
         private readonly IUnitOfWork _unitOfWork = unitOfWork;
         private readonly IWebHostEnvironment _webHostEnvironment = webHostEnvironment;
 
-        public Project Project { get; set; }
+        // public Project Project { get; set; }
         // public ProjectUpsertVM  UpsertVM { get; set; }
-        private readonly ProjectUpsertVM UpsertVM = new();
+        // private readonly ProjectUpsertVM UpsertVM = new();
+        static Project Project { get; set; }
+        static ProjectUpsertVM UpsertVM = new();
+        
         public IActionResult Index()
         {
+            Console.WriteLine("in... ");
+            Console.WriteLine("\tpublic IActionResult Index()");
             List<Project> projects = _unitOfWork.Project.GetAll(includeProperties: "Videos").OrderBy(p => p.Order).ToList();
             return View(projects);
         }
@@ -26,9 +31,11 @@ namespace PortfolioWeb.Areas.Admin.Controllers
         public IActionResult Upsert(int? id)
         {
             // Project = new Project();
-           
+            Console.WriteLine("in... ");
+            Console.WriteLine("\tpublic IActionResult Upsert(int? id)");
             // ProjectUpsertVM UpsertVM = new ProjectUpsertVM(Logo = new Logo());
-            UpsertVM.Project = new Project();
+            // UpsertVM.Project = new Project();
+            UpsertVM.Project =  Project;
             
             if (id != null && id != 0)
             {
@@ -55,22 +62,75 @@ namespace PortfolioWeb.Areas.Admin.Controllers
 
 
         [HttpPost]
-        public IActionResult Upsert(Project updatedProject, List<IFormFile> files)
+        // public IActionResult Upsert(Project updatedProject, List<IFormFile> files)
+        // public IActionResult Upsert(ProjectUpsertVM updatedProject, List<IFormFile> files)
+        // public IActionResult Upsert(ProjectUpsertVM updatedProject)
+        public IActionResult Upsert(ProjectUpsertVM upsertVM, List<IFormFile> files)
         {
+            
+            Project updatedProject = upsertVM.Project;
+            Console.WriteLine("Id: " + updatedProject.Id);
+            // Console.WriteLine("GitURL: " + updatedProject.GitUrl);
+            Console.WriteLine("Logo Count: " + updatedProject.ProjectLogos?.Count);
+            // Console.WriteLine("Logo : " + updatedProject.ProjectLogos.ToList()[0].Logo);
             if (!ModelState.IsValid)
             {
-                return View(updatedProject);
+                Console.WriteLine("Id: " + updatedProject.Id);
+                // Console.WriteLine("GitURL: " + updatedProject.GitUrl);
+                Console.WriteLine("Logo Count: " + updatedProject.ProjectLogos?.Count);
+                Console.WriteLine("Logo : " + updatedProject.ProjectLogos.ToList()[0].Logo);
+                // Console.WriteLine("Image: " + updatedProject.Image);
+                // Console.WriteLine("Active: " + updatedProject.Active);
+                // Console.WriteLine("Port: " + updatedProject.Port);
+                // Console.WriteLine("Desc: " + updatedProject.Description);
+                // Console.WriteLine("Order: " + updatedProject.Order);
+                Console.WriteLine(ModelState);
+                Console.WriteLine(ModelState.IsValid);
+                // for (int i = 0; i < ModelState.Values.ToList().Count; i++)
+                for (int i = 0; i < 4; i++)
+                {
+                    Console.Write(ModelState.Keys.ToList()[i]); 
+                    Console.Write(" - ");
+                    Console.WriteLine(ModelState.Values.ToList()[i].Errors.Count);
+                }
+           
+                // ProjectUpsertVM testUpsertVM = new();
+                // testUpsertVM.Project = updatedProject;
+                // Console.WriteLine("12321");
+                // UpsertVM.Project = updatedProject;
+                // UpsertVM.Logos = _unitOfWork.Logo.GetAll().ToList();
+                return View(UpsertVM);
+                // return View(updatedProject);
+                // UpsertVM.Project = new  Project();
+                // UpsertVM.Id = Project.Id;
+                // // UpsertVM.Project = _unitOfWork.Project.Get(p => p.Id == id, includeProperties: "Videos");
+                // UpsertVM.ProjectLogos = _unitOfWork.ProjectLogo.GetAll(l => l.ProjectId == Project.Id).ToList(); // .Where(l => l.ProjectId ==
+                
+                // return View(testUpsertVM);
             }
+            
+            Console.WriteLine(updatedProject.Image);
+            Console.WriteLine(updatedProject.Image);
+            Console.WriteLine(updatedProject.Image);
+
+            Console.WriteLine(files.Count);
+            Console.WriteLine(files.Count);
+            Console.WriteLine(files.Count);
+            Console.WriteLine(files.Count);
+            
             if (files != null && files.Count != 0)
             {
                 IFormFile file = files[0];
                 string oldFileName = updatedProject.Image;
                 updatedProject.Image = Guid.NewGuid().ToString() + "-" + file.FileName;
-
-                string imageDirectory = Path.Combine(_webHostEnvironment.WebRootPath, @"img\projects\");
+            
+                // string imageDirectory = Path.Combine(_webHostEnvironment.WebRootPath, @"img\projects\");
+                string subDirectory = Path.Combine("img", "projects");
+                string imageDirectory = Path.Combine(_webHostEnvironment.WebRootPath, subDirectory);
+                
                 string newImagePath = Path.Combine(imageDirectory, updatedProject.Image);
                 string oldImagePath = Path.Combine(imageDirectory, oldFileName);
-
+            
                 if (!Directory.Exists(imageDirectory))
                 {
                     Directory.CreateDirectory(imageDirectory);
@@ -80,15 +140,14 @@ namespace PortfolioWeb.Areas.Admin.Controllers
                 {
                     System.IO.File.Delete (oldImagePath);
                 }
-
                 using var fileStream = new FileStream(newImagePath, FileMode.Create);
                 file.CopyTo(fileStream);
             }
-
-
+            
+            
             List<Video> videos = updatedProject.Videos;
-
-
+            
+            
             if (videos != null)
             {
                 foreach (var video in videos)
@@ -104,7 +163,26 @@ namespace PortfolioWeb.Areas.Admin.Controllers
                 }
             }
             
-
+            List<ProjectLogo> logos = updatedProject.ProjectLogos;
+            if (logos != null)
+            {
+                Console.WriteLine("logos != null");
+                foreach (var projectLogo in updatedProject.ProjectLogos)
+                {
+                    Console.WriteLine("ID: "+ projectLogo.Id);
+                    Console.WriteLine("ID: "+ projectLogo.Id);
+                    Console.WriteLine("ID: "+ projectLogo.Id);
+                    if (projectLogo.Id == 0)
+                    {
+                        _unitOfWork.ProjectLogo.Add(projectLogo);
+                    }
+                    else
+                    {
+                        _unitOfWork.ProjectLogo.Update(projectLogo);
+                    }
+                }
+            }
+            
             if (updatedProject.Id == 0)
             {
                 _unitOfWork.Project.Add(updatedProject);
@@ -170,6 +248,26 @@ namespace PortfolioWeb.Areas.Admin.Controllers
             _unitOfWork.Save();
 
             return Json(new { success = true, message = "Video successfully deleted" });
+        }
+        
+        [HttpDelete]
+        public IActionResult DeleteProjectLogo(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var projectLogoToRemove = _unitOfWork.ProjectLogo.Get(l => l.Id == id);
+            if (projectLogoToRemove == null)
+            {
+                return Json(new { success = true, message = $"Unable to delete projectLogo with id {id}" });
+            }
+
+            _unitOfWork.ProjectLogo.Remove(projectLogoToRemove);
+            _unitOfWork.Save();
+
+            return Json(new { success = true, message = "Project logo successfully deleted" });
         }
     }
 }

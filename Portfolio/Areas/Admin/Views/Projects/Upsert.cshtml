@@ -168,21 +168,15 @@
                                 <a onclick="addLogo(@Model.Project.Id)" class="btn btn-success">Add Logo</a>
                             </div>
                             <div id="logoGroup" name="videos" multiple class="form-group">
-                                @* @if (Model.ProjectLogos != null && Model.ProjectLogos.Count > 0) *@
                            
                                 @if (Model.ProjectLogos != null && Model.ProjectLogos.Count > 0)
                                 {
                                     
-                                    // var projectLogos = Model.ProjectLogos.Where(l => l.ProjectId == Model.Project.Id).ToList();
-                                    // var projectLogos = Model.ProjectLogos.Where(l => l.ProjectId == Model.Project.Id).ToList();
-                                        @* @for (int i = 0; i < 5; i++) *@
+
                                     @for (int i = 0; i < Model.ProjectLogos.Count; i++)
                                     {
                                         
-                                        @* <div class="border form-group rounded-2 my-2 shadow p-2 remove-video-@Model.ProjectLogos[i].Id" style="background:white;"> *@
-                                        @*     <input asp-for="@Model.ProjectLogos[i].Id" hidden /> *@
-                                        @*     <input asp-for="@Model.ProjectLogos[i].ProjectId" hidden /> *@
-                                        @*     <input asp-for="@Model.ProjectLogos[i].LogoId" hidden /> *@
+ 
                                             
                                             
                                             <div class="border form-group rounded-2 my-2 shadow p-2 remove-video-@Model.ProjectLogos[i].Id" style="background:white;">
@@ -203,8 +197,6 @@
                                                      {
                                                          <option value="@Model.Logos[j].Id"   }>@Model.Logos[j].Name</option>;
                                                      }
-                                                     
-                                                     @* <option value="@Model.Logos[j].Id"  @{Model.ProjectLogos[i].LogoId == Model.Logos[j].Id ? "selected" : ""}  }>@Model.Logos[j].Name</option>; *@
                                                      
                                                  }
                                                  
@@ -236,7 +228,7 @@
                                             <div class="form-floating py-2 col-12">
                                                 <input asp-for="@Model.ProjectLogos[i].Priority" class="form-control border-1" />
                                                 <label asp-for="@Model.ProjectLogos[i].Priority" class="ms-2 text-dark"></label>
-                                                <span asp-validation-for="@Model.ProjectLogos[i].Priority" class="text-danger text!"></span>
+                                                @* <span asp-validation-for="@Model.ProjectLogos[i].Priority" class="text-danger text!"></span> *@
                                             </div>
 
                        
@@ -244,7 +236,8 @@
                                             @using (Html.BeginForm())
                                             {
                                                 <div style="display: flex; justify-content:end">
-                                                    <a class="link-dark" type="button" onclick="removeLogoConfirmation(@Model.ProjectLogos[i].Id)">Remove</a>
+                                                    @* <a class="link-dark" type="button" onclick="removeLogoConfirmation(@Model.ProjectLogos[i].Id)">Remove</a> *@
+                                                    <a class="link-dark" type="button" onclick="removeProjectLogoConfirmation(@i)">Remove</a>
                                                 </div>
                                             }
                                         </div>

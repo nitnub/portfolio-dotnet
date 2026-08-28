@@ -5,7 +5,7 @@ function addVideo(projectId) {
     var videoGroup = document.getElementById('videoGroup')
     var div = document.createElement("div");
 
-    div.setAttribute("class", "border form-group rounded-2 my-2 shadow bg-white p-2 remove-video-new" + newId);
+    div.setAttribute("class", "border form-group rounded-2 my-2 shadow bg-white p-2 remove-video-new-" + newId);
 
     div.innerHTML = `
         <input hidden="" type="number" data-val="true" data-val-required="The Id field is required." id="Videos_${newId}__Id" name="Videos[${newId}].Id" value="0"><input name="__Invariant" type="hidden" value="Videos[${newId}].Id">
@@ -53,6 +53,17 @@ function addVideo(projectId) {
     newId++;
 }
 
+
+
+
+
+
+
+
+
+
+
+
 function removeVideo(id) {
     console.log("removeVideo called w/", id);
     $.ajax({
@@ -70,7 +81,7 @@ function removeVideo(id) {
 }
 
 function removeNewVideo(id) {
-    $('.remove-video-new' + id).remove();
+    $('.remove-video-new-' + id).remove();
     newId--;
 }
 
@@ -86,3 +97,130 @@ function removeVideoConfirmation(id) {
 function cancelRemoveVideo() {
     $('.delete-attribute-modal').modal('hide');
 }
+
+
+
+// Logo
+
+
+function updateDisplayLogo(id) {
+
+    const selectionId = $('#logo-select-' + id).val()
+    console.log("Card ID = ", id);
+    console.log("Selection ID = ", selectionId);
+    $.ajax({
+        url: `/Admin/Logos/Get/${selectionId}`,
+        type: 'GET',
+        contentType: 'application/json',
+        success: function (data) {
+            if (data.success) {
+                $('#logo-preview-' + id).html(data.logo.html);
+            }
+        }
+    })
+}
+
+
+
+function addLogo(projectId) {
+    var logoGroup = document.getElementById('logoGroup')
+    var div = document.createElement("div");
+
+    div.setAttribute("class", "border form-group rounded-2 my-2 shadow bg-white p-2 remove-logo-new-" + newProjectLogoId);
+
+    div.innerHTML = `
+        <input hidden="" type="number" data-val="true" data-val-required="The Id field is required." id="logos_${newProjectLogoId}__Id" name="Logos[${newProjectLogoId}].Id" value="0"><input name="__Invariant" type="hidden">
+        
+          <div class="border form-group rounded-2 my-2 shadow p-2"  style="background:white;">
+                                  
+                                            <div class="form-floating py-2 mx-1 col-6">
+                                                <select class="form-select logo-select" data-val="true" onchange=updateDisplayLogo(${newProjectLogoId}); data-val-required="The TypeId field is required." id="logo-select-${newProjectLogoId}" >                                             
+                                                 </select>
+                                                 <label class="ms-2">Label</label>
+                                             </div>
+                                                <div id="logo-preview-${newProjectLogoId}" data-toggle="tooltip" data-placement="top" title="@Model.ProjectLogos[i].Logo.Name" class="project-icon mx-2">
+                                                                                                    </div>
+
+                              <div class="form-floating py-2 col-12">
+            <input class="form-control border-1" type="number" data-val="true" data-val-required="The Priority field is required." id="ProjectLogos_${newProjectLogoId}__Priority" name="ProjectLogos[${newProjectLogoId}].Priority" value="${newProjectLogoId + 1}"><input name="__Invariant" type="hidden" value="${newProjectLogoId + 1}">
+            <label class="ms-2 text-dark" for="ProjectLogos_${newProjectLogoId}__Priority">Priority</label>
+            <span class="text-danger text! field-validation-valid" data-valmsg-for="ProjectLogos[${newProjectLogoId}].Priority" data-valmsg-replace="true"></span>
+        </div>
+
+  
+        <div style="display: flex; justify-content:end">
+            <a class="link-dark" type="button" onclick="removeNewLogo(${newProjectLogoId})">Remove</a>
+        </div>`
+
+    logoGroup.appendChild(div)
+
+    // $('#logo-preview-' + id).html(data.logo.html);
+    // $('#logo-preview-' + newProjectLogoId).html(logos[0].html);
+    // "logo-preview-${newProjectLogoId}"
+
+    for (let i = 0; i < logos.length; i++) {
+        // let options = "<option > $(projectLogos[i].name)</option>"
+        console.log(`<option > ${logos[i].name}</option>`);
+        $('#logo-select-' + newProjectLogoId).append(`<option value="${logos[i].id}" > ${logos[i].name}</option>`);
+        $('#logo-select-' + newProjectLogoId).trigger('change');
+    }
+
+    // set default preview
+    $('#logo-preview-' + newProjectLogoId).html(logos[0].html);
+    // "logo-preview-${newProjectLogoId}"
+
+
+
+    console.log(`newProjectLogoId: ${newProjectLogoId}`);
+    newProjectLogoId++;
+}
+
+
+function removeProjectLogo(id) {
+    console.log("removeLogo called w/", id);
+    $.ajax({
+        url: `/Admin/Projects/DeleteLogo/${id}`,
+        type: 'DELETE',
+        contentType: 'application/json',
+        success: function (data) {
+            if (data.success) {
+                $('.remove-logo-' + id).remove();
+                $('.delete-attribute-modal').modal('hide');
+                newProjectLogoId--;
+            }
+        }
+    })
+}
+
+
+function removeProjectLogoConfirmation(cardId) {
+    console.log("in remove...");
+    const selectionId = $('#logo-select-' + cardId).val();
+    const logo = logos.find(l => l.id === Number(selectionId));
+    console.log(logo);
+    console.log("in remove 2...");
+
+
+    // const selectionId = $('#logo-select-' + id).val();
+    console.log("Card ID = ", cardId);
+    console.log("Selection ID = ", selectionId);
+
+    $('.delete-attribute-modal').modal('show');
+    $('.modal-body').html(`Permanently remove logo "<b>${logo.name}</b>" from project?`);
+    $('.modal-footer').html(`
+        <a onClick=cancelRemoveLogo() class="btn btn-secondary mx-2">Cancel</a>
+        <a onClick=removeLogo(${selectionId}) class="btn btn-danger mx-2">Delete</a>`);
+}
+
+function cancelRemoveLogo() {
+    $('.delete-attribute-modal').modal('hide');
+}
+
+function removeNewLogo(id) {
+    $('.remove-logo-new-' + id).remove();
+    newProjectLogoId--;
+}
+
+
+
+
