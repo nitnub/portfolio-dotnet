@@ -30,11 +30,6 @@ namespace PortfolioWeb.Areas.Admin.Controllers
 
         public IActionResult Upsert(int? id)
         {
-            // Project = new Project();
-            Console.WriteLine("in... ");
-            Console.WriteLine("\tpublic IActionResult Upsert(int? id)");
-            // ProjectUpsertVM UpsertVM = new ProjectUpsertVM(Logo = new Logo());
-            // UpsertVM.Project = new Project();
             UpsertVM.Project =  Project;
             
             if (id != null && id != 0)
@@ -145,13 +140,18 @@ namespace PortfolioWeb.Areas.Admin.Controllers
             }
             
             
-            List<Video> videos = updatedProject.Videos;
+            // List<Video> videos = updatedProject.Videos;
+            List<Video> videos = upsertVM.Project.Videos;
             
+            Console.WriteLine("videos null?... ");
             
             if (videos != null)
             {
+                
+                Console.WriteLine("video count: " + videos.Count);
                 foreach (var video in videos)
                 {
+                    Console.WriteLine(video.Title);
                     if (video.Id == 0)
                     {
                         _unitOfWork.Video.Add(video);
@@ -193,18 +193,7 @@ namespace PortfolioWeb.Areas.Admin.Controllers
             else
             {
                 
-                Console.WriteLine("Creating...");
-                Console.WriteLine("updatedProject.Id : " + updatedProject.Id);
-                if (updatedProject.ProjectLogos != null)
-                {
-                    
-                foreach (var projectLogo in updatedProject.ProjectLogos)
-                {
-                    Console.WriteLine("Creating 2...");
-                    Console.WriteLine("updatedProject.ProjectLogos.Id : " + projectLogo.Id);
-                }
-                }
-
+                // updatedProject.Videos = upsertVM.
                 updatedProject.ProjectLogos = upsertVM.ProjectLogos;
                 _unitOfWork.Project.Update(updatedProject);
                 TempData["success"] = "Project updated successfully";
