@@ -192,6 +192,20 @@ namespace PortfolioWeb.Areas.Admin.Controllers
             }
             else
             {
+                
+                Console.WriteLine("Creating...");
+                Console.WriteLine("updatedProject.Id : " + updatedProject.Id);
+                if (updatedProject.ProjectLogos != null)
+                {
+                    
+                foreach (var projectLogo in updatedProject.ProjectLogos)
+                {
+                    Console.WriteLine("Creating 2...");
+                    Console.WriteLine("updatedProject.ProjectLogos.Id : " + projectLogo.Id);
+                }
+                }
+
+                updatedProject.ProjectLogos = upsertVM.ProjectLogos;
                 _unitOfWork.Project.Update(updatedProject);
                 TempData["success"] = "Project updated successfully";
             }

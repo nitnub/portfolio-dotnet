@@ -122,8 +122,8 @@ function updateDisplayLogo(id) {
             if (data.success) {
                 console.log("data:");
                 console.log(data);
-                // $('#logo-preview-' + id).html(data.logo.html);
-                $(`#ProjectLogos_${id}__LogoId`).html(data.logo.html);
+                $('#logo-preview-' + id).html(data.logo.html);
+                // $(`#ProjectLogos_${id}__LogoId`).html(data.logo.html);
             }
         }
     })
@@ -210,7 +210,7 @@ function removeProjectLogoConfirmation(cardId) {
     console.log("in remove...");
     // const selectionId = $('#logo-select-' + cardId).val();
     // const selectionId = $('#logo-select-' + id).val()
-    const selectionId = $(`#ProjectLogos_${newProjectLogoId}__LogoId`).val()
+    const selectionId = $(`#ProjectLogos_${cardId}__LogoId`).val()
     const logo = logos.find(l => l.id === Number(selectionId));
     console.log(logo);
     console.log("in remove 2...");
