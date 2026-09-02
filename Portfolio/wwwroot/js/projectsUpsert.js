@@ -105,7 +105,13 @@ function cancelRemoveVideo() {
 
 function updateDisplayLogo(id) {
 
-    const selectionId = $('#logo-select-' + id).val()
+    // const selectionId = $('#logo-select-' + id).val()
+    // const selectionId = $(`#ProjectLogos_${newProjectLogoId}__LogoId`).val();
+    // ProjectLogos_1__LogoId
+    
+    const selectionId = $(`#ProjectLogos_${id}__LogoId`).val();
+    console.log("newProjectLogoId = ", newProjectLogoId);
+    console.log("newProjectLogoId = ", newProjectLogoId);
     console.log("Card ID = ", id);
     console.log("Selection ID = ", selectionId);
     $.ajax({
@@ -114,7 +120,10 @@ function updateDisplayLogo(id) {
         contentType: 'application/json',
         success: function (data) {
             if (data.success) {
-                $('#logo-preview-' + id).html(data.logo.html);
+                console.log("data:");
+                console.log(data);
+                // $('#logo-preview-' + id).html(data.logo.html);
+                $(`#ProjectLogos_${id}__LogoId`).html(data.logo.html);
             }
         }
     })
@@ -129,19 +138,21 @@ function addLogo(projectId) {
     div.setAttribute("class", "border form-group rounded-2 my-2 shadow bg-white p-2 remove-logo-new-" + newProjectLogoId);
 
     div.innerHTML = `
-        <input hidden="" type="number" data-val="true" data-val-required="The Id field is required." id="logos_${newProjectLogoId}__Id" name="Logos[${newProjectLogoId}].Id" value="0"><input name="__Invariant" type="hidden">
+        <input hidden="" type="number" data-val="true" data-val-required="The Id field is required." id="logos_${newProjectLogoId}__Id" name="Logos[${newProjectLogoId}].Id" value="${newProjectLogoId + 1}"><input name="__Invariant" type="hidden">
+<!--        <input hidden="" type="number" data-val="true" data-val-required="The Id field is required." id="ProjectLogos_${newProjectLogoId}__Id" name="ProjectLogos_[${newProjectLogoId}].Id" value="${newProjectLogoId + 1}"><input name="__Invariant" type="hidden">-->
         
           <div class="border form-group rounded-2 my-2 shadow p-2"  style="background:white;">
                                   
-                                            <div class="form-floating py-2 mx-1 col-6">
-                                                <select class="form-select logo-select" data-val="true" onchange=updateDisplayLogo(${newProjectLogoId}); data-val-required="The TypeId field is required." id="logo-select-${newProjectLogoId}" >                                             
-                                                 </select>
-                                                 <label class="ms-2">Label</label>
-                                             </div>
-                                                <div id="logo-preview-${newProjectLogoId}" data-toggle="tooltip" data-placement="top" title="@Model.ProjectLogos[i].Logo.Name" class="project-icon mx-2">
-                                                                                                    </div>
+            <div class="form-floating py-2 mx-1 col-6">
+<!--                <select class="form-select logo-select" data-val="true" onchange=updateDisplayLogo(${newProjectLogoId}); data-val-required="The TypeId field is required." id="logo-select-${newProjectLogoId}" >                                             -->
+                <select class="form-select logo-select" data-val="true" onchange=updateDisplayLogo(${newProjectLogoId}); data-val-required="The TypeId field is required." id="ProjectLogos_${newProjectLogoId}__LogoId" name="ProjectLogos[${newProjectLogoId}].LogoId" >                                             
+                 </select>
+                 <label class="ms-2">Label</label>
+             </div>
+                <div id="logo-preview-${newProjectLogoId}" data-toggle="tooltip" data-placement="top" title="@Model.ProjectLogos[i].Logo.Name" class="project-icon mx-2">
+            </div>
 
-                              <div class="form-floating py-2 col-12">
+        <div class="form-floating py-2 col-12">
             <input class="form-control border-1" type="number" data-val="true" data-val-required="The Priority field is required." id="ProjectLogos_${newProjectLogoId}__Priority" name="ProjectLogos[${newProjectLogoId}].Priority" value="${newProjectLogoId + 1}"><input name="__Invariant" type="hidden" value="${newProjectLogoId + 1}">
             <label class="ms-2 text-dark" for="ProjectLogos_${newProjectLogoId}__Priority">Priority</label>
             <span class="text-danger text! field-validation-valid" data-valmsg-for="ProjectLogos[${newProjectLogoId}].Priority" data-valmsg-replace="true"></span>
@@ -161,8 +172,10 @@ function addLogo(projectId) {
     for (let i = 0; i < logos.length; i++) {
         // let options = "<option > $(projectLogos[i].name)</option>"
         console.log(`<option > ${logos[i].name}</option>`);
-        $('#logo-select-' + newProjectLogoId).append(`<option value="${logos[i].id}" > ${logos[i].name}</option>`);
-        $('#logo-select-' + newProjectLogoId).trigger('change');
+        // $('#logo-select-' + newProjectLogoId).append(`<option value="${logos[i].id}" > ${logos[i].name}</option>`);
+        // $('#logo-select-' + newProjectLogoId).trigger('change');
+        $(`#ProjectLogos_${newProjectLogoId}__LogoId`).append(`<option value="${logos[i].id}" > ${logos[i].name}</option>`);
+        $(`#ProjectLogos_${newProjectLogoId}__LogoId`).trigger('change');
     }
 
     // set default preview
@@ -195,7 +208,9 @@ function removeProjectLogo(id) {
 
 function removeProjectLogoConfirmation(cardId) {
     console.log("in remove...");
-    const selectionId = $('#logo-select-' + cardId).val();
+    // const selectionId = $('#logo-select-' + cardId).val();
+    // const selectionId = $('#logo-select-' + id).val()
+    const selectionId = $(`#ProjectLogos_${newProjectLogoId}__LogoId`).val()
     const logo = logos.find(l => l.id === Number(selectionId));
     console.log(logo);
     console.log("in remove 2...");

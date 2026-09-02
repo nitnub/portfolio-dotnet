@@ -163,15 +163,17 @@ namespace PortfolioWeb.Areas.Admin.Controllers
                 }
             }
             
-            List<ProjectLogo> logos = updatedProject.ProjectLogos;
+            List<ProjectLogo> logos = upsertVM.ProjectLogos;
             if (logos != null)
             {
                 Console.WriteLine("logos != null");
-                foreach (var projectLogo in updatedProject.ProjectLogos)
+                Console.WriteLine(logos.Count);
+                foreach (var projectLogo in upsertVM.ProjectLogos)
                 {
                     Console.WriteLine("ID: "+ projectLogo.Id);
-                    Console.WriteLine("ID: "+ projectLogo.Id);
-                    Console.WriteLine("ID: "+ projectLogo.Id);
+                    Console.WriteLine("LogoId: "+ projectLogo.LogoId);
+                    Console.WriteLine("ProjectId: "+ projectLogo.ProjectId);
+                    Console.WriteLine("Priority: "+ projectLogo.Priority);
                     if (projectLogo.Id == 0)
                     {
                         _unitOfWork.ProjectLogo.Add(projectLogo);

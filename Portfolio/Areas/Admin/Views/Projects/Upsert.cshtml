@@ -182,10 +182,11 @@
                                             <div class="border form-group rounded-2 my-2 shadow p-2 remove-video-@Model.ProjectLogos[i].Id" style="background:white;">
                                                 <input asp-for="@Model.ProjectLogos[i].Id" hidden />
                                                 <input asp-for="@Model.ProjectLogos[i].ProjectId" hidden />
-                                                <input asp-for="@Model.ProjectLogos[i].LogoId" hidden />
-                                            
+                                                @* <input asp-for="@Model.ProjectLogos[i].LogoId" hidden /> *@
+                  
                                             <div class="form-floating py-2 mx-1 col-6">
-                                                <select class="form-select logo-select" data-val="true" onchange="updateDisplayLogo(@i);" data-val-required="The TypeId field is required." id="logo-select-@i" >
+                                                @* <select asp-for="@Model.ProjectLogos[i].LogoId" class="form-select logo-select" data-val="true" onchange="updateDisplayLogo(@i);" data-val-required="The TypeId field is required." id="logo-select-@i" > *@
+                                                <select asp-for="@Model.ProjectLogos[i].LogoId" class="form-select logo-select" data-val="true" onchange="updateDisplayLogo(@i);" data-val-required="The TypeId field is required.">
                                             
                                                  @for (int j = 0; j < Model.Logos.Count; j++)
                                                  {
