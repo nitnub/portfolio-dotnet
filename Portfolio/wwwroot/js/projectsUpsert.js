@@ -135,7 +135,7 @@ function addLogo(projectId) {
     var logoGroup = document.getElementById('logoGroup')
     var div = document.createElement("div");
 
-    div.setAttribute("class", "border form-group rounded-2 my-2 shadow bg-white p-2 remove-logo-new-" + newProjectLogoId);
+    div.setAttribute("class", "border form-group rounded-2 my-2 shadow bg-white p-2 remove-project-logo-new-" + newProjectLogoId);
 
     div.innerHTML = `
         <input hidden="" type="number" data-val="true" data-val-required="The Id field is required." id="logos_${newProjectLogoId}__Id" name="Logos[${newProjectLogoId}].Id" value="${newProjectLogoId + 1}"><input name="__Invariant" type="hidden">
@@ -160,7 +160,7 @@ function addLogo(projectId) {
 
   
         <div style="display: flex; justify-content:end">
-            <a class="link-dark" type="button" onclick="removeNewLogo(${newProjectLogoId})">Remove</a>
+            <a class="link-dark" type="button" onclick="removeNewProjectLogo(${newProjectLogoId})">Remove</a>
         </div>`
 
     logoGroup.appendChild(div)
@@ -192,12 +192,12 @@ function addLogo(projectId) {
 function removeProjectLogo(id) {
     console.log("removeLogo called w/", id);
     $.ajax({
-        url: `/Admin/Projects/DeleteLogo/${id}`,
+        url: `/Admin/Projects/DeleteProjectLogo/${id}`,
         type: 'DELETE',
         contentType: 'application/json',
         success: function (data) {
             if (data.success) {
-                $('.remove-logo-' + id).remove();
+                $('.remove-project-logo-' + id).remove();
                 $('.delete-attribute-modal').modal('hide');
                 newProjectLogoId--;
             }
@@ -211,8 +211,19 @@ function removeProjectLogoConfirmation(cardId) {
     // const selectionId = $('#logo-select-' + cardId).val();
     // const selectionId = $('#logo-select-' + id).val()
     const selectionId = $(`#ProjectLogos_${cardId}__LogoId`).val()
+    // const selectionId = $(`.remove-video-${cardId}`)[0];
+    // const selection = $(`.remove-video-${cardId}`);
+    // console.log(selection);
+    // remove-video-
     const logo = logos.find(l => l.id === Number(selectionId));
+
+    console.log("projectLogos");
+    console.log(projectLogos);
+    const projectLogo = projectLogos.find(l => l.logoId === Number(selectionId));
+    console.log("logo:");
     console.log(logo);
+    console.log("projectLogo");
+    console.log(projectLogo);
     console.log("in remove 2...");
 
 
@@ -223,16 +234,16 @@ function removeProjectLogoConfirmation(cardId) {
     $('.delete-attribute-modal').modal('show');
     $('.modal-body').html(`Permanently remove logo "<b>${logo.name}</b>" from project?`);
     $('.modal-footer').html(`
-        <a onClick=cancelRemoveLogo() class="btn btn-secondary mx-2">Cancel</a>
-        <a onClick=removeLogo(${selectionId}) class="btn btn-danger mx-2">Delete</a>`);
+        <a onClick=cancelRemoveProjectLogo() class="btn btn-secondary mx-2">Cancel</a>
+        <a onClick=removeProjectLogo(${projectLogo.id}) class="btn btn-danger mx-2">Delete</a>`);
 }
 
-function cancelRemoveLogo() {
+function cancelRemoveProjectLogo() {
     $('.delete-attribute-modal').modal('hide');
 }
 
-function removeNewLogo(id) {
-    $('.remove-logo-new-' + id).remove();
+function removeNewProjectLogo(id) {
+    $('.remove-project-logo-new-' + id).remove();
     newProjectLogoId--;
 }
 

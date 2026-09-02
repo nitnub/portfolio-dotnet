@@ -179,7 +179,7 @@
  
                                             
                                             
-                                            <div class="border form-group rounded-2 my-2 shadow p-2 remove-video-@Model.ProjectLogos[i].Id" style="background:white;">
+                                            <div class="border form-group rounded-2 my-2 shadow p-2 remove-project-logo-@Model.ProjectLogos[i].Id" style="background:white;">
                                                 <input asp-for="@Model.ProjectLogos[i].Id" hidden />
                                                 <input asp-for="@Model.ProjectLogos[i].ProjectId" hidden />
                                                 @* <input asp-for="@Model.ProjectLogos[i].LogoId" hidden /> *@
@@ -238,7 +238,8 @@
                                             {
                                                 <div style="display: flex; justify-content:end"> 
                                                     @* <a class="link-dark" type="button" onclick="removeLogoConfirmation(@Model.ProjectLogos[i].Id)">Remove</a> *@
-                                                    <a class="link-dark" type="button" onclick="removeProjectLogoConfirmation(@Model.ProjectLogos[i].Id)">Remove</a>
+                                                    @* <a class="link-dark" type="button" onclick="removeProjectLogoConfirmation(@Model.ProjectLogos[i].Id)">Remove</a> *@
+                                                    <a class="link-dark" type="button" onclick="removeProjectLogoConfirmation(@i)">Remove</a>
                                                 </div>
                                             }
                                         </div>
