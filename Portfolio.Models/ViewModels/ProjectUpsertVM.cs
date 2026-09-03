@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace Portfolio.Models.ViewModels
         
         public int? Id { get; set; }
         public Project Project { get; set; }
+        [ValidateNever]
         public List<ProjectLogo> ProjectLogos { get; set; }
         public List<Logo>? Logos { get; set; }
     }

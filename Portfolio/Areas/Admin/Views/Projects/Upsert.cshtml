@@ -167,28 +167,28 @@
                             </div>
                             <div id="logoGroup" name="videos" multiple class="form-group">
                            
-                                @if (Model.ProjectLogos != null && Model.ProjectLogos.Count > 0)
+                                @if (Model.Project.ProjectLogos != null && Model.Project.ProjectLogos.Count > 0)
                                 {
                                     
 
-                                    @for (int i = 0; i < Model.ProjectLogos.Count; i++)
+                                    @for (int i = 0; i < Model.Project.ProjectLogos.Count; i++)
                                     {
                                         
  
                                             
                                             
-                                            <div class="border form-group rounded-2 my-2 shadow p-2 remove-project-logo-@Model.ProjectLogos[i].Id" style="background:white;">
-                                                <input asp-for="@Model.ProjectLogos[i].Id" hidden />
-                                                <input asp-for="@Model.ProjectLogos[i].ProjectId" hidden />
-                                                @* <input asp-for="@Model.ProjectLogos[i].LogoId" hidden /> *@
+                                            <div class="border form-group rounded-2 my-2 shadow p-2 remove-project-logo-@Model.Project.ProjectLogos[i].Id" style="background:white;">
+                                                <input asp-for="@Model.Project.ProjectLogos[i].Id" hidden />
+                                                <input asp-for="@Model.Project.ProjectLogos[i].ProjectId" hidden />
+                                                @* <input asp-for="@Model.Project.ProjectLogos[i].LogoId" hidden /> *@
                   
                                             <div class="form-floating py-2 mx-1 col-6">
-                                                @* <select asp-for="@Model.ProjectLogos[i].LogoId" class="form-select logo-select" data-val="true" onchange="updateDisplayLogo(@i);" data-val-required="The TypeId field is required." id="logo-select-@i" > *@
-                                                <select asp-for="@Model.ProjectLogos[i].LogoId" class="form-select logo-select" data-val="true" onchange="updateDisplayLogo(@i);" data-val-required="The TypeId field is required.">
+                                                @* <select asp-for="@Model.Project.ProjectLogos[i].LogoId" class="form-select logo-select" data-val="true" onchange="updateDisplayLogo(@i);" data-val-required="The TypeId field is required." id="logo-select-@i" > *@
+                                                <select asp-for="@Model.Project.ProjectLogos[i].LogoId" class="form-select logo-select" data-val="true" onchange="updateDisplayLogo(@i);" data-val-required="The TypeId field is required.">
                                             
                                                  @for (int j = 0; j < Model.Logos.Count; j++)
                                                  {
-                                                     if (Model.ProjectLogos[i].LogoId == Model.Logos[j].Id)
+                                                     if (Model.Project.ProjectLogos[i].LogoId == Model.Logos[j].Id)
                                                      {
                                                          <option value="@Model.Logos[j].Id" selected }>@Model.Logos[j].Name</option>;
                                                      }
@@ -201,7 +201,7 @@
                                                  
                                                  </select>
                                                  <label class="ms-2">Label</label>
-                                                 @* <span asp-validation-for="@Model.ProjectLogos[i].Title" class="text-danger"></span> *@
+                                                 @* <span asp-validation-for="@Model.Project.ProjectLogos[i].Title" class="text-danger"></span> *@
                                                  @* <span class="text-danger field-validation-valid" data-valmsg-for="Activities[${1}].Activity.TypeId" data-valmsg-replace="true"></span> *@
                                              </div>
                                             
@@ -217,17 +217,17 @@
                                             
                                             @* <svg viewBox="0 0 128 128"> *@
                                             
-                                                <div id="logo-preview-@i" data-toggle="tooltip" data-placement="top" title="@Model.ProjectLogos[i].Logo.Name" class="project-icon mx-2">
-                                                    @Html.Raw(Model.ProjectLogos[i].Logo.HTML)
+                                                <div id="logo-preview-@i" data-toggle="tooltip" data-placement="top" title="@Model.Project.ProjectLogos[i].Logo.Name" class="project-icon mx-2">
+                                                    @Html.Raw(Model.Project.ProjectLogos[i].Logo.HTML)
                                                 </div>
-                                            @* @Model.ProjectLogos[i].Logo.HTML *@
+                                            @* @Model.Project.ProjectLogos[i].Logo.HTML *@
                                             @* </svg> *@
                                             
 
                                             <div class="form-floating py-2 col-12">
-                                                <input asp-for="@Model.ProjectLogos[i].Priority" class="form-control border-1" />
-                                                <label asp-for="@Model.ProjectLogos[i].Priority" class="ms-2 text-dark"></label>
-                                                @* <span asp-validation-for="@Model.ProjectLogos[i].Priority" class="text-danger text!"></span> *@
+                                                <input asp-for="@Model.Project.ProjectLogos[i].Priority" class="form-control border-1" />
+                                                <label asp-for="@Model.Project.ProjectLogos[i].Priority" class="ms-2 text-dark"></label>
+                                                @* <span asp-validation-for="@Model.Project.ProjectLogos[i].Priority" class="text-danger text!"></span> *@
                                             </div>
 
                        
@@ -235,8 +235,8 @@
                                             @using (Html.BeginForm())
                                             {
                                                 <div style="display: flex; justify-content:end"> 
-                                                    @* <a class="link-dark" type="button" onclick="removeLogoConfirmation(@Model.ProjectLogos[i].Id)">Remove</a> *@
-                                                    @* <a class="link-dark" type="button" onclick="removeProjectLogoConfirmation(@Model.ProjectLogos[i].Id)">Remove</a> *@
+                                                    @* <a class="link-dark" type="button" onclick="removeLogoConfirmation(@Model.Project.ProjectLogos[i].Id)">Remove</a> *@
+                                                    @* <a class="link-dark" type="button" onclick="removeProjectLogoConfirmation(@Model.Project.ProjectLogos[i].Id)">Remove</a> *@
                                                     <a class="link-dark" type="button" onclick="removeProjectLogoConfirmation(@i)">Remove</a>
                                                 </div>
                                             }
@@ -279,7 +279,7 @@
             <script>
                 var videos = @Json.Serialize(Model.Project.Videos);
                 var logos = @Json.Serialize(Model.Logos);
-                var projectLogos = @Json.Serialize(Model.ProjectLogos);
+                var projectLogos = @Json.Serialize(Model.Project.ProjectLogos);
                 
             </script>
             <script src="~/js/projectsUpsert.js"></script>

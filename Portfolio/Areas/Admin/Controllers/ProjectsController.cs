@@ -24,26 +24,35 @@ namespace PortfolioWeb.Areas.Admin.Controllers
         {
             Console.WriteLine("in... ");
             Console.WriteLine("\tpublic IActionResult Index()");
-            List<Project> projects = _unitOfWork.Project.GetAll(includeProperties: "Videos").OrderBy(p => p.Order).ToList();
+            
+            // List<Project> projects = _unitOfWork.Project.GetAll(includeProperties: "Videos").OrderBy(p => p.Order).ToList();
+            List<Project> projects = _unitOfWork.Project.GetAll(includeProperties: "Videos,ProjectLogos,ProjectLogos.Logo").OrderBy(p => p.Order).ToList();
             return View(projects);
         }
 
         public IActionResult Upsert(int? id)
         {
-            UpsertVM.Project =  Project;
+            Console.WriteLine("Entering public IActionResult Upsert(int? id)");
+            UpsertVM.Project =  new Project();
+            UpsertVM.ProjectLogos = [];
+            UpsertVM.Project.Videos = [];
+            UpsertVM.Project.ProjectLogos = [];
+            UpsertVM.Logos = _unitOfWork.Logo.GetAll().ToList();
             
             if (id != null && id != 0)
             {
                 UpsertVM.Id = id;
                 UpsertVM.Project = _unitOfWork.Project.Get(p => p.Id == id, includeProperties: "Videos");
-                UpsertVM.Logos = _unitOfWork.Logo.GetAll().ToList();
-                UpsertVM.ProjectLogos = _unitOfWork.ProjectLogo.GetAll(l => l.ProjectId == id).ToList(); // .Where(l => l.ProjectId == id).ToList();
+                // UpsertVM.Logos = _unitOfWork.Logo.GetAll().ToList();
+                // UpsertVM.ProjectLogos = _unitOfWork.ProjectLogo.GetAll(l => l.ProjectId == id).ToList(); // .Where(l => l.ProjectId == id).ToList();
+                UpsertVM.Project.ProjectLogos = _unitOfWork.ProjectLogo.GetAll(l => l.ProjectId == id).ToList(); // .Where(l => l.ProjectId == id).ToList();
             }
-
-            if (UpsertVM.Project.Videos == null)
-            {
-                UpsertVM.Project.Videos = [];
-            }
+            // UpsertVM.Logos = _unitOfWork.Logo.GetAll().ToList();
+            // UpsertVM.ProjectLogos = _unitOfWork.ProjectLogo.GetAll(l => l.ProjectId == id).ToList(); // .Where(l => l.ProjectId == id).ToList();
+            // if (UpsertVM.Project.Videos == null)
+            // {
+            //     UpsertVM.Project.Videos = [];
+            // }
             
             return View(UpsertVM);
         }
@@ -62,93 +71,80 @@ namespace PortfolioWeb.Areas.Admin.Controllers
         // public IActionResult Upsert(ProjectUpsertVM updatedProject)
         public IActionResult Upsert(ProjectUpsertVM upsertVM, List<IFormFile> files)
         {
-            
+            Console.WriteLine("Entering  public IActionResult Upsert(ProjectUpsertVM upsertVM, List<IFormFile> files)");
             Project updatedProject = upsertVM.Project;
             Console.WriteLine("Id: " + updatedProject.Id);
             // Console.WriteLine("GitURL: " + updatedProject.GitUrl);
-            Console.WriteLine("Logo Count: " + updatedProject.ProjectLogos?.Count);
+            // Console.WriteLine("Logo Count: " + updatedProject.ProjectLogos?.Count);
+
+            // Console.WriteLine("Error count: " + ModelState.ErrorCount);
+
+            // foreach (var error in ViewData.ModelState.Values.SelectMany(modelState => modelState.Errors))
+            // {
+            //     
+            //     
+            //     Console.WriteLine("\t" + error.ErrorMessage);  
+            //     
+            // } 
             // Console.WriteLine("Logo : " + updatedProject.ProjectLogos.ToList()[0].Logo);
             if (!ModelState.IsValid)
             {
-                Console.WriteLine("Id: " + updatedProject.Id);
-                // Console.WriteLine("GitURL: " + updatedProject.GitUrl);
-                Console.WriteLine("Logo Count: " + updatedProject.ProjectLogos?.Count);
-                Console.WriteLine("Logo : " + updatedProject.ProjectLogos.ToList()[0].Logo);
-                // Console.WriteLine("Image: " + updatedProject.Image);
-                // Console.WriteLine("Active: " + updatedProject.Active);
-                // Console.WriteLine("Port: " + updatedProject.Port);
-                // Console.WriteLine("Desc: " + updatedProject.Description);
-                // Console.WriteLine("Order: " + updatedProject.Order);
-                Console.WriteLine(ModelState);
-                Console.WriteLine(ModelState.IsValid);
-                // for (int i = 0; i < ModelState.Values.ToList().Count; i++)
-                for (int i = 0; i < 4; i++)
-                {
-                    Console.Write(ModelState.Keys.ToList()[i]); 
-                    Console.Write(" - ");
-                    Console.WriteLine(ModelState.Values.ToList()[i].Errors.Count);
-                }
-           
-                // ProjectUpsertVM testUpsertVM = new();
-                // testUpsertVM.Project = updatedProject;
-                // Console.WriteLine("12321");
-                // UpsertVM.Project = updatedProject;
-                // UpsertVM.Logos = _unitOfWork.Logo.GetAll().ToList();
                 return View(UpsertVM);
-                // return View(updatedProject);
-                // UpsertVM.Project = new  Project();
-                // UpsertVM.Id = Project.Id;
-                // // UpsertVM.Project = _unitOfWork.Project.Get(p => p.Id == id, includeProperties: "Videos");
-                // UpsertVM.ProjectLogos = _unitOfWork.ProjectLogo.GetAll(l => l.ProjectId == Project.Id).ToList(); // .Where(l => l.ProjectId ==
-                
-                // return View(testUpsertVM);
             }
-            
-            Console.WriteLine(updatedProject.Image);
-            Console.WriteLine(updatedProject.Image);
-            Console.WriteLine(updatedProject.Image);
 
-            Console.WriteLine(files.Count);
-            Console.WriteLine(files.Count);
-            Console.WriteLine(files.Count);
-            Console.WriteLine(files.Count);
-            
+            // Console.WriteLine(updatedProject.Image);
+            // Console.WriteLine(updatedProject.Image);
+            // Console.WriteLine(updatedProject.Image);
+            //
+            // Console.WriteLine(files.Count);
+            // Console.WriteLine(files.Count);
+            // Console.WriteLine(files.Count);
+            // Console.WriteLine(files.Count);
+
+
+
             if (files != null && files.Count != 0)
             {
                 IFormFile file = files[0];
                 string oldFileName = updatedProject.Image;
                 updatedProject.Image = Guid.NewGuid().ToString() + "-" + file.FileName;
-            
+
                 // string imageDirectory = Path.Combine(_webHostEnvironment.WebRootPath, @"img\projects\");
                 string subDirectory = Path.Combine("img", "projects");
                 string imageDirectory = Path.Combine(_webHostEnvironment.WebRootPath, subDirectory);
-                
+
                 string newImagePath = Path.Combine(imageDirectory, updatedProject.Image);
                 string oldImagePath = Path.Combine(imageDirectory, oldFileName);
-            
+
                 if (!Directory.Exists(imageDirectory))
                 {
                     Directory.CreateDirectory(imageDirectory);
                 }
-                    
+
                 if (System.IO.File.Exists(oldImagePath))
                 {
-                    System.IO.File.Delete (oldImagePath);
+                    System.IO.File.Delete(oldImagePath);
                 }
+
                 using var fileStream = new FileStream(newImagePath, FileMode.Create);
                 file.CopyTo(fileStream);
             }
-            
-            
+
+
             // List<Video> videos = updatedProject.Videos;
             List<Video> videos = upsertVM.Project.Videos;
-            
+
             Console.WriteLine("videos null?... ");
-            
+
             if (videos != null)
             {
-                
+
                 Console.WriteLine("video count: " + videos.Count);
+                if (videos.Count > 0)
+                {
+                    Console.WriteLine("Video.ProjectId = " + videos[0].ProjectId);
+                }
+
                 foreach (var video in videos)
                 {
                     Console.WriteLine(video.Title);
@@ -162,13 +158,25 @@ namespace PortfolioWeb.Areas.Admin.Controllers
                     }
                 }
             }
-            
-            List<ProjectLogo> logos = upsertVM.ProjectLogos;
-            if (logos != null)
+
+            List<ProjectLogo> projectLogos = upsertVM.Project.ProjectLogos;
+
+            List<ProjectLogo> plTest = upsertVM.ProjectLogos;
+            if (plTest != null)
+            {
+                Console.WriteLine("plTest Count: " + plTest.Count);
+
+            }
+            else
+            {
+                Console.WriteLine("plTest Count: plTest != null");
+
+            }
+        if (projectLogos != null)
             {
                 Console.WriteLine("logos != null");
-                Console.WriteLine(logos.Count);
-                foreach (var projectLogo in upsertVM.ProjectLogos)
+                Console.WriteLine(projectLogos.Count);
+                foreach (var projectLogo in projectLogos)
                 {
                     Console.WriteLine("ID: "+ projectLogo.Id);
                     Console.WriteLine("LogoId: "+ projectLogo.LogoId);
@@ -188,13 +196,16 @@ namespace PortfolioWeb.Areas.Admin.Controllers
             if (updatedProject.Id == 0)
             {
                 _unitOfWork.Project.Add(updatedProject);
+              
+                Console.WriteLine("== 0, New Proj id: " + updatedProject.Id);
                 TempData["success"] = "Project created successfully";
             }
             else
             {
                 
                 // updatedProject.Videos = upsertVM.
-                updatedProject.ProjectLogos = upsertVM.ProjectLogos;
+                Console.WriteLine("!= 0, New Proj id: " + updatedProject.Id);
+                // updatedProject.ProjectLogos = upsertVM.ProjectLogos;
                 _unitOfWork.Project.Update(updatedProject);
                 TempData["success"] = "Project updated successfully";
             }
