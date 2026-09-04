@@ -131,81 +131,53 @@ namespace PortfolioWeb.Areas.Admin.Controllers
             }
 
 
-            // List<Video> videos = updatedProject.Videos;
-            List<Video> videos = upsertVM.Project.Videos;
 
-            Console.WriteLine("videos null?... ");
+            // List<Video> videos = upsertVM.Project.Videos;
+            // if (videos != null)
+            // {
+            //     foreach (var video in videos)
+            //     {
+            //         if (video.Id == 0)
+            //         {
+            //             _unitOfWork.Video.Add(video);
+            //         }
+            //         else
+            //         {
+            //             _unitOfWork.Video.Update(video);
+            //         }
+            //     }
+            // }
 
-            if (videos != null)
-            {
-
-                Console.WriteLine("video count: " + videos.Count);
-                if (videos.Count > 0)
-                {
-                    Console.WriteLine("Video.ProjectId = " + videos[0].ProjectId);
-                }
-
-                foreach (var video in videos)
-                {
-                    Console.WriteLine(video.Title);
-                    if (video.Id == 0)
-                    {
-                        _unitOfWork.Video.Add(video);
-                    }
-                    else
-                    {
-                        _unitOfWork.Video.Update(video);
-                    }
-                }
-            }
-
-            List<ProjectLogo> projectLogos = upsertVM.Project.ProjectLogos;
-
-            List<ProjectLogo> plTest = upsertVM.ProjectLogos;
-            if (plTest != null)
-            {
-                Console.WriteLine("plTest Count: " + plTest.Count);
-
-            }
-            else
-            {
-                Console.WriteLine("plTest Count: plTest != null");
-
-            }
-        if (projectLogos != null)
-            {
-                Console.WriteLine("logos != null");
-                Console.WriteLine(projectLogos.Count);
-                foreach (var projectLogo in projectLogos)
-                {
-                    Console.WriteLine("ID: "+ projectLogo.Id);
-                    Console.WriteLine("LogoId: "+ projectLogo.LogoId);
-                    Console.WriteLine("ProjectId: "+ projectLogo.ProjectId);
-                    Console.WriteLine("Priority: "+ projectLogo.Priority);
-                    if (projectLogo.Id == 0)
-                    {
-                        _unitOfWork.ProjectLogo.Add(projectLogo);
-                    }
-                    else
-                    {
-                        _unitOfWork.ProjectLogo.Update(projectLogo);
-                    }
-                }
-            }
+            // List<ProjectLogo> projectLogos = upsertVM.Project.ProjectLogos;
+            
+            // if (projectLogos != null)
+            //     {
+            //         Console.WriteLine("logos != null");
+            //         Console.WriteLine(projectLogos.Count);
+            //         foreach (var projectLogo in projectLogos)
+            //         {
+            //             Console.WriteLine("ID: "+ projectLogo.Id);
+            //             Console.WriteLine("LogoId: "+ projectLogo.LogoId);
+            //             Console.WriteLine("ProjectId: "+ projectLogo.ProjectId);
+            //             Console.WriteLine("Priority: "+ projectLogo.Priority);
+            //             if (projectLogo.Id == 0)
+            //             {
+            //                 _unitOfWork.ProjectLogo.Add(projectLogo);
+            //             }
+            //             else
+            //             {
+            //                 _unitOfWork.ProjectLogo.Update(projectLogo);
+            //             }
+            //         }
+            //     }
             
             if (updatedProject.Id == 0)
             {
                 _unitOfWork.Project.Add(updatedProject);
-              
-                Console.WriteLine("== 0, New Proj id: " + updatedProject.Id);
                 TempData["success"] = "Project created successfully";
             }
             else
             {
-                
-                // updatedProject.Videos = upsertVM.
-                Console.WriteLine("!= 0, New Proj id: " + updatedProject.Id);
-                // updatedProject.ProjectLogos = upsertVM.ProjectLogos;
                 _unitOfWork.Project.Update(updatedProject);
                 TempData["success"] = "Project updated successfully";
             }
