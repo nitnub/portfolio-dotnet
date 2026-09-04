@@ -22,17 +22,12 @@ namespace PortfolioWeb.Areas.Admin.Controllers
         
         public IActionResult Index()
         {
-            Console.WriteLine("in... ");
-            Console.WriteLine("\tpublic IActionResult Index()");
-            
-            // List<Project> projects = _unitOfWork.Project.GetAll(includeProperties: "Videos").OrderBy(p => p.Order).ToList();
             List<Project> projects = _unitOfWork.Project.GetAll(includeProperties: "Videos,ProjectLogos,ProjectLogos.Logo").OrderBy(p => p.Order).ToList();
             return View(projects);
         }
 
         public IActionResult Upsert(int? id)
         {
-            Console.WriteLine("Entering public IActionResult Upsert(int? id)");
             UpsertVM.Project =  new Project();
             UpsertVM.ProjectLogos = [];
             UpsertVM.Project.Videos = [];
@@ -66,50 +61,21 @@ namespace PortfolioWeb.Areas.Admin.Controllers
 
 
         [HttpPost]
-        // public IActionResult Upsert(Project updatedProject, List<IFormFile> files)
-        // public IActionResult Upsert(ProjectUpsertVM updatedProject, List<IFormFile> files)
-        // public IActionResult Upsert(ProjectUpsertVM updatedProject)
         public IActionResult Upsert(ProjectUpsertVM upsertVM, List<IFormFile> files)
         {
-            Console.WriteLine("Entering  public IActionResult Upsert(ProjectUpsertVM upsertVM, List<IFormFile> files)");
             Project updatedProject = upsertVM.Project;
-            Console.WriteLine("Id: " + updatedProject.Id);
-            // Console.WriteLine("GitURL: " + updatedProject.GitUrl);
-            // Console.WriteLine("Logo Count: " + updatedProject.ProjectLogos?.Count);
 
-            // Console.WriteLine("Error count: " + ModelState.ErrorCount);
-
-            // foreach (var error in ViewData.ModelState.Values.SelectMany(modelState => modelState.Errors))
-            // {
-            //     
-            //     
-            //     Console.WriteLine("\t" + error.ErrorMessage);  
-            //     
-            // } 
-            // Console.WriteLine("Logo : " + updatedProject.ProjectLogos.ToList()[0].Logo);
             if (!ModelState.IsValid)
             {
                 return View(UpsertVM);
             }
-
-            // Console.WriteLine(updatedProject.Image);
-            // Console.WriteLine(updatedProject.Image);
-            // Console.WriteLine(updatedProject.Image);
-            //
-            // Console.WriteLine(files.Count);
-            // Console.WriteLine(files.Count);
-            // Console.WriteLine(files.Count);
-            // Console.WriteLine(files.Count);
-
-
-
+            
             if (files != null && files.Count != 0)
             {
                 IFormFile file = files[0];
                 string oldFileName = updatedProject.Image;
                 updatedProject.Image = Guid.NewGuid().ToString() + "-" + file.FileName;
-
-                // string imageDirectory = Path.Combine(_webHostEnvironment.WebRootPath, @"img\projects\");
+                
                 string subDirectory = Path.Combine("img", "projects");
                 string imageDirectory = Path.Combine(_webHostEnvironment.WebRootPath, subDirectory);
 
@@ -149,7 +115,6 @@ namespace PortfolioWeb.Areas.Admin.Controllers
             // }
 
             // List<ProjectLogo> projectLogos = upsertVM.Project.ProjectLogos;
-            
             // if (projectLogos != null)
             //     {
             //         Console.WriteLine("logos != null");
@@ -201,7 +166,10 @@ namespace PortfolioWeb.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            string imageDirectory = Path.Combine(_webHostEnvironment.WebRootPath, @"img\projects\");
+            
+            string subDirectory = Path.Combine("img", "projects");
+            // string imageDirectory = Path.Combine(_webHostEnvironment.WebRootPath, @"img\projects\");
+            string imageDirectory = Path.Combine(_webHostEnvironment.WebRootPath, subDirectory);
             string imagePath = Path.Combine(imageDirectory, projectToRemove.Image);
 
 

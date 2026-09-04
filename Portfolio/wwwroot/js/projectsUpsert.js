@@ -1,5 +1,6 @@
 ﻿
 var newId = videos != null ? Object.keys(videos).length : 0;
+var newProjectLogoId = projectLogos != null ? Object.keys(projectLogos).length : 0;
 
 function addVideo(projectId) {
     var videoGroup = document.getElementById('videoGroup')
@@ -53,19 +54,7 @@ function addVideo(projectId) {
     newId++;
 }
 
-
-
-
-
-
-
-
-
-
-
-
 function removeVideo(id) {
-    console.log("removeVideo called w/", id);
     $.ajax({
         url: `/Admin/Projects/DeleteVideo/${id}`,
         type: 'DELETE',
@@ -99,37 +88,20 @@ function cancelRemoveVideo() {
 }
 
 
-
 // Logo
-
-
 function updateDisplayLogo(id) {
-
-    // const selectionId = $('#logo-select-' + id).val()
-    // const selectionId = $(`#Project_ProjectLogos_${newProjectLogoId}__LogoId`).val();
-    // Project_ProjectLogos_1__LogoId
-    
     const selectionId = $(`#Project_ProjectLogos_${id}__LogoId`).val();
-    console.log("newProjectLogoId = ", newProjectLogoId);
-    console.log("newProjectLogoId = ", newProjectLogoId);
-    console.log("Card ID = ", id);
-    console.log("Selection ID = ", selectionId);
     $.ajax({
         url: `/Admin/Logos/Get/${selectionId}`,
         type: 'GET',
         contentType: 'application/json',
         success: function (data) {
             if (data.success) {
-                console.log("data:");
-                console.log(data);
                 $('#logo-preview-' + id).html(data.logo.html);
-                // $(`#Project_ProjectLogos_${id}__LogoId`).html(data.logo.html);
             }
         }
     })
 }
-
-
 
 function addLogo(projectId) {
     var logoGroup = document.getElementById('logoGroup')
@@ -137,14 +109,10 @@ function addLogo(projectId) {
 
     div.setAttribute("class", "border form-group rounded-2 my-2 shadow bg-white p-2 remove-project-logo-new-" + newProjectLogoId);
 
-    div.innerHTML = `
-<!--        <input hidden="" type="number" data-val="true" data-val-required="The Id field is required." id="logos_${newProjectLogoId}__Id" name="Logos[${newProjectLogoId}].Id" value="${newProjectLogoId + 1}"><input name="__Invariant" type="hidden">-->
-<!--        <input hidden="" type="number" data-val="true" data-val-required="The Id field is required." id="Project_ProjectLogos_${newProjectLogoId}__Id" name="Project_ProjectLogos_[${newProjectLogoId}].Id" value="${newProjectLogoId + 1}"><input name="__Invariant" type="hidden">-->
-        
+    div.innerHTML = `        
           <div class="border form-group rounded-2 my-2 shadow p-2"  style="background:white;">
                                   
             <div class="form-floating py-2 mx-1 col-6">
-<!--                <select class="form-select logo-select" data-val="true" onchange=updateDisplayLogo(${newProjectLogoId}); data-val-required="The TypeId field is required." id="logo-select-${newProjectLogoId}" >                                             -->
                 <select class="form-select logo-select" data-val="true" onchange=updateDisplayLogo(${newProjectLogoId}); data-val-required="The TypeId field is required." id="Project_ProjectLogos_${newProjectLogoId}__LogoId" name="Project.ProjectLogos[${newProjectLogoId}].LogoId" >                                             
                  </select>
                  <label class="ms-2">Label</label>
@@ -164,33 +132,19 @@ function addLogo(projectId) {
         </div>`
 
     logoGroup.appendChild(div)
-
-    // $('#logo-preview-' + id).html(data.logo.html);
-    // $('#logo-preview-' + newProjectLogoId).html(logos[0].html);
-    // "logo-preview-${newProjectLogoId}"
-
+    
     for (let i = 0; i < logos.length; i++) {
-        // let options = "<option > $(projectLogos[i].name)</option>"
-        console.log(`<option > ${logos[i].name}</option>`);
-        // $('#logo-select-' + newProjectLogoId).append(`<option value="${logos[i].id}" > ${logos[i].name}</option>`);
-        // $('#logo-select-' + newProjectLogoId).trigger('change');
         $(`#Project_ProjectLogos_${newProjectLogoId}__LogoId`).append(`<option value="${logos[i].id}" > ${logos[i].name}</option>`);
         $(`#Project_ProjectLogos_${newProjectLogoId}__LogoId`).trigger('change');
     }
 
     // set default preview
     $('#logo-preview-' + newProjectLogoId).html(logos[0].html);
-    // "logo-preview-${newProjectLogoId}"
-
-
-
-    console.log(`newProjectLogoId: ${newProjectLogoId}`);
+    
     newProjectLogoId++;
 }
 
-
 function removeProjectLogo(id) {
-    console.log("removeLogo called w/", id);
     $.ajax({
         url: `/Admin/Projects/DeleteProjectLogo/${id}`,
         type: 'DELETE',
@@ -205,32 +159,12 @@ function removeProjectLogo(id) {
     })
 }
 
-
 function removeProjectLogoConfirmation(cardId) {
-    console.log("in remove...");
-    // const selectionId = $('#logo-select-' + cardId).val();
-    // const selectionId = $('#logo-select-' + id).val()
+
     const selectionId = $(`#Project_ProjectLogos_${cardId}__LogoId`).val()
-    // const selectionId = $(`.remove-video-${cardId}`)[0];
-    // const selection = $(`.remove-video-${cardId}`);
-    // console.log(selection);
-    // remove-video-
     const logo = logos.find(l => l.id === Number(selectionId));
-
-    console.log("projectLogos");
-    console.log(projectLogos);
     const projectLogo = projectLogos.find(l => l.logoId === Number(selectionId));
-    console.log("logo:");
-    console.log(logo);
-    console.log("projectLogo");
-    console.log(projectLogo);
-    console.log("in remove 2...");
-
-
-    // const selectionId = $('#logo-select-' + id).val();
-    console.log("Card ID = ", cardId);
-    console.log("Selection ID = ", selectionId);
-
+    
     $('.delete-attribute-modal').modal('show');
     $('.modal-body').html(`Permanently remove logo "<b>${logo.name}</b>" from project?`);
     $('.modal-footer').html(`
@@ -246,7 +180,3 @@ function removeNewProjectLogo(id) {
     $('.remove-project-logo-new-' + id).remove();
     newProjectLogoId--;
 }
-
-
-
-

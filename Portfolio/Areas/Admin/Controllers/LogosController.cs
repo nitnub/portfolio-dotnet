@@ -73,6 +73,7 @@ namespace PortfolioWeb.Areas.Admin.Controllers
         
         public IActionResult Delete(int? id)
         {
+            Console.WriteLine("In Delete...");
             if (id == null || id == 0)
             {
                 return NotFound();
