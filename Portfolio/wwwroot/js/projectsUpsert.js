@@ -140,7 +140,6 @@ function addLogo(projectId) {
 
     // set default preview
     $('#logo-preview-' + newProjectLogoId).html(logos[0].html);
-    
     newProjectLogoId++;
 }
 
@@ -160,7 +159,6 @@ function removeProjectLogo(id) {
 }
 
 function removeProjectLogoConfirmation(cardId) {
-
     const selectionId = $(`#Project_ProjectLogos_${cardId}__LogoId`).val()
     const logo = logos.find(l => l.id === Number(selectionId));
     const projectLogo = projectLogos.find(l => l.logoId === Number(selectionId));

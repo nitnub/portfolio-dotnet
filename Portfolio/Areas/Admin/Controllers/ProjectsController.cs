@@ -46,8 +46,7 @@ namespace PortfolioWeb.Areas.Admin.Controllers
             List<Project> projectList = _unitOfWork.Project.GetAll(includeProperties: "Videos").OrderBy(p => p.Order).ToList();
             return Json(new { data = projectList });
         }
-
-
+        
         [HttpPost]
         public IActionResult Upsert(ProjectUpsertVM upsertVM, List<IFormFile> files)
         {

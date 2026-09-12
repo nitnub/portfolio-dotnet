@@ -94,7 +94,6 @@
                             <label asp-for="@Model.Project.Image" class="ms-2"></label>
                         </div>
                         <div>
-
                             <h3>Videos</h3>
                             <div style="display: flex; justify-content: flex-end;">
                                 <a onclick="addVideo(@Model.Project.Id)" class="btn btn-success">Add Video</a>
@@ -155,35 +154,20 @@
 
                             </div>
                         </div>
-
-                        
-                        
-                        
                          <div>
-
                             <h3>Logos</h3>
                             <div style="display: flex; justify-content: flex-end;">
                                 <a onclick="addLogo(@Model.Project.Id)" class="btn btn-success">Add Logo</a>
                             </div>
                             <div id="logoGroup" name="videos" multiple class="form-group">
-                           
                                 @if (Model.Project.ProjectLogos != null && Model.Project.ProjectLogos.Count > 0)
                                 {
-                                    
-
                                     @for (int i = 0; i < Model.Project.ProjectLogos.Count; i++)
                                     {
-                                        
- 
-                                            
-                                            
                                             <div class="border form-group rounded-2 my-2 shadow p-2 remove-project-logo-@Model.Project.ProjectLogos[i].Id" style="background:white;">
                                                 <input asp-for="@Model.Project.ProjectLogos[i].Id" hidden />
                                                 <input asp-for="@Model.Project.ProjectLogos[i].ProjectId" hidden />
-                                                @* <input asp-for="@Model.Project.ProjectLogos[i].LogoId" hidden /> *@
-                  
                                             <div class="form-floating py-2 mx-1 col-6">
-                                                @* <select asp-for="@Model.Project.ProjectLogos[i].LogoId" class="form-select logo-select" data-val="true" onchange="updateDisplayLogo(@i);" data-val-required="The TypeId field is required." id="logo-select-@i" > *@
                                                 <select asp-for="@Model.Project.ProjectLogos[i].LogoId" class="form-select logo-select" data-val="true" onchange="updateDisplayLogo(@i);" data-val-required="The TypeId field is required.">
                                             
                                                  @for (int j = 0; j < Model.Logos.Count; j++)
@@ -196,58 +180,28 @@
                                                      {
                                                          <option value="@Model.Logos[j].Id"   }>@Model.Logos[j].Name</option>;
                                                      }
-                                                     
                                                  }
-                                                 
                                                  </select>
                                                  <label class="ms-2">Label</label>
-                                                 @* <span asp-validation-for="@Model.Project.ProjectLogos[i].Title" class="text-danger"></span> *@
-                                                 @* <span class="text-danger field-validation-valid" data-valmsg-for="Activities[${1}].Activity.TypeId" data-valmsg-replace="true"></span> *@
                                              </div>
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            @* <div class="form-floating py-2 form col-12"> *@
-                                            @*     <input asp-for="@Model.Videos[i].Title" class="form-control border-1" /> *@
-                                            @*     <label asp-for="@Model.Videos[i].Title" class="ms-2 text-dark"></label> *@
-                                            @*     <span asp-validation-for="@Model.Videos[i].Title" class="text-danger"></span> *@
-                                            @* </div> *@
-                                            
-                                            @* <svg viewBox="0 0 128 128"> *@
-                                            
                                                 <div id="logo-preview-@i" data-toggle="tooltip" data-placement="top" title="@Model.Project.ProjectLogos[i].Logo.Name" class="project-icon mx-2">
                                                     @Html.Raw(Model.Project.ProjectLogos[i].Logo.HTML)
                                                 </div>
-                                            @* @Model.Project.ProjectLogos[i].Logo.HTML *@
-                                            @* </svg> *@
-                                            
-
                                             <div class="form-floating py-2 col-12">
                                                 <input asp-for="@Model.Project.ProjectLogos[i].Priority" class="form-control border-1" />
                                                 <label asp-for="@Model.Project.ProjectLogos[i].Priority" class="ms-2 text-dark"></label>
-                                                @* <span asp-validation-for="@Model.Project.ProjectLogos[i].Priority" class="text-danger text!"></span> *@
                                             </div>
-
-                       
-
                                             @using (Html.BeginForm())
                                             {
                                                 <div style="display: flex; justify-content:end"> 
-                                                    @* <a class="link-dark" type="button" onclick="removeLogoConfirmation(@Model.Project.ProjectLogos[i].Id)">Remove</a> *@
-                                                    @* <a class="link-dark" type="button" onclick="removeProjectLogoConfirmation(@Model.Project.ProjectLogos[i].Id)">Remove</a> *@
                                                     <a class="link-dark" type="button" onclick="removeProjectLogoConfirmation(@i)">Remove</a>
                                                 </div>
                                             }
                                         </div>
                                     }
                                 }
-
                             </div>
                         </div>
-                        
-                        
                         
                         <div class="row pt-2">
                             <div class="col-6">

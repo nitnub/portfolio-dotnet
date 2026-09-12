@@ -23,18 +23,10 @@ namespace PortfolioWeb.Areas.Admin.Controllers
         public IActionResult Upsert(int? id)
         {
             Logo = new Logo();
-
             if (id != null && id != 0)
             {
-                // Logo = _unitOfWork.Logo.Get(l => l.Id == id, includeProperties: "Videos");
                 Logo = _unitOfWork.Logo.Get(l => l.Id == id);
             }
-
-            // if (Project.Videos == null)
-            // {
-            //     Project.Videos = [];
-            // }
-
             return View(Logo);
         }
 
@@ -85,9 +77,7 @@ namespace PortfolioWeb.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-
-
-
+            
             _unitOfWork.Logo.Remove(logoToRemove);
             _unitOfWork.Save();
 

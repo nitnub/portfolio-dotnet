@@ -11,7 +11,6 @@ namespace PortfolioWeb.Areas.Admin.Controllers
     [Authorize]
     public class UsageController(IUnitOfWork unitOfWork) : Controller
     {
-
         private readonly IUnitOfWork _unitOfWork = unitOfWork;
         
         public IActionResult Index()
@@ -22,7 +21,6 @@ namespace PortfolioWeb.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-
             var GENERAL_NAV = "Nav Link";
             var PORTFOLIO_PAGE = "nickbryant.dev";
 
@@ -33,8 +31,7 @@ namespace PortfolioWeb.Areas.Admin.Controllers
             var videos = _unitOfWork.Video.GetAll();
             var projects = _unitOfWork.Project.GetAll();
             var guestActions = _unitOfWork.GuestAction.GetAll();
-
-
+            
             foreach (var project in projects)
             {
                 if (project.GitUrl != null)
