@@ -393,7 +393,7 @@ namespace Portfolio.DataAccess.Migrations
             // migrationBuilder.CreateIndex(
             //     name: "IX_Videos_ProjectId",
             //     table: "Videos",
-            //     column: "ProjectId");
+            //     column: "ProjectId"); 
         }
 
         /// <inheritdoc />
