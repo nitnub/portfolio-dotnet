@@ -1,49 +1,50 @@
 ﻿
 var newId = videos != null ? Object.keys(videos).length : 0;
+var newProjectLogoId = projectLogos != null ? Object.keys(projectLogos).length : 0;
 
 function addVideo(projectId) {
     var videoGroup = document.getElementById('videoGroup')
     var div = document.createElement("div");
 
-    div.setAttribute("class", "border form-group rounded-2 my-2 shadow bg-white p-2 remove-video-new" + newId);
+    div.setAttribute("class", "border form-group rounded-2 my-2 shadow bg-white p-2 remove-video-new-" + newId);
 
     div.innerHTML = `
-        <input hidden="" type="number" data-val="true" data-val-required="The Id field is required." id="Videos_${newId}__Id" name="Videos[${newId}].Id" value="0"><input name="__Invariant" type="hidden" value="Videos[${newId}].Id">
-        <input hidden="" type="number" data-val="true" data-val-required="The ProjectId field is required." id="Videos_${newId}__ProjectId" name="Videos[${newId}].ProjectId" value="${projectId}"><input name="__Invariant" type="hidden" value="Videos[${newId}].ProjectId">
+        <input hidden="" type="number" data-val="true" data-val-required="The Id field is required." id="Project_Videos_${newId}__Id" name="Project.Videos[${newId}].Id" value="0"><input name="__Invariant" type="hidden" value="Project.Videos[${newId}].Id">
+        <input hidden="" type="number" data-val="true" data-val-required="The ProjectId field is required." id="Project_Videos_${newId}__ProjectId" name="Project.Videos[${newId}].ProjectId" value="${projectId}"><input name="__Invariant" type="hidden" value="Project.Videos[${newId}].ProjectId">
         <div class="form-floating py-2 form col-12">
-            <input class="form-control border-1" type="text" data-val="true" data-val-required="The Title field is required." id="Videos_${newId}__Title" name="Videos[${newId}].Title" >
-            <label class="ms-2 text-dark" for="Videos_${newId}__Title">Title</label>
-            <span class="text-danger field-validation-valid" data-valmsg-for="Videos[${newId}].Title" data-valmsg-replace="true"></span>
+            <input class="form-control border-1" type="text" data-val="true" data-val-required="The Title field is required." id="Project_Videos_${newId}__Title" name="Project.Videos[${newId}].Title" >
+            <label class="ms-2 text-dark" for="Project_Videos_${newId}__Title">Title</label>
+            <span class="text-danger field-validation-valid" data-valmsg-for="Project.Videos[${newId}].Title" data-valmsg-replace="true"></span>
         </div>
 
         <div class="form-floating py-2 col-12">
-            <input class="form-control border-1" type="text" data-val="true" data-val-required="The Description field is required." id="Videos_${newId}__Description" name="Videos[${newId}].Description" >
-            <label class="ms-2 text-dark" for="Videos_${newId}__Description">Description</label>
-            <span class="text-danger field-validation-valid" data-valmsg-for="Videos[${newId}].Description" data-valmsg-replace="true"></span>
+            <input class="form-control border-1" type="text" data-val="true" data-val-required="The Description field is required." id="Project_Videos_${newId}__Description" name="Project.Videos[${newId}].Description" >
+            <label class="ms-2 text-dark" for="Project_Videos_${newId}__Description">Description</label>
+            <span class="text-danger field-validation-valid" data-valmsg-for="Project.Videos[${newId}].Description" data-valmsg-replace="true"></span>
         </div>
 
         <div class="form-floating py-2 col-12">
-            <input class="form-control border-1" type="text" data-val="true" data-val-required="The Tool Tip field is required." id="Videos_${newId}__ToolTip" name="Videos[${newId}].ToolTip" >
-            <label class="ms-2 text-dark" for="Videos_${newId}__ToolTip">Tool Tip</label>
-            <span class="text-danger field-validation-valid" data-valmsg-for="Videos[${newId}].ToolTip" data-valmsg-replace="true"></span>
+            <input class="form-control border-1" type="text" data-val="true" data-val-required="The Tool Tip field is required." id="Project_Videos_${newId}__ToolTip" name="Project.Videos[${newId}].ToolTip" >
+            <label class="ms-2 text-dark" for="Project_Videos_${newId}__ToolTip">Tool Tip</label>
+            <span class="text-danger field-validation-valid" data-valmsg-for="Project.Videos[${newId}].ToolTip" data-valmsg-replace="true"></span>
         </div>
 
         <div class="form-floating py-2 col-12">
-            <input class="form-control border-1" type="text" data-val="true" data-val-required="The URL field is required." id="Videos_${newId}__URL" name="Videos[${newId}].URL" >
-            <label class="ms-2 text-dark" for="Videos_${newId}__URL">URL</label>
-            <span class="text-danger field-validation-valid" data-valmsg-for="Videos[${newId}].URL" data-valmsg-replace="true"></span>
+            <input class="form-control border-1" type="text" data-val="true" data-val-required="The URL field is required." id="Project_Videos_${newId}__URL" name="Project.Videos[${newId}].URL" >
+            <label class="ms-2 text-dark" for="Project_Videos_${newId}__URL">URL</label>
+            <span class="text-danger field-validation-valid" data-valmsg-for="Project.Videos[${newId}].URL" data-valmsg-replace="true"></span>
         </div>
 
         <div class="form-floating py-2 col-12">
-            <input class="form-control border-1" type="number" data-val="true" data-val-required="The Order field is required." id="Videos_${newId}__Order" name="Videos[${newId}].Order" value="${newId + 1}"><input name="__Invariant" type="hidden" value="${newId + 1}">
-            <label class="ms-2 text-dark" for="Videos_${newId}__Order">Order</label>
-            <span class="text-danger text! field-validation-valid" data-valmsg-for="Videos[${newId}].Order" data-valmsg-replace="true"></span>
+            <input class="form-control border-1" type="number" data-val="true" data-val-required="The Order field is required." id="Project_Videos_${newId}__Order" name="Project.Videos[${newId}].Order" value="${newId + 1}"><input name="__Invariant" type="hidden" value="${newId + 1}">
+            <label class="ms-2 text-dark" for="Project_Videos_${newId}__Order">Order</label>
+            <span class="text-danger text! field-validation-valid" data-valmsg-for="Project.Videos[${newId}].Order" data-valmsg-replace="true"></span>
         </div>
 
         <div class="form-check py-2 col-12">
-            <input class="form-check-input border-1" type="checkbox" checked="checked" data-val="true" data-val-required="The Active field is required." id="Videos_${newId}__Active" name="Videos[${newId}].Active" value="true">
-            <label class="form-check-label ms-2 text-dark" for="Videos_${newId}__Active">Active</label>
-            <span class="text-danger field-validation-valid" data-valmsg-for="Videos[${newId}].Active" data-valmsg-replace="true"></span>
+            <input class="form-check-input border-1" type="checkbox" checked="checked" data-val="true" data-val-required="The Active field is required." id="Project_Videos_${newId}__Active" name="Project.Videos[${newId}].Active" value="true">
+            <label class="form-check-label ms-2 text-dark" for="Project_Videos_${newId}__Active">Active</label>
+            <span class="text-danger field-validation-valid" data-valmsg-for="Project.Videos[${newId}].Active" data-valmsg-replace="true"></span>
         </div>
         <div style="display: flex; justify-content:end">
             <a class="link-dark" type="button" onclick="removeNewVideo(${newId})">Remove</a>
@@ -54,7 +55,6 @@ function addVideo(projectId) {
 }
 
 function removeVideo(id) {
-    console.log("removeVideo called w/", id);
     $.ajax({
         url: `/Admin/Projects/DeleteVideo/${id}`,
         type: 'DELETE',
@@ -62,7 +62,7 @@ function removeVideo(id) {
         success: function (data) {
             if (data.success) {
                 $('.remove-video-' + id).remove();
-                $('.delete-video-modal').modal('hide');
+                $('.delete-attribute-modal').modal('hide');
                 newId--;
             }
         }
@@ -70,13 +70,13 @@ function removeVideo(id) {
 }
 
 function removeNewVideo(id) {
-    $('.remove-video-new' + id).remove();
+    $('.remove-video-new-' + id).remove();
     newId--;
 }
 
 function removeVideoConfirmation(id) {
     const video = videos.find(v => v.id === id);
-    $('.delete-video-modal').modal('show');
+    $('.delete-attribute-modal').modal('show');
     $('.modal-body').html(`Permanently delete video "<b>${video.title}</b>"?`);
     $('.modal-footer').html(`
         <a onClick=cancelRemoveVideo() class="btn btn-secondary mx-2">Cancel</a>
@@ -84,5 +84,97 @@ function removeVideoConfirmation(id) {
 }
 
 function cancelRemoveVideo() {
-    $('.delete-video-modal').modal('hide');
+    $('.delete-attribute-modal').modal('hide');
+}
+
+
+// Logo
+function updateDisplayLogo(id) {
+    const selectionId = $(`#Project_ProjectLogos_${id}__LogoId`).val();
+    $.ajax({
+        url: `/Admin/Logos/Get/${selectionId}`,
+        type: 'GET',
+        contentType: 'application/json',
+        success: function (data) {
+            if (data.success) {
+                $('#logo-preview-' + id).html(data.logo.html);
+            }
+        }
+    })
+}
+
+function addLogo(projectId) {
+    var logoGroup = document.getElementById('logoGroup')
+    var div = document.createElement("div");
+
+    div.setAttribute("class", "border form-group rounded-2 my-2 shadow bg-white p-2 remove-project-logo-new-" + newProjectLogoId);
+
+    div.innerHTML = `        
+          <div class="border form-group rounded-2 my-2 shadow p-2"  style="background:white;">
+                                  
+            <div class="form-floating py-2 mx-1 col-6">
+                <select class="form-select logo-select" data-val="true" onchange=updateDisplayLogo(${newProjectLogoId}); data-val-required="The TypeId field is required." id="Project_ProjectLogos_${newProjectLogoId}__LogoId" name="Project.ProjectLogos[${newProjectLogoId}].LogoId" >                                             
+                 </select>
+                 <label class="ms-2">Label</label>
+             </div>
+                <div id="logo-preview-${newProjectLogoId}" data-toggle="tooltip" data-placement="top" title="@Model.Project.ProjectLogos[i].Logo.Name" class="project-icon mx-2">
+            </div>
+
+        <div class="form-floating py-2 col-12">
+            <input class="form-control border-1" type="number" data-val="true" data-val-required="The Priority field is required." id="Project_ProjectLogos_${newProjectLogoId}__Priority" name="Project.ProjectLogos[${newProjectLogoId}].Priority" value="${newProjectLogoId + 1}"><input name="__Invariant" type="hidden" value="${newProjectLogoId + 1}">
+            <label class="ms-2 text-dark" for="Project_ProjectLogos_${newProjectLogoId}__Priority">Priority</label>
+            <span class="text-danger text! field-validation-valid" data-valmsg-for="Project.ProjectLogos[${newProjectLogoId}].Priority" data-valmsg-replace="true"></span>
+        </div>
+
+  
+        <div style="display: flex; justify-content:end">
+            <a class="link-dark" type="button" onclick="removeNewProjectLogo(${newProjectLogoId})">Remove</a>
+        </div>`
+
+    logoGroup.appendChild(div)
+    
+    for (let i = 0; i < logos.length; i++) {
+        $(`#Project_ProjectLogos_${newProjectLogoId}__LogoId`).append(`<option value="${logos[i].id}" > ${logos[i].name}</option>`);
+        $(`#Project_ProjectLogos_${newProjectLogoId}__LogoId`).trigger('change');
+    }
+
+    // set default preview
+    $('#logo-preview-' + newProjectLogoId).html(logos[0].html);
+    newProjectLogoId++;
+}
+
+function removeProjectLogo(id) {
+    $.ajax({
+        url: `/Admin/Projects/DeleteProjectLogo/${id}`,
+        type: 'DELETE',
+        contentType: 'application/json',
+        success: function (data) {
+            if (data.success) {
+                $('.remove-project-logo-' + id).remove();
+                $('.delete-attribute-modal').modal('hide');
+                newProjectLogoId--;
+            }
+        }
+    })
+}
+
+function removeProjectLogoConfirmation(cardId) {
+    const selectionId = $(`#Project_ProjectLogos_${cardId}__LogoId`).val()
+    const logo = logos.find(l => l.id === Number(selectionId));
+    const projectLogo = projectLogos.find(l => l.logoId === Number(selectionId));
+    
+    $('.delete-attribute-modal').modal('show');
+    $('.modal-body').html(`Permanently remove logo "<b>${logo.name}</b>" from project?`);
+    $('.modal-footer').html(`
+        <a onClick=cancelRemoveProjectLogo() class="btn btn-secondary mx-2">Cancel</a>
+        <a onClick=removeProjectLogo(${projectLogo.id}) class="btn btn-danger mx-2">Delete</a>`);
+}
+
+function cancelRemoveProjectLogo() {
+    $('.delete-attribute-modal').modal('hide');
+}
+
+function removeNewProjectLogo(id) {
+    $('.remove-project-logo-new-' + id).remove();
+    newProjectLogoId--;
 }

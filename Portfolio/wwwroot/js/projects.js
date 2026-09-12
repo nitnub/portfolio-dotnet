@@ -35,7 +35,6 @@ function loadDataTable() {
 }
 
 function visibleIcon(active) {
-
     var color = active ? 'text-primary' : '';
     var icon = active ? 'bi-eye-fill' : 'bi-eye-slash';
     

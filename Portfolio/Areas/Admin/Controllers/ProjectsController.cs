@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Portfolio.DataAccess.Repository;
 using Portfolio.DataAccess.Repository.IRepository;
 using Portfolio.Models;
+using Portfolio.Models.ViewModels;
 
 namespace PortfolioWeb.Areas.Admin.Controllers
 {
@@ -12,57 +13,59 @@ namespace PortfolioWeb.Areas.Admin.Controllers
     {
         private readonly IUnitOfWork _unitOfWork = unitOfWork;
         private readonly IWebHostEnvironment _webHostEnvironment = webHostEnvironment;
-
-        public Project Project { get; set; }
+        
+        static ProjectUpsertVM UpsertVM = new();
+        
         public IActionResult Index()
         {
-            List<Project> projects = _unitOfWork.Project.GetAll(includeProperties: "Videos").OrderBy(p => p.Order).ToList();
-
+            List<Project> projects = _unitOfWork.Project.GetAll(includeProperties: "Videos,ProjectLogos,ProjectLogos.Logo").OrderBy(p => p.Order).ToList();
             return View(projects);
         }
 
         public IActionResult Upsert(int? id)
         {
-            Project = new Project();
-
+            UpsertVM.Project =  new Project();
+            UpsertVM.ProjectLogos = [];
+            UpsertVM.Project.Videos = [];
+            UpsertVM.Project.ProjectLogos = [];
+            UpsertVM.Logos = _unitOfWork.Logo.GetAll().ToList();
+            
             if (id != null && id != 0)
             {
-                Project = _unitOfWork.Project.Get(p => p.Id == id, includeProperties: "Videos");
+                UpsertVM.Id = id;
+                UpsertVM.Project = _unitOfWork.Project.Get(p => p.Id == id, includeProperties: "Videos");
+                UpsertVM.Project.ProjectLogos = _unitOfWork.ProjectLogo.GetAll(l => l.ProjectId == id).ToList();
             }
-
-            if (Project.Videos == null)
-            {
-                Project.Videos = [];
-            }
-
-            return View(Project);
+            
+            return View(UpsertVM);
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
             List<Project> projectList = _unitOfWork.Project.GetAll(includeProperties: "Videos").OrderBy(p => p.Order).ToList();
-
             return Json(new { data = projectList });
         }
-
-
+        
         [HttpPost]
-        public IActionResult Upsert(Project updatedProject, List<IFormFile> files)
+        public IActionResult Upsert(ProjectUpsertVM upsertVM, List<IFormFile> files)
         {
-
+            Project updatedProject = upsertVM.Project;
 
             if (!ModelState.IsValid)
             {
-                return View(updatedProject);
+                return View(UpsertVM);
             }
+            
             if (files != null && files.Count != 0)
             {
                 IFormFile file = files[0];
                 string oldFileName = updatedProject.Image;
                 updatedProject.Image = Guid.NewGuid().ToString() + "-" + file.FileName;
+                
+                string subDirectory = Path.Combine("img", "projects");
+                string imageDirectory = Path.Combine(_webHostEnvironment.WebRootPath, subDirectory);
 
-                string imageDirectory = Path.Combine(_webHostEnvironment.WebRootPath, @"img\projects\");
                 string newImagePath = Path.Combine(imageDirectory, updatedProject.Image);
                 string oldImagePath = Path.Combine(imageDirectory, oldFileName);
 
@@ -70,36 +73,16 @@ namespace PortfolioWeb.Areas.Admin.Controllers
                 {
                     Directory.CreateDirectory(imageDirectory);
                 }
-                    
+
                 if (System.IO.File.Exists(oldImagePath))
                 {
-                    System.IO.File.Delete (oldImagePath);
+                    System.IO.File.Delete(oldImagePath);
                 }
 
                 using var fileStream = new FileStream(newImagePath, FileMode.Create);
                 file.CopyTo(fileStream);
             }
-
-
-            List<Video> videos = updatedProject.Videos;
-
-
-            if (videos != null)
-            {
-                foreach (var video in videos)
-                {
-                    if (video.Id == 0)
-                    {
-                        _unitOfWork.Video.Add(video);
-                    }
-                    else
-                    {
-                        _unitOfWork.Video.Update(video);
-                    }
-                }
-            }
             
-
             if (updatedProject.Id == 0)
             {
                 _unitOfWork.Project.Add(updatedProject);
@@ -130,7 +113,9 @@ namespace PortfolioWeb.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            string imageDirectory = Path.Combine(_webHostEnvironment.WebRootPath, @"img\projects\");
+            
+            string subDirectory = Path.Combine("img", "projects");
+            string imageDirectory = Path.Combine(_webHostEnvironment.WebRootPath, subDirectory);
             string imagePath = Path.Combine(imageDirectory, projectToRemove.Image);
 
 
@@ -165,6 +150,26 @@ namespace PortfolioWeb.Areas.Admin.Controllers
             _unitOfWork.Save();
 
             return Json(new { success = true, message = "Video successfully deleted" });
+        }
+        
+        [HttpDelete]
+        public IActionResult DeleteProjectLogo(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var projectLogoToRemove = _unitOfWork.ProjectLogo.Get(l => l.Id == id);
+            if (projectLogoToRemove == null)
+            {
+                return Json(new { success = true, message = $"Unable to delete projectLogo with id {id}" });
+            }
+
+            _unitOfWork.ProjectLogo.Remove(projectLogoToRemove);
+            _unitOfWork.Save();
+
+            return Json(new { success = true, message = "Project logo successfully deleted" });
         }
     }
 }

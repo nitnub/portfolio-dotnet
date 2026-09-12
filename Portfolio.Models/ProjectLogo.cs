@@ -14,8 +14,8 @@ namespace Portfolio.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        [ForeignKey(nameof(ProjectId))]
+    
+        [ForeignKey("ProjectId")]
         public int ProjectId { get; set; }
 
         [Required]

@@ -1,7 +1,7 @@
-﻿@model List<Project>
+﻿@model List<Logo>
 
 @{
-    ViewData["Title"] = "All Projects";
+    ViewData["Title"] = "Logos";
 }
 
 @if (TempData["Success"] != null)
@@ -21,7 +21,7 @@
     </div>
 }
 
-<!-- Delete Confirmation Modal (Project) -->
+<!-- Delete Confirmation Modal (Logo) -->
 <div class="modal delete-modal fade" role="dialog" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -34,12 +34,13 @@
     </div>
 </div>
 
+
 <div class="d-flex justify-content-center w-100">
     <div class="card col-10 border-0 my-4">
         <div class="card-header ml-0 py-3">
             <div class="row">
                 <div class="col-12 text-center">
-                    <h2 class="text-dark py-2">Projects</h2>
+                    <h2 class="text-dark py-2">Logo</h2>
                 </div>
             </div>
         </div>
@@ -48,25 +49,19 @@
                 <div class="col-6">
                 </div>
                 <div class="col-6 text-end">
-                    <a asp-area="Admin" asp-controller="Projects" asp-action="Upsert" class="btn btn-warning">
-                        <i class="bi bi-plus-circle"></i> Create New Project
+                    <a asp-area="Admin" asp-controller="Logos" asp-action="Upsert" class="btn btn-warning">
+                        <i class="bi bi-plus-circle"></i> Create New Logo
                     </a>
                 </div>
             </div>
-            <table id="projTable" class="table table-bordered table-striped">
+            <table id="logoTable" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Order</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Git Url</th>
-                        <th>Demo Url</th>
-                        <th>Image</th>
-                        <th>Image - Alt Text</th>
-                        <th>Videos</th>
-                        <th>Port</th>
-                        <th>Active</th>
+                        <th>Id</th>
+                        <th>Name / Tool Tip</th>
+                        <th>Preview</th>
                         <th></th>
+                        <th>Action</th>
                     </tr>
                 </thead>
             </table>
@@ -81,5 +76,5 @@
 <div class="chevron-right dark front"></div>
 
 @section Scripts {
-    <script src="~/js/projects.js"></script>
+    <script src="~/js/logos.js"></script>
 }

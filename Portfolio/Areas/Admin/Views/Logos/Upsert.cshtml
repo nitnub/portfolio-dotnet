@@ -1,0 +1,60 @@
+﻿@model Logo
+
+@{
+    ViewData["Title"] = "Upsesrt Logos";
+    string imageUrl = "Required";
+}
+
+<div class="row d-flex justify-content-center">
+    <div class="card shadow border-0 my-4 col-4">
+        <div class="card-header ml-0 py-3">
+            <div class="row">
+                <div class="text-center">
+                    <h2 class="text-dark py-2">@(Model.Id != 0 ? "Update" : "Create") Logo</h2>
+                </div>
+            </div>
+        </div>
+        <div class="card-body p-4">
+            <form method="post" class="row" enctype="multipart/form-data">
+                <input asp-for="@Model.Id" hidden />
+                <div class="row">
+                    <div class="">
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="@Model.Name" class="form-control border-0 shadow" />
+                            <label asp-for="@Model.Name" class="ms-2 text-dark"></label>
+                            <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating py-2 col-12">
+                            <textarea asp-for="@Model.HTML" class="form-control border-0 shadow"></textarea>
+                            <label asp-for="@Model.HTML" class="ms-2 text-dark"></label>
+                            <span asp-validation-for="@Model.HTML" class="text-danger"></span>
+                        </div>
+                        <div class="row pt-2">
+                            <div class="col-6">
+                                @if (Model.Id != 0)
+                                {
+                                    <button type="submit" class="btn btn-warning form-control">Update</button>
+                                }
+                                else
+                                {
+                                    <button type="submit" class="btn btn-warning form-control">Create</button>
+                                }
+                            </div>
+                            <div class="col-6">
+                                <a asp-area="Admin" asp-controller="Logos" asp-action="Index" class="btn btn-outline-light text-dark form-control">
+                                    Back to List
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+            <partial name="_ValidationScriptsPartial" />
+    }
+}

@@ -1,6 +1,5 @@
 ﻿
 $(document).ready(function () {
-
     if (typeof bio === 'undefined' || bio.text.length < 10) return;
 
     var picDiv = document.getElementsByClassName('bio-pic')[0];
