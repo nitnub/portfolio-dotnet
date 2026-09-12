@@ -110,4 +110,4 @@ setup.json
 # Local Environment Setup
 setup_env/
 setup_env.sh
-
+setup_app_user.sh
