@@ -13,9 +13,7 @@ namespace PortfolioWeb.Areas.Admin.Controllers
     {
 
         private readonly IUnitOfWork _unitOfWork = unitOfWork;
-
-        UsageVM UsageVM { get; set; }
-
+        
         public IActionResult Index()
         {
             return View();

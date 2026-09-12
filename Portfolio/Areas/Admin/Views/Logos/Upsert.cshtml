@@ -1,5 +1,4 @@
-﻿@* @model LogoVM *@
-@model Logo
+﻿@model Logo
 
 @{
     ViewData["Title"] = "Upsesrt Logos";
@@ -21,12 +20,6 @@
 
             <form method="post" class="row" enctype="multipart/form-data">
                 <input asp-for="@Model.Id" hidden />
-                @* @if (Model.Image != null && Model.Image.Length > 0) *@
-                @* { *@
-                @*     imageUrl = Model.Image; *@
-                @* } *@
-                @* <input asp-for="@Model.Image" value="@imageUrl" hidden /> *@
-
                 <div class="row">
                     <div class="">
                         <div class="form-floating py-2 col-12">
@@ -38,110 +31,6 @@
                             <textarea asp-for="@Model.HTML" class="form-control border-0 shadow"></textarea>
                             <label asp-for="@Model.HTML" class="ms-2 text-dark"></label>
                             <span asp-validation-for="@Model.HTML" class="text-danger"></span>
-                        </div>
-                        @* <div class="form-floating py-2 col-12"> *@
-                        @*     <input asp-for="@Model.GitUrl" class="form-control border-0 shadow" /> *@
-                        @*     <label asp-for="@Model.GitUrl" class="ms-2 text-dark">Git URL</label> *@
-                        @*     <span asp-validation-for="@Model.GitUrl" class="text-danger"></span> *@
-                        @* </div> *@
-                        @* <div class="form-floating py-2 col-12"> *@
-                        @*     <input asp-for="@Model.Port" class="form-control border-0 shadow" /> *@
-                        @*     <label asp-for="@Model.Port" class="ms-2 text-dark"></label> *@
-                        @*     <span asp-validation-for="@Model.Port" class="text-danger"></span> *@
-                        @* </div> *@
-                        @* <div class="form-floating py-2 col-12"> *@
-                        @*     <input asp-for="@Model.Order" class="form-control border-0 shadow" /> *@
-                        @*     <label asp-for="@Model.Order" class="ms-2 text-dark"></label> *@
-                        @*     <span asp-validation-for="@Model.Order" class="text-danger text!"></span> *@
-                        @* </div> *@
-                        @* <div class="form-floating py-2 col-12"> *@
-                        @*     <input asp-for="@Model.DemoUrl" class="form-control border-0 shadow" /> *@
-                        @*     <label asp-for="@Model.DemoUrl" class="ms-2 text-dark"></label> *@
-                        @*     <span asp-validation-for="@Model.DemoUrl" class="text-danger"></span> *@
-                        @* </div> *@
-                        @* <div class="form-floating py-2 col-12"> *@
-                        @*     <input asp-for="@Model.ImageAltText" class="form-control border-0 shadow" /> *@
-                        @*     <label asp-for="@Model.ImageAltText" class="ms-2 text-dark"></label> *@
-                        @*     <span asp-validation-for="@Model.ImageAltText" class="text-dark"></span> *@
-                        @* </div> *@
-                        @* <div class="form-check py-2 col-12"> *@
-                        @*     <input asp-for="@Model.Active" class="form-check-input border-0 shadow" /> *@
-                        @*     <label asp-for="@Model.Active" class="form-check-label ms-2 text-dark"></label> *@
-                        @*     <span asp-validation-for="@Model.Active" class="text-danger"></span> *@
-                        @* </div> *@
-                        @* *@
-                        @* @if (Model.Image != null) *@
-                        @* { *@
-                        @*     <div class="col-4"> *@
-                        @*         <img src="~/img/projects/@Model.Image" width="100%" *@
-                        @*              style="border-radius:5px; border:1px solid #bbb9b9" /> *@
-                        @*     </div> *@
-                        @* } *@
-                        @* <div class="form-floating py-2 col-12"> *@
-                        @*     <input type="file" name="files" class="form-control border-0 shadow" multiple /> *@
-                        @*     <label asp-for="@Model.Image" class="ms-2"></label> *@
-                        @* </div> *@
-                        <div>
-
-                            @* <h3>Videos</h3> *@
-                            @* <div style="display: flex; justify-content: flex-end;"> *@
-                            @*     <a onclick="addVideo(@Model.Id)" class="btn btn-success">Add Video</a> *@
-                            @* </div> *@
-                            @* <div id="videoGroup" name="videos" multiple class="form-group"> *@
-                            @*     @if (Model.Videos != null && Model.Videos.Count > 0) *@
-                            @*     { *@
-                            @*         @for (int i = 0; i < Model.Videos.Count; i++) *@
-                            @*         { *@
-                            @*             <div class="border form-group rounded-2 my-2 shadow p-2 remove-video-@Model.Videos[i].Id" style="background:white;"> *@
-                            @*                 <input asp-for="@Model.Videos[i].Id" hidden /> *@
-                            @*                 <input asp-for="@Model.Videos[i].ProjectId" hidden /> *@
-                            @*                 <div class="form-floating py-2 form col-12"> *@
-                            @*                     <input asp-for="@Model.Videos[i].Title" class="form-control border-1" /> *@
-                            @*                     <label asp-for="@Model.Videos[i].Title" class="ms-2 text-dark"></label> *@
-                            @*                     <span asp-validation-for="@Model.Videos[i].Title" class="text-danger"></span> *@
-                            @*                 </div> *@
-                            @* *@
-                            @*                 <div class="form-floating py-2 col-12"> *@
-                            @*                     <input asp-for="@Model.Videos[i].Description" class="form-control border-1" /> *@
-                            @*                     <label asp-for="@Model.Videos[i].Description" class="ms-2 text-dark"></label> *@
-                            @*                     <span asp-validation-for="@Model.Videos[i].Description" class="text-danger"></span> *@
-                            @*                 </div> *@
-                            @* *@
-                            @*                 <div class="form-floating py-2 col-12"> *@
-                            @*                     <input asp-for="@Model.Videos[i].ToolTip" class="form-control border-1" /> *@
-                            @*                     <label asp-for="@Model.Videos[i].ToolTip" class="ms-2 text-dark"></label> *@
-                            @*                     <span asp-validation-for="@Model.Videos[i].ToolTip" class="text-danger"></span> *@
-                            @*                 </div> *@
-                            @* *@
-                            @*                 <div class="form-floating py-2 col-12"> *@
-                            @*                     <input asp-for="@Model.Videos[i].URL" class="form-control border-1" /> *@
-                            @*                     <label asp-for="@Model.Videos[i].URL" class="ms-2 text-dark"></label> *@
-                            @*                     <span asp-validation-for="@Model.Videos[i].URL" class="text-danger"></span> *@
-                            @*                 </div> *@
-                            @* *@
-                            @*                 <div class="form-floating py-2 col-12"> *@
-                            @*                     <input asp-for="@Model.Videos[i].Order" class="form-control border-1" /> *@
-                            @*                     <label asp-for="@Model.Videos[i].Order" class="ms-2 text-dark"></label> *@
-                            @*                     <span asp-validation-for="@Model.Videos[i].Order" class="text-danger text!"></span> *@
-                            @*                 </div> *@
-                            @* *@
-                            @*                 <div class="form-check py-2 col-12"> *@
-                            @*                     <input asp-for="@Model.Videos[i].Active" class="form-check-input border-1" /> *@
-                            @*                     <label asp-for="@Model.Videos[i].Active" class="form-check-label ms-2 text-dark"></label> *@
-                            @*                     <span asp-validation-for="@Model.Videos[i].Active" class="text-danger"></span> *@
-                            @*                 </div> *@
-                            @* *@
-                            @*                 @using (Html.BeginForm()) *@
-                            @*                 { *@
-                            @*                     <div style="display: flex; justify-content:end"> *@
-                            @*                         <a class="link-dark" type="button" onclick="removeVideoConfirmation(@Model.Videos[i].Id)">Remove</a> *@
-                            @*                     </div> *@
-                            @*                 } *@
-                            @*             </div> *@
-                            @*         } *@
-                            @*     } *@
-                            @* *@
-                            @* </div> *@
                         </div>
 
                         <div class="row pt-2">

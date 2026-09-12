@@ -13,11 +13,7 @@ namespace PortfolioWeb.Areas.Admin.Controllers
     {
         private readonly IUnitOfWork _unitOfWork = unitOfWork;
         private readonly IWebHostEnvironment _webHostEnvironment = webHostEnvironment;
-
-        // public Project Project { get; set; }
-        // public ProjectUpsertVM  UpsertVM { get; set; }
-        // private readonly ProjectUpsertVM UpsertVM = new();
-        static Project Project { get; set; }
+        
         static ProjectUpsertVM UpsertVM = new();
         
         public IActionResult Index()
@@ -38,16 +34,8 @@ namespace PortfolioWeb.Areas.Admin.Controllers
             {
                 UpsertVM.Id = id;
                 UpsertVM.Project = _unitOfWork.Project.Get(p => p.Id == id, includeProperties: "Videos");
-                // UpsertVM.Logos = _unitOfWork.Logo.GetAll().ToList();
-                // UpsertVM.ProjectLogos = _unitOfWork.ProjectLogo.GetAll(l => l.ProjectId == id).ToList(); // .Where(l => l.ProjectId == id).ToList();
-                UpsertVM.Project.ProjectLogos = _unitOfWork.ProjectLogo.GetAll(l => l.ProjectId == id).ToList(); // .Where(l => l.ProjectId == id).ToList();
+                UpsertVM.Project.ProjectLogos = _unitOfWork.ProjectLogo.GetAll(l => l.ProjectId == id).ToList();
             }
-            // UpsertVM.Logos = _unitOfWork.Logo.GetAll().ToList();
-            // UpsertVM.ProjectLogos = _unitOfWork.ProjectLogo.GetAll(l => l.ProjectId == id).ToList(); // .Where(l => l.ProjectId == id).ToList();
-            // if (UpsertVM.Project.Videos == null)
-            // {
-            //     UpsertVM.Project.Videos = [];
-            // }
             
             return View(UpsertVM);
         }
@@ -95,46 +83,6 @@ namespace PortfolioWeb.Areas.Admin.Controllers
                 using var fileStream = new FileStream(newImagePath, FileMode.Create);
                 file.CopyTo(fileStream);
             }
-
-
-
-            // List<Video> videos = upsertVM.Project.Videos;
-            // if (videos != null)
-            // {
-            //     foreach (var video in videos)
-            //     {
-            //         if (video.Id == 0)
-            //         {
-            //             _unitOfWork.Video.Add(video);
-            //         }
-            //         else
-            //         {
-            //             _unitOfWork.Video.Update(video);
-            //         }
-            //     }
-            // }
-
-            // List<ProjectLogo> projectLogos = upsertVM.Project.ProjectLogos;
-            // if (projectLogos != null)
-            //     {
-            //         Console.WriteLine("logos != null");
-            //         Console.WriteLine(projectLogos.Count);
-            //         foreach (var projectLogo in projectLogos)
-            //         {
-            //             Console.WriteLine("ID: "+ projectLogo.Id);
-            //             Console.WriteLine("LogoId: "+ projectLogo.LogoId);
-            //             Console.WriteLine("ProjectId: "+ projectLogo.ProjectId);
-            //             Console.WriteLine("Priority: "+ projectLogo.Priority);
-            //             if (projectLogo.Id == 0)
-            //             {
-            //                 _unitOfWork.ProjectLogo.Add(projectLogo);
-            //             }
-            //             else
-            //             {
-            //                 _unitOfWork.ProjectLogo.Update(projectLogo);
-            //             }
-            //         }
-            //     }
             
             if (updatedProject.Id == 0)
             {
@@ -168,7 +116,6 @@ namespace PortfolioWeb.Areas.Admin.Controllers
 
             
             string subDirectory = Path.Combine("img", "projects");
-            // string imageDirectory = Path.Combine(_webHostEnvironment.WebRootPath, @"img\projects\");
             string imageDirectory = Path.Combine(_webHostEnvironment.WebRootPath, subDirectory);
             string imagePath = Path.Combine(imageDirectory, projectToRemove.Image);
 
